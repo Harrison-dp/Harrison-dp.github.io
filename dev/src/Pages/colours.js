@@ -6,6 +6,7 @@ import { BulletPoint, FP, H1, H2, H3, H4, H5, P1, P2, P3 } from "../componants/T
 import { ModeProvider, useModeContext } from "../context/brandLayers"
 
 export const ColoursPage = ({children,layer='One',docked={left:false, right:false, top:false, bottom: false},content_direction='tb',className='',...props})=> {
+documnet
 const {Mode}=useModeContext()
 const LayerClipContent=(x,y,z,a)=>{
     navigator.clipboard.writeText(z).then(() => {
@@ -26,6 +27,7 @@ const SegmentClipContent=(x,y,z)=>{
 
 return(
         <Card className="main" far Shadow >
+            <title>Goudlines: Colour</title>
             <H1>Brand Colours</H1>
             <Section overFlow>
 
