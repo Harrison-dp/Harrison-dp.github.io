@@ -36,7 +36,7 @@ return(
                 <DescreatCard horizontal touching style={{height:'150px'}} Shadow>
                     {Mode.Absolute.map(({Background,Title,Copy,AbsoluteName,hex})=>{
                         const onClickevent=()=>{
-                            navigator.clipboard.writeText(Background).then(() => {
+                            navigator.clipboard.writeText(hex.Background).then(() => {
                                 alert('Hex code for '+AbsoluteName+': '+hex.Background+' copied to clipboard');
                             }).catch(err => {
                                 alert('Failed to copy Hex code.')
