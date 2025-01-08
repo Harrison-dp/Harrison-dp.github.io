@@ -103,7 +103,7 @@ export const LogoPage =()=>{
                     </Section>
                 </Section>
             </Section>
-            <Card layer='Two' Segment='INT' left right horizontal>
+            <Card layer='Two' Segment='INT' left right horizontal report>
                 <Section style={{flex:1}}>
                     <H3>Don'ts of logo use</H3>
                     <P3>No text should ever enter the margins of the logo, this includes the slogan and any attempt to create a sub brand mark.</P3>

@@ -12,12 +12,28 @@ export const Card = ({children,layer='One',content_direction='tb',...props})=> {
     props.ParentLayer=layerProps.RelativeName
     props.Mode=Mode
     props.MyLayer=layer
+    const getBackgroundColor= ()=>{
+        if(props.style && props.style.backgroundColor)return props.style.backgroundColor
+        let layerProps = {}
+        try{
+            if(props.Segment)console.log(props.Segment)
+            // console.log(Mode.SegmentLayers[props.Segment])
+            layerProps = Mode.SegmentLayers[props.Segment][layer]
+        }catch{
+            try{
+                layerProps = Mode.Layers[layer]
+            } catch(error){
+                console.error("layerProps could not be fetched from Mode:",error.message)
+                layerProps = Mode.Layers.One
+        } }
+        return layerProps.Background
+    }
     // if(props.report)console.log(props)
     // console.log(Mode.Layers[layer])
     props.Background = !props.Background? true:props.Background
 return(
-        <section className={getClasses('Card',props)} style={{backgroundColor: Mode.Layers[layer]?Mode.Layers[layer].Background:Mode.Layers.One.Background,...props.style}} onClick={props.onClick&&props.onClick}>
-            <LayerProvider layer={layer}>
+        <section className={getClasses('Card',props)} style={{backgroundColor: getBackgroundColor()}} onClick={props.onClick&&props.onClick}>
+            <LayerProvider layer={layer} Section={props.Section}>
             {children}
             </LayerProvider>
         </section>

@@ -1,10 +1,11 @@
 import { useState } from "react"
 import { Card } from "./card"
-import { HL, Section } from "./Elements"
+import { Dot, HL, Section } from "./Elements"
 import { FP, H1, H3, H4, H5, P1, P3 } from "./TextStyles"
 import { ModeProvider, useModeContext } from "../context/brandLayers"
 import { Button, Choice, MultipleChoice, PrimaryButton } from "./Buttons"
-import { Logo } from "./logo"
+import { getViewBoxValue, Logo } from "./logo"
+import { ClipableLogo } from "./clipboardslogo"
 
 export const DemoCard = ()=>{
     const [CardProps,setCardProps]=useState({})
@@ -57,7 +58,8 @@ export const DemoCard = ()=>{
 
             <Card  layer="Two" InnerShadow style={{width:'fill'}}>
                     <Card {...CardProps} Shadow report>
-                        <Logo height='200px' text/>
+                        <ClipableLogo height='200px' text/>                   
+                        {/* <Logo height='200px' text/> */}
                         <H1>Card</H1>
                         <P1>Example of standard text written on any card componed</P1>
                         <HL/>
