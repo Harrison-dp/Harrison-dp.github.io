@@ -1,0 +1,100 @@
+@font-face {
+    font-family: BrownPro;
+    src: url(../fonts/BrownPro-Regular.otf);
+    font-weight: 400;
+}
+@font-face {
+    font-family: ValueSerif;
+    src: url(../fonts/value-serif-regular.otf);
+    font-weight: 400;
+}
+@font-face {
+    font-family: ValueSerif;
+    src: url(../fonts/value-serif-medium.otf);
+    font-weight: 600;
+}
+p{
+    font-family: BrownPro;
+    font-weight: 400;
+    margin: 0;
+    width: fill;
+}
+h1,h2,h3,h4{
+    font-family: ValueSerif;
+    font-weight: 200;
+    margin: 0;
+    width: fill;
+}
+
+h1.title{
+    font-weight: 400;
+    font-size: 4em;
+}
+p.subtitle{
+    font-weight: bold;
+    font-size: 1.2em;
+}
+h1{
+    font-weight: 400;
+    font-size: 3.3em;
+}
+h2{
+    font-weight: 600;
+    font-size: 2em;
+}
+h3{
+    font-weight: 600;
+    font-size: 1.6em;
+}
+h4{
+    font-weight: 600;
+    font-size: 1.3em;
+}
+h5{
+    font-family: BrownPro;
+    font-weight: 600;
+    font-size: 1em;
+    margin: 0;
+    width: fill;
+    text-wrap: nowrap;
+}
+p.p1{
+    font-weight: 400;
+    font-size: 1.1em;
+}
+p.p2{
+    font-weight: 400;
+    font-size: 1em;
+}
+p.p3{
+    font-weight: 400;
+    font-size: 0.8em;
+}
+p.fineprint{
+    font-weight: 400;
+    font-size: 0.6em;
+}
+h1.statment_text{
+    font-weight: 400;
+    font-size: 8.4em;
+}
+p.Quote_Source{
+    font-weight: 400;
+    font-size: 1.2em;
+    text-align: right;
+}
+p.Quote{
+    font-family: ValueSerif;
+    font-weight: 400;
+    font-size: 1.2em;
+    z-index: 1;
+    margin-left: 1em;
+    margin-top: -1.5em;
+
+}
+q.Quote::after{
+    content: none
+}
+.Bullet{
+    width: fit-content;
+}
