@@ -1,5 +1,6 @@
 import { Card } from "../componants/card"
 import { HL, Section, VL } from "../componants/Elements"
+import { HorizontalWMargin, HorizontalWOMargin, LogoWMargin, LogoWOMargin, PillWMargin, PillWOMargin } from "../componants/LogoPageObjects"
 import { H1, P3,H3,H5,P2,H2, H4 } from "../componants/TextStyles"
 
 export const LogoPage =()=>{
@@ -8,29 +9,29 @@ export const LogoPage =()=>{
             <H1>The Logo</H1>
             <Section>
                 <H2>Standard logo</H2>
-                <Section horizontal>
-                    {/* logo here */}
+                <Section horizontal jSpread>
+                    <LogoWOMargin/>
                     <VL/>
-                    {/* logo with margin here */}
+                    <LogoWMargin/>
                 </Section>
             </Section>
-            <Section>
-                <H2>Brandmark</H2>
-                <Section horizontal>
-                    {/* pill here */}
+            <Section >
+                <H2>Brandmark</H2 >
+                <Section horizontal jSpread>
+                    <PillWOMargin/>
                     <VL/>
-                    {/* pill with margin here */}
+                    <PillWMargin/>
                 </Section>
             </Section>
             <Section>
                 <H3>Wordmark (restricted hight use only)</H3>
-                <Section horizontal>
-                    {/* horisontal logo here */}
+                <Section horizontal jSpread>
+                    <HorizontalWOMargin/>
                     <VL/>
-                    {/* horisontal logo with margin here */}
+                    <HorizontalWMargin/>
                 </Section>
             </Section>
-            <Section horizontal alight="center" spread AICenter>
+            <Section horizontal alight="center" AICenter>
                 <Section style={{flex:'1'}}>
                     <H3>Restricted use cases</H3>
                     <P2>Monochrome logos should only be used in settings with hard restrictions. Settings that are limited to one colour but can achieve shades like grey scale printing should have the text at 100% and the pill at 20%. In situations like heat based printing, where only a single shade is achievable, you should used the version with the outlined pill.</P2>

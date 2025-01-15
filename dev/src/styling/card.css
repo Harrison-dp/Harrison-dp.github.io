@@ -313,3 +313,7 @@ button.primary_button{
     border-radius: var(--BorderRadius);
     outline-offset: -2px;
 }
+
+.justify_spread{
+    justify-content: space-evenly;
+}
