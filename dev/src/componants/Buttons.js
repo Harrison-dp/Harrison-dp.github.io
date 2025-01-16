@@ -56,9 +56,10 @@ export const MultipleChoice = ({children,OnSelect=()=>{},...props})=>{
     }
 
 
-
+    const [show, setShow]=useState(false)
+    const toggleShow=()=>setShow(!show)
     props.horizontal=true
-    return(
+    if(Children.count(children)<5)return(
         <ChoiceContext.Provider value={{Selected:Selected}}>
             <div class={getClasses('multiple_choice_holder',props)}style={{background:layerProps.Background,outline:layerProps.Accent+'var(--Strock) solid'}}>
                 {Children.map(children,(child,index)=>{
@@ -66,11 +67,40 @@ export const MultipleChoice = ({children,OnSelect=()=>{},...props})=>{
                     let newChild = cloneElement(child,{id:index,onClick:Choicefunction})
                     return newChild
                 })}
-                {/* {children} */}
             </div>
         </ChoiceContext.Provider>
-
     )
+    else {
+        let Display = {}
+        if(Selected){Display = cloneElement(children[Selected],{id:Selected,onClick:toggleShow})}
+        else{
+            Display = Children.map(children,(child,index)=>{
+                let newChild = cloneElement(child,{id:index,onClick:toggleShow})
+                if(child.props.Default){return newChild}
+            })
+        }
+            
+      
+        
+        return(  
+    <ChoiceContext.Provider value={{Selected:Selected}}>
+        <div class={getClasses('multiple_choice_holder',props)}style={{background:layerProps.Background,outline:layerProps.Accent+'var(--Strock) solid'}}>
+            {Display}<Choice Default onClick={toggleShow}>◢</Choice>
+        
+        
+        {show&&<div onFocusOut={toggleShow} class={getClasses('drop_down',props)}style={{background:layerProps.Background,outline:layerProps.Accent+'var(--Strock) solid'}}>
+            {Children.map(children,(child,index)=>{
+                let Choicefunction=()=>{
+                    Secetionfunction(index,child.props.value)
+                    toggleShow()
+                }
+                let newChild = cloneElement(child,{id:index,onClick:Choicefunction})
+                return newChild
+            })}
+        </div>}
+        </div>
+
+    </ChoiceContext.Provider>)}
 }
 export const useChoiceContext = ()=>useContext(ChoiceContext)
 

@@ -4,7 +4,7 @@ import { Slogan } from "../componants/Slogan"
 import { BulletPoint, H1, H2, H3, H5, P2, P3 } from "../componants/TextStyles"
 
 export const MessagingPage = ({children,layer='One',docked={left:false, right:false, top:false, bottom: false},content_direction='tb',className='',...props})=> {
-
+document.title = 'Guidlines: Messaging'
 return(
         <Card className="main" far Shadow>
             <H1>Brand proposition</H1>

@@ -282,8 +282,104 @@ font-family: BrownPro;
 .Inner_Shadow_Three_Dark{     box-shadow: inset 0px 0px var(--Gap) 0px var(--TS);}
 .Inner_Shadow_Four_Dark{      box-shadow: inset 0px 0px var(--Gap) 0px var(--ES);}
 
+/* ===================================================== */
+.Shadow_REAOne_Light{      box-shadow: 0px 0px var(--Gap) 0px var(--WS);}
+.Shadow_REATwo_Light{      box-shadow: 0px 0px var(--Gap) 0px var(--REALight);}
+.Shadow_REAThree_Light{    box-shadow: 0px 0px var(--Gap) 0px var(--READark);}
+.Shadow_REAOne_Dark{       box-shadow: 0px 0px var(--Gap) 0px var(--AS);}
+.Shadow_REATwo_Dark{       box-shadow: 0px 0px var(--Gap) 0px var(--AS);}
+.Shadow_REAThree_Dark{     box-shadow: 0px 0px var(--Gap) 0px var(--REAUmbra);}
 
+.Inner_Shadow_REAOne_Light{      box-shadow: inset 0px 0px var(--Gap) 0px var(--WS);}
+.Inner_Shadow_REATwo_Light{      box-shadow: inset 0px 0px var(--Gap) 0px var(--REALight);}
+.Inner_Shadow_REAThree_Light{    box-shadow: inset 0px 0px var(--Gap) 0px var(--READark);}
+.Inner_Shadow_REAOne_Dark{       box-shadow: inset 0px 0px var(--Gap) 0px var(--AS);}
+.Inner_Shadow_REATwo_Dark{       box-shadow: inset 0px 0px var(--Gap) 0px var(--DS);}
+.Inner_Shadow_REAThree_Dark{     box-shadow: inset 0px 0px var(--Gap) 0px var(--REAUmbra);}
+/* ===================================================== */
+.Shadow_BTROne_Light{      box-shadow: 0px 0px var(--Gap) 0px var(--WS);}
+.Shadow_BTRTwo_Light{      box-shadow: 0px 0px var(--Gap) 0px var(--BTRLight);}
+.Shadow_BTRThree_Light{    box-shadow: 0px 0px var(--Gap) 0px var(--BTRDark);}
+.Shadow_BTROne_Dark{       box-shadow: 0px 0px var(--Gap) 0px var(--AS);}
+.Shadow_BTRTwo_Dark{       box-shadow: 0px 0px var(--Gap) 0px var(--AS);}
+.Shadow_BTRThree_Dark{     box-shadow: 0px 0px var(--Gap) 0px var(--BTRUmbra);}
 
+.Inner_Shadow_BTROne_Light{      box-shadow: inset 0px 0px var(--Gap) 0px var(--WS);}
+.Inner_Shadow_BTRTwo_Light{      box-shadow: inset 0px 0px var(--Gap) 0px var(--BTRLight);}
+.Inner_Shadow_BTRThree_Light{    box-shadow: inset 0px 0px var(--Gap) 0px var(--BTRDark);}
+.Inner_Shadow_BTROne_Dark{       box-shadow: inset 0px 0px var(--Gap) 0px var(--AS);}
+.Inner_Shadow_BTRTwo_Dark{       box-shadow: inset 0px 0px var(--Gap) 0px var(--DS);}
+.Inner_Shadow_BTRThree_Dark{     box-shadow: inset 0px 0px var(--Gap) 0px var(--BTRUmbra);}
+/* ===================================================== */
+.Shadow_LLSOne_Light{      box-shadow: 0px 0px var(--Gap) 0px var(--WS);}
+.Shadow_LLSTwo_Light{      box-shadow: 0px 0px var(--Gap) 0px var(--LLSLight);}
+.Shadow_LLSThree_Light{    box-shadow: 0px 0px var(--Gap) 0px var(--LLSDark);}
+.Shadow_LLSOne_Dark{       box-shadow: 0px 0px var(--Gap) 0px var(--AS);}
+.Shadow_LLSTwo_Dark{       box-shadow: 0px 0px var(--Gap) 0px var(--AS);}
+.Shadow_LLSThree_Dark{     box-shadow: 0px 0px var(--Gap) 0px var(--LLSUmbra);}
+
+.Inner_Shadow_LLSOne_Light{      box-shadow: inset 0px 0px var(--Gap) 0px var(--WS);}
+.Inner_Shadow_LLSTwo_Light{      box-shadow: inset 0px 0px var(--Gap) 0px var(--LLSLight);}
+.Inner_Shadow_LLSThree_Light{    box-shadow: inset 0px 0px var(--Gap) 0px var(--LLSDark);}
+.Inner_Shadow_LLSOne_Dark{       box-shadow: inset 0px 0px var(--Gap) 0px var(--AS);}
+.Inner_Shadow_LLSTwo_Dark{       box-shadow: inset 0px 0px var(--Gap) 0px var(--DS);}
+.Inner_Shadow_LLSThree_Dark{     box-shadow: inset 0px 0px var(--Gap) 0px var(--LLSUmbra);}
+/* ===================================================== */
+.Shadow_BFSOne_Light{      box-shadow: 0px 0px var(--Gap) 0px var(--WS);}
+.Shadow_BFSTwo_Light{      box-shadow: 0px 0px var(--Gap) 0px var(--BFSLight);}
+.Shadow_BFSThree_Light{    box-shadow: 0px 0px var(--Gap) 0px var(--BFSDark);}
+.Shadow_BFSOne_Dark{       box-shadow: 0px 0px var(--Gap) 0px var(--AS);}
+.Shadow_BFSTwo_Dark{       box-shadow: 0px 0px var(--Gap) 0px var(--AS);}
+.Shadow_RBFShree_Dark{     box-shadow: 0px 0px var(--Gap) 0px var(--BFSUmbra);}
+
+.Inner_Shadow_BFSOne_Light{      box-shadow: inset 0px 0px var(--Gap) 0px var(--WS);}
+.Inner_Shadow_BFSTwo_Light{      box-shadow: inset 0px 0px var(--Gap) 0px var(--BFSLight);}
+.Inner_Shadow_BFSThree_Light{    box-shadow: inset 0px 0px var(--Gap) 0px var(--BFSDark);}
+.Inner_Shadow_BFSOne_Dark{       box-shadow: inset 0px 0px var(--Gap) 0px var(--AS);}
+.Inner_Shadow_BFSTwo_Dark{       box-shadow: inset 0px 0px var(--Gap) 0px var(--DS);}
+.Inner_Shadow_BFSThree_Dark{     box-shadow: inset 0px 0px var(--Gap) 0px var(--BFSUmbra);}
+/* ===================================================== */
+.Shadow_DEVOne_Light{      box-shadow: 0px 0px var(--Gap) 0px var(--WS);}
+.Shadow_DEVTwo_Light{      box-shadow: 0px 0px var(--Gap) 0px var(--DEVLight);}
+.Shadow_DEVThree_Light{    box-shadow: 0px 0px var(--Gap) 0px var(--DEVDark);}
+.Shadow_DEVOne_Dark{       box-shadow: 0px 0px var(--Gap) 0px var(--AS);}
+.Shadow_DEVTwo_Dark{       box-shadow: 0px 0px var(--Gap) 0px var(--AS);}
+.Shadow_DEVThree_Dark{     box-shadow: 0px 0px var(--Gap) 0px var(--DEVUmbra);}
+
+.Inner_Shadow_DEVOne_Light{      box-shadow: inset 0px 0px var(--Gap) 0px var(--WS);}
+.Inner_Shadow_DEVTwo_Light{      box-shadow: inset 0px 0px var(--Gap) 0px var(--DEVLight);}
+.Inner_Shadow_DEVThree_Light{    box-shadow: inset 0px 0px var(--Gap) 0px var(--DEVDark);}
+.Inner_Shadow_DEVOne_Dark{       box-shadow: inset 0px 0px var(--Gap) 0px var(--AS);}
+.Inner_Shadow_DEVTwo_Dark{       box-shadow: inset 0px 0px var(--Gap) 0px var(--DS);}
+.Inner_Shadow_DEVThree_Dark{     box-shadow: inset 0px 0px var(--Gap) 0px var(--DEVUmbra);}
+/* ===================================================== */
+.Shadow_INTOne_Light{      box-shadow: 0px 0px var(--Gap) 0px var(--WS);}
+.Shadow_INTTwo_Light{      box-shadow: 0px 0px var(--Gap) 0px var(--INTLight);}
+.Shadow_INTThree_Light{    box-shadow: 0px 0px var(--Gap) 0px var(--INTDark);}
+.Shadow_INTOne_Dark{       box-shadow: 0px 0px var(--Gap) 0px var(--AS);}
+.Shadow_INTTwo_Dark{       box-shadow: 0px 0px var(--Gap) 0px var(--AS);}
+.Shadow_INTThree_Dark{     box-shadow: 0px 0px var(--Gap) 0px var(--INTUmbra);}
+
+.Inner_Shadow_INTOne_Light{      box-shadow: inset 0px 0px var(--Gap) 0px var(--WS);}
+.Inner_Shadow_INTTwo_Light{      box-shadow: inset 0px 0px var(--Gap) 0px var(--INTLight);}
+.Inner_Shadow_INTThree_Light{    box-shadow: inset 0px 0px var(--Gap) 0px var(--INTDark);}
+.Inner_Shadow_INTOne_Dark{       box-shadow: inset 0px 0px var(--Gap) 0px var(--AS);}
+.Inner_Shadow_INTTwo_Dark{       box-shadow: inset 0px 0px var(--Gap) 0px var(--DS);}
+.Inner_Shadow_INTThree_Dark{     box-shadow: inset 0px 0px var(--Gap) 0px var(--INTUmbra);}
+/* ===================================================== */
+.Shadow_FFEOne_Light{      box-shadow: 0px 0px var(--Gap) 0px var(--WS);}
+.Shadow_FFETwo_Light{      box-shadow: 0px 0px var(--Gap) 0px var(--FFELight);}
+.Shadow_FFEThree_Light{    box-shadow: 0px 0px var(--Gap) 0px var(--FFEDark);}
+.Shadow_FFEOne_Dark{       box-shadow: 0px 0px var(--Gap) 0px var(--AS);}
+.Shadow_FFETwo_Dark{       box-shadow: 0px 0px var(--Gap) 0px var(--AS);}
+.Shadow_FFEThree_Dark{     box-shadow: 0px 0px var(--Gap) 0px var(--FFEUmbra);}
+
+.Inner_Shadow_FFEOne_Light{      box-shadow: inset 0px 0px var(--Gap) 0px var(--WS);}
+.Inner_Shadow_FFETwo_Light{      box-shadow: inset 0px 0px var(--Gap) 0px var(--FFELight);}
+.Inner_Shadow_FFEThree_Light{    box-shadow: inset 0px 0px var(--Gap) 0px var(--FFEDark);}
+.Inner_Shadow_FFEOne_Dark{       box-shadow: inset 0px 0px var(--Gap) 0px var(--AS);}
+.Inner_Shadow_FFETwo_Dark{       box-shadow: inset 0px 0px var(--Gap) 0px var(--DS);}
+.Inner_Shadow_FFEThree_Dark{     box-shadow: inset 0px 0px var(--Gap) 0px var(--FFEUmbra);}
 div.Dot{
     width: var(--Margin);
     height: var(--Margin);
@@ -316,4 +412,22 @@ button.primary_button{
 
 .justify_spread{
     justify-content: space-evenly;
+}
+
+.flex_wrap{
+    flex-wrap: wrap;
+}
+
+
+.drop_down{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    border-radius: var(--BorderRadius);
+}
+.drop_down .multiple_choice_option{
+    width: fill;
+}
+.drop_down_button{
+    width: fill;
 }

@@ -50,7 +50,7 @@ const Colours = {Array:[
     new ColourObject('var(--B)','#F2EFED','Bone','B'),
     new ColourObject('var(--S)','#D9D2CA','Stone','S'),
     new ColourObject('var(--G)','#A0948E','Griege','G'),
-    new ColourObject('var(--E)','#7A6F6D','Evening','E'),
+    new ColourObject('var(--E)','{layerProps.Copy}','Evening','E'),
     new ColourObject('var(--T)','#494444','Typhoon','T'),
     new ColourObject('var(--A)','#292428','Aubergine','A'),
     new ColourObject('var(--D)','#1A1A1A','Dark','D'),
@@ -62,7 +62,7 @@ const W = new ColourObject('var(--W)','#FFFFFF','White','W')
 const B = new ColourObject('var(--B)','#F2EFED','Bone','B')
 const S = new ColourObject('var(--S)','#D9D2CA','Stone','S')
 const G = new ColourObject('var(--G)','#A0948E','Griege','G')
-const T = new ColourObject('var(--T)','#7A6F6D','Typhoon','T')
+const T = new ColourObject('var(--T)','{layerProps.Copy}','Typhoon','T')
 const E = new ColourObject('var(--E)','#494444','Evening','E')
 const A = new ColourObject('var(--A)','#292428','Aubergine','A')
 const D = new ColourObject('var(--D)','#1A1A1A','Dark','D')
@@ -83,10 +83,10 @@ const Layers ={Array:[
 Layers.Array.map((L)=>Layers[L.AbsoluteName] = L)
 class SegmentBlock{
     constructor(F=Segments[0]){
-        this.One = new layerPropsClass(F.Code+'One',      W,          F.Pure,     T,          F.Accent,  S)
-        this.Two = new layerPropsClass(F.Code+'Two',      F.Accent,   F.Pure,     T,          F.Light,   F.Light)
-        this.Three = new layerPropsClass(F.Code+'Three',  F.Light,    F.Umbra,    A,          F.Dark,   F.Dark)
-        this.Four = new layerPropsClass(F.Code+'Four',    F.Dark,     F.Pure,     W,          F.Light,   F.Umbra)
+        this.One = new layerPropsClass(F.Code+'One',      W,          F.Pure,     A,          F.Light,  S)
+        this.Two = new layerPropsClass(F.Code+'Two',      F.Accent,   F.Pure,     E,          F.Light,   F.Light)
+        this.Three = new layerPropsClass(F.Code+'Three',  F.Light,    F.Umbra,    A,          F.Accent,   F.Dark)
+        this.Four = new layerPropsClass(F.Code+'Four',    F.Dark,     F.Accent,     W,          F.Umbra,   F.Umbra)
         this.Five = new layerPropsClass(F.Code+'Five',    F.Umbra,    F.Accent,   B,          F.Dark,     A)
         this.Six = new layerPropsClass(F.Code+'Six',      A,          F.Pure,     B,          F.Umbra,    D)
     }
@@ -103,11 +103,16 @@ export const Segments={Array:[
 Segments.Array.map((S)=>Segments[S.Code] = new SegmentBlock(S))
 Segments.Array.map((S)=>{
     let x = new SegmentBlock(S)
-    Segments.Dark[S.Code] = {One:x.Six,Two:x.Five,Three:x.Four}})
+    Segments.Dark[S.Code] = {One:{RelativeName:S.Code+'One',...x.Six},
+                            Two:{RelativeName:S.Code+'Two',...x.Five},
+                            Three:{RelativeName:S.Code+'Three',...x.Four}
+                        }})
 Segments.Array.map((S)=>{
     let x = new SegmentBlock(S)
-    Segments.Light[S.Code] = {One:x.One,Two:x.Two,Three:x.Three}})
-
+    Segments.Light[S.Code] = {One:{RelativeName:S.Code+'One',...x.One},
+    Two:{RelativeName:S.Code+'Two',...x.Two},
+    Three:{RelativeName:S.Code+'Three',...x.Three}
+}})
 class segLight{
     constructor(Seg,){
         this.One=Seg.One
@@ -215,8 +220,8 @@ export const LayerProvider = ({children,layer='One',...props})=>{
     const {Mode} = useModeContext() 
     let layerProps = {}
     try{
-        if(props.Segment)console.log(props.Segment)
-        // console.log(Mode.SegmentLayers[props.Segment])
+        console.log(Mode.SegmentLayers[props.Segment][layer])
+        if(Mode.SegmentLayers[props.Segment][layer] === undefined)throw new Error('invalid layer')
         layerProps = Mode.SegmentLayers[props.Segment][layer]
     }catch{
         try{
@@ -225,6 +230,7 @@ export const LayerProvider = ({children,layer='One',...props})=>{
             console.error("layerProps could not be fetched from Mode:",error.message)
             layerProps = Mode.Layers.One
     } }
+    if(props.report)console.log(layerProps)
     return(
         <LayerContext.Provider value={{layer,layerProps}}>
             {children}

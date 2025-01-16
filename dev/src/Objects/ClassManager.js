@@ -38,6 +38,7 @@ export const getClasses = (self,props={})=>{
     if(props.tight)Classes=Classes+' gap_tight'
     if(props.spread)Classes=Classes+' gap_spread'
     if(props.jSpread)Classes=Classes+' justify_spread'
+    if(props.wrap)Classes=Classes+' flex_wrap'
 
     if(props.className)Classes=Classes+' '+props.className
     if(props.AICenter)Classes=Classes+' AICentre';else Classes=Classes+' AIStretch'

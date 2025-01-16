@@ -2,6 +2,7 @@ import { Card } from "../componants/card"
 import { P1, Statment } from "../componants/TextStyles"
 
 export const ComingSoon = ()=>{
+    document.title = 'Coming Soon'
     return(
         <Card className="main" far Shadow>
             <Statment>Coming Soon</Statment>

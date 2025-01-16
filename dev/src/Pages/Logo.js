@@ -1,9 +1,13 @@
 import { Card } from "../componants/card"
 import { HL, Section, VL } from "../componants/Elements"
-import { HorizontalWMargin, HorizontalWOMargin, LogoWMargin, LogoWOMargin, PillWMargin, PillWOMargin } from "../componants/LogoPageObjects"
+import { Logo } from "../componants/logo"
+import { CD, FB, FIPW, GreyScale, HorizontalWMargin, HorizontalWOMargin, IPW, LogoConstructionOne, LogoConstructionThree, LogoConstructionTwo, LogoCutout, LogoMono, LogoNoPill, LogoSlogan, LogoSPill, LogoSub, LogoWMargin, LogoWOMargin, Long, LS, Medium, PillconstructionOne, PillconstructionThree, PillconstructionTwo, PillWMargin, PillWOMargin, SloganConstruction, Square, SS, TPadding } from "../componants/LogoPageObjects"
 import { H1, P3,H3,H5,P2,H2, H4 } from "../componants/TextStyles"
+import { LayerProvider } from "../context/brandLayers"
 
 export const LogoPage =()=>{
+    document.title = 'Guidlines: Logo'
+
     return(
         <Card className='main' far>
             <H1>The Logo</H1>
@@ -31,50 +35,54 @@ export const LogoPage =()=>{
                     <HorizontalWMargin/>
                 </Section>
             </Section>
-            <Section horizontal alight="center" AICenter>
-                <Section style={{flex:'1'}}>
-                    <H3>Restricted use cases</H3>
-                    <P2>Monochrome logos should only be used in settings with hard restrictions. Settings that are limited to one colour but can achieve shades like grey scale printing should have the text at 100% and the pill at 20%. In situations like heat based printing, where only a single shade is achievable, you should used the version with the outlined pill.</P2>
+            <Section alight="center" AICenter>
+                <H3>Restricted use cases</H3>
+                <Section horizontal >
+                    <P2 style={{flex:'1'}}>Monochrome logos should only be used in settings with hard restrictions. Settings that are limited to one colour but can achieve shades like grey scale printing should have the text at 100% and the pill at 20%. In situations like heat based printing, where only a single shade is achievable, you should used the version with the outlined pill.</P2>
+                    <Section style={{flex:'2'}} horizontal jSpread>
+                        <GreyScale/>
+                        <LogoMono/>
+                    </Section>
                 </Section>
-                <Section style={{flex:'2'}} horizontal>
-                    {/* monogrome logo */}
-                    {/* outline pill logo */}
-                </Section>
+   
             </Section>
             <HL/>
             <Section>
                 <H2>Construction</H2>
-            <Section horizontal alight="center" spread AICenter>
-                <Section style={{flex:'1'}}>
-                    <H3>Pill construction</H3>
-                    <P2>The pill is defined as the connection  of two equal sized circles with the diameter of 500 in apposing top-right & bottom-left corners or a box measuring 1080 by 1080 by the means of 45 degree tangents.</P2>
+            <Section  alight="center"  AICenter>
+                <H3>Pill construction</H3>
+                <Section horizontal >
+                    <P2 style={{flex:'1'}}>The pill is defined as the connection  of two equal sized circles with the diameter of 500 in apposing top-right & bottom-left corners or a box measuring 1080 by 1080 by the means of 45 degree tangents.</P2>
+                    <Section style={{flex:'2'}} horizontal far>
+                        <PillconstructionOne/>
+                        <PillconstructionTwo/>
+                        <PillconstructionThree/>
+                    </Section>
                 </Section>
-                <Section style={{flex:'2'}} horizontal>
-                    {/* pill construction A */}
-                    {/* pill construction B */}
-                    {/* pill construction C */}
-                </Section>
+
             </Section>
             <Section horizontal alight="center" spread AICenter>
                 <Section style={{flex:'1'}}>
                     <H3>Standard logo construction</H3>
-                    <P2>Using the pil construction for a basis, the standard logo is defined as the following, the text, in Brown Pro Bold with character spacing of -41% is defined by half the diameter of the circles that make up up the pill equalling the distance between the top of the 'l' and 'p' in Phillips, the names are alighted to the left and right sides of the pill respectively, the vertical gap is equal to the length the the 'p' descends bellow the 'l'. The text is then cantered vertically within the pill.000</P2>
+                    <P2 style={{flex:'1'}}>Using the pil construction for a basis, the standard logo is defined as the following, the text, in Brown Pro Bold with character spacing of -41% is defined by half the diameter of the circles that make up up the pill equalling the distance between the top of the 'l' and 'p' in Phillips, the names are alighted to the left and right sides of the pill respectively, the vertical gap is equal to the length the the 'p' descends bellow the 'l'. The text is then cantered vertically within the pill.000</P2>
                 </Section>
-                <Section style={{flex:'2'}} horizontal>
-                    {/* logo construction A */}
-                    {/* logo construction B */}
-                    {/* logo construction C */}
+                <Section style={{flex:'2'}} horizontal far>
+                    <LogoConstructionOne/>
+                    <LogoConstructionTwo/>
+                    <LogoConstructionThree/>
                 </Section>
             </Section>
-            <Section horizontal alight="center" spread AICenter>
-                <Section style={{flex:'1'}}>
-                    <H3>Construction of the tagline</H3>
-                    <P2>To help the tagline legibility we have indented the second line where the 'e' of the 'delivered' lines up with the 'g' of the 'Designed'. This also give a scattered layout for our tagline which was our original design choice.</P2>
-                </Section>
-                <Section style={{flex:'2'}} horizontal>
-                    {/* slogan construction */}
+            <Section  alight="center"  AICenter>
+            <H3>Construction of the tagline</H3>
+
+                <Section  horizontal spread>
+                    <P2 style={{flex:'1'}}>To help the tagline legibility we have indented the second line where the 'e' of the 'delivered' lines up with the 'g' of the 'Designed'. This also give a scattered layout for our tagline which was our original design choice.</P2>
+                    <Section style={{flex:'2'}} horizontal>
+                    <SloganConstruction/>
 
                 </Section>
+                </Section>
+                
             </Section>
             </Section>
 
@@ -104,21 +112,24 @@ export const LogoPage =()=>{
                     </Section>
                 </Section>
             </Section>
-            <Card layer='Two' Segment='INT' left right horizontal report>
+            <Card layer='Two' Segment='INT' left right report >
+                <H3>Don'ts of logo use</H3>
+                <Section horizontal spread>
                 <Section style={{flex:1}}>
-                    <H3>Don'ts of logo use</H3>
                     <P3>No text should ever enter the margins of the logo, this includes the slogan and any attempt to create a sub brand mark.</P3>
                     <P3>The pill should never be altered in any way when used in combination with the text.</P3>
                     <P3>A monochrome exclusionary version of the logo should never be used, as it has legibility issues.</P3>
                     <P3>The pill should never be removed from the composition,</P3>
                 </Section>
-                <Section style={{flex:2}}>
-                    {/* no no logo 1 */}
-                    {/* no no logo 2 */}
-                    {/* no no logo 3 */}
-                    {/* no no logo 4 */}
-                    {/* no no logo 5 */}
+                <Section style={{flex:2}} horizontal wrap jSpread spread>
+                    <LogoSlogan/>
+                    <LogoSub/>
+                    <LogoSPill/>
+                    <LogoCutout/>
+                    <LogoNoPill/>
                 </Section>
+                </Section>
+                
             </Card>
             <Section>
                 <H3>The pill as a visual element</H3>
@@ -135,54 +146,80 @@ export const LogoPage =()=>{
                 </Section>
             </Section>
             <HL/>
-            <Section>
+            <Section style={{flex:1}}>
                 <H3>Segment idenifying logos</H3>
-                <Section horizontal>
-                    <Section>
-                        {/* Segment logo */}
+                <Section horizontal >
+                    <Section hug style={{flex:1}}>
+                        <LayerProvider Segment='REA'>
+                            <Logo text margin={20}/>
+                            <Logo  />
+                        </LayerProvider>
                         <H5>Estate Agents</H5>
                     </Section>
                     <VL/>
-                    <Section>
-                        {/* Segment logo */}
+                    <Section hug style={{flex:1}}>
+                    <LayerProvider Segment='LLS'>
+                            <Logo text margin={20}/>
+                            <Logo  />
+                        </LayerProvider>                        
                         <H5>Landlords</H5>
                     </Section>
                     <VL/>
-                    <Section>
-                        {/* Segment logo */}
+                    <Section hug style={{flex:1}}>
+                    <LayerProvider Segment='BTR'>
+                            <Logo text margin={20}/>
+                            <Logo  />
+                        </LayerProvider>                        
                         <H5>Build to Rent</H5>
                     </Section>
                     <VL/>
-                    <Section>
-                        {/* Segment logo */}
+                    <Section hug style={{flex:1}}>
+                    <LayerProvider Segment='BFS'>
+                            <Logo text margin={20}/>
+                            <Logo  />
+                        </LayerProvider>                        
                         <H5>Student</H5>
                     </Section>
                     <VL/>
-                    <Section>
-                        {/* Segment logo */}
+                    <Section hug style={{flex:1}}>
+                    <LayerProvider Segment='DEV'>
+                            <Logo text margin={20}/>
+                            <Logo  />
+                        </LayerProvider>                        
                         <H5>Developers</H5>
                     </Section>
                     <VL/>
-                    <Section>
-                        {/* Segment logo */}
+                    <Section hug style={{flex:1}}>
+                    <LayerProvider Segment='INT'>
+                            <Logo text margin={20}/>
+                            <Logo  />
+                        </LayerProvider>                        
                         <H5>International</H5>
                     </Section>
                     <VL/>
-                    <Section>
-                        {/* Segment logo */}
+                    <Section hug style={{flex:1}}>
+                    <LayerProvider Segment='FFE'>
+                            <Logo text margin={20}/>
+                            <Logo  />
+                        </LayerProvider>                        
                         <H5>FF&E</H5>
                     </Section>
                 </Section>
             </Section>
             <HL/>
-            <Section horizontal>
-                <Section style={{flex:1}}>
+            <Section horizontal far>
+                <Section style={{flex:1}} >
                     <H3>In partnership badge</H3>
                     <P3>The in-partnership badge is for use by any of our partners or on any collateral that is pre-agreed to be in another company's branding and should be placed in a corner. The badge comprises two parts, the first is a box with a left and right margin equal to twice the height of the 'D' in 'David Phillips', the length is dependent on the text within, based on the list of approved partner messages coming soon. The second part is simple the logo, height matching the left element, with a connecting device. 
                     </P3>
                 </Section>
-                <Section style={{flex:2}}>
-
+                <Section style={{flex:2}} horizontal wrap far>
+                    <FB/>
+                    <IPW/>
+                    <FIPW/>
+                    <TPadding/>
+                    <CD/>
+                    <IPW/>
                 </Section>
             </Section>
             <Section>
@@ -193,8 +230,10 @@ export const LogoPage =()=>{
                         <P3>Depending on weather a logo is ruffly square, longer, or quite long it should be sizes based on the hight of the full logo, the combined hight of 'David Phillips' or the hight of the the gap between the top of the 'P' and bottom of the 'p' in 'Phillips', respectively.
                         </P3>
                     </Section>
-                    <Section style={{flex:2}}>
-                        
+                    <Section style={{flex:2}} horizontal jSpread wrap>
+                        <Square/>
+                        <Medium/>
+                        <Long/>
                     </Section>
                 </Section>
                 <Section horizontal>
@@ -203,8 +242,9 @@ export const LogoPage =()=>{
                         <P3>at small scale the gap should be equal to margin the the bar half-way between, at large scale the gap should be doubled. An 'x' should only be used in large scale partnership announcements. Spacing between two logos should be equal to whichever company specifies the most.
                         </P3>
                     </Section>
-                    <Section style={{flex:2}}>
-                        
+                    <Section style={{flex:2}} horizontal jSpread>
+                        <SS/>
+                        <LS/>
                     </Section>
                 </Section>
             </Section>

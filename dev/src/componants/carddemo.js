@@ -17,14 +17,29 @@ export const DemoCard = ()=>{
     const {Mode}=useModeContext()
     const modechoose=(id,value)=>{
         setCardProps({...CardProps,mode:value})}
-    console.log(CardProps)
+    console.log(Mode)
+    const Segchoose=(id,value)=>setCardProps({...CardProps,Segment:value})
     return(
         <Section horizontal far>
             <Section >
                 <H3>What are Layers & Cards?</H3>
                 <P3>Part of material based design are our cards. We use cards to create depth, the layer refers to the importance of information being help by the card, and where it sits in the visual hierarch. The most visible difference between layers are the colours used, each layer has a number of properties: Background, Title, Copy, Accent, and Shadow. Below is an example of the first 3 of these properties and how they change across layers, in total there are 8 layers, split between the two modes: Light & Dark. Cards act like their own content frame with padding matching the overall content margin. Where card corners are visible they should be rounded, card should either sit within the margin or extend of the edge of the page.</P3>
                 <H4>Demonstration Card</H4>
-            
+                <Section hug>
+                <H5>Segment</H5>
+                <MultipleChoice OnSelect={Segchoose}>
+                    <Choice value={undefined} Default>None</Choice>
+                    <Choice value={'REA'}>Residential</Choice>
+                    <Choice value={'BTR'}>BTR</Choice>
+                    <Choice value={'LLS'}>Landlords</Choice>
+                    <Choice value={'DEV'}>Developers</Choice>
+                    <Choice value={'INT'}>International</Choice>
+                    <Choice value={'FFE'}>Contractors</Choice>
+                    <Choice value={'BFS'}>Student</Choice>
+
+
+                </MultipleChoice>
+            </Section>
             <Section hug>
                 <H5>Layer</H5>
                 <MultipleChoice OnSelect={layerChooser}>
@@ -53,10 +68,11 @@ export const DemoCard = ()=>{
                 </Section>
            
             </Section>
-            </Section>
-            <ModeProvider demo mode={CardProps.mode===undefined?Mode.P:CardProps.mode} >
 
-            <Card  layer="Two" InnerShadow style={{width:'fill'}}>
+            </Section>
+            <ModeProvider demo mode={CardProps.mode===undefined?Mode.P:CardProps.mode}  report>
+
+            <Card  layer="Two" InnerShadow style={{width:'fill'}} Segment={CardProps.Segment===undefined?'none':CardProps.Segment} report>
                     <Card {...CardProps} Shadow report>
                         <ClipableLogo height='200px' text/>                   
                         {/* <Logo height='200px' text/> */}

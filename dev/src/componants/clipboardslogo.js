@@ -40,7 +40,6 @@ export const getViewBoxValue=({margin,latter=undefined,former={a:0,b:1080},...pr
 export const ClipableLogo =({margin=100,...props})=>{
     const {layerProps} = useLayerContext()
     const [viewBox,setViewBox] = useState(getViewBoxValue({margin}))
-    console.log(layerProps)
     return (
         <svg height={props.height?props.height:"100%"} viewBox={viewBox.text} fill="none" xmlns="http://www.w3.org/2000/svg">
         {/* <rect y="0.00195312" width="2160" height="2160" fill="white"/> */}
@@ -54,7 +53,6 @@ export const ClipableLogo =({margin=100,...props})=>{
 export const Pill = ({layer,name,hex})=>{
     const {layerProps}=useLayerContext()
     const LayerClipContent=()=>{
-        console.log('clicked pill')
         navigator.clipboard.writeText(hex).then(() => {
             alert('Hex code for the pill on '+layer+' layers, which is '+name+': '+hex+' copied to clipboard');
           }).catch(err => {
@@ -69,7 +67,6 @@ export const Pill = ({layer,name,hex})=>{
 export const DavidPhillips=({name,hex,layer})=>{
     const {layerProps}=useLayerContext()
     const LayerClipContent=()=>{
-        console.log('clicked pill')
         navigator.clipboard.writeText(hex).then(() => {
             alert('Hex code for the copy on '+layer+' layers, which is '+name+': '+hex+' copied to clipboard');
           }).catch(err => {
