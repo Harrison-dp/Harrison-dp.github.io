@@ -1,7 +1,7 @@
-import { Card } from "../componants/card"
-import { Section, VL } from "../componants/Elements"
-import { Slogan } from "../componants/Slogan"
-import { BulletPoint, H1, H2, H3, H5, P2, P3 } from "../componants/TextStyles"
+import { Card } from "../components/card"
+import { Section, VL } from "../components/Elements"
+import { Slogan } from "../components/Slogan"
+import { BulletPoint, H1, H2, H3, H5, P2, P3 } from "../components/TextStyles"
 
 export const MessagingPage = ({children,layer='One',docked={left:false, right:false, top:false, bottom: false},content_direction='tb',className='',...props})=> {
 document.title = 'Guidlines: Messaging'

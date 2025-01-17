@@ -2,7 +2,7 @@ import { createContext, useContext } from "react";
 import { Home } from "../Pages/home";
 import { MessagingPage } from "../Pages/Messaging";
 import { LogoPage } from "../Pages/Logo";
-import { GuidlinesSubmenu } from "../componants/Menus";
+import { GuidlinesSubmenu } from "../components/Menus";
 import { ColoursPage } from "../Pages/colours";
 import { ComingSoon } from "../Pages/comingsoon";
 import { FontPage } from "../Pages/Font";
@@ -29,7 +29,7 @@ export const InternalProvider = ({ children }) => {
         new Page('Icons','Guidlines/icons',<ComingSoon/>,2,<GuidlinesSubmenu/>),
         new Page('Colours','Guidlines/colours',<ColoursPage/>,2,<GuidlinesSubmenu/>),
         new Page('Brand In Use','Guidlines/brandinuse',<ComingSoon/>,2,<GuidlinesSubmenu/>),
-        new Page('Request Froms','forms',<ComingSoon/>,1),
+        new Page('Request Forms','forms',<ComingSoon/>,1),
     ]
     // console.log('Here')
     return (

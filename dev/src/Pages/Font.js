@@ -1,7 +1,7 @@
-import { Card, DescreatCard } from "../componants/card"
-import { Section, VL } from "../componants/Elements"
-import { FP, H1, H2, H3, H4, H5, P1, P2, P3, Quote, Source, ST, Statment, T } from "../componants/TextStyles"
-import { ANB, ANR, ANT, Authentic, BPB, BPR, BPT, NPB, NPM, NPR, PerfectFit, StandOut, VSB, VSR } from "../componants/TypePageObjects"
+import { Card, DescreatCard } from "../components/card"
+import { Section, VL } from "../components/Elements"
+import { FP, H1, H2, H3, H4, H5, P1, P2, P3, Quote, Source, ST, Statment, T } from "../components/TextStyles"
+import { ANB, ANR, ANT, Authentic, BPB, BPR, BPT, NPB, NPM, NPR, PerfectFit, StandOut, VSB, VSR } from "../components/TypePageObjects"
 import { LayerProvider } from "../context/brandLayers"
 
 export const FontPage=()=>{

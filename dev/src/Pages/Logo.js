@@ -1,8 +1,8 @@
-import { Card } from "../componants/card"
-import { HL, Section, VL } from "../componants/Elements"
-import { Logo } from "../componants/logo"
-import { CD, FB, FIPW, GreyScale, HorizontalWMargin, HorizontalWOMargin, IPW, LogoConstructionOne, LogoConstructionThree, LogoConstructionTwo, LogoCutout, LogoMono, LogoNoPill, LogoSlogan, LogoSPill, LogoSub, LogoWMargin, LogoWOMargin, Long, LS, Medium, PillconstructionOne, PillconstructionThree, PillconstructionTwo, PillWMargin, PillWOMargin, SloganConstruction, Square, SS, TPadding } from "../componants/LogoPageObjects"
-import { H1, P3,H3,H5,P2,H2, H4 } from "../componants/TextStyles"
+import { Card } from "../components/card"
+import { HL, Section, VL } from "../components/Elements"
+import { Logo } from "../components/logo"
+import { CD, FB, FIPW, GreyScale, HorizontalWMargin, HorizontalWOMargin, IPW, LogoConstructionOne, LogoConstructionThree, LogoConstructionTwo, LogoCutout, LogoMono, LogoNoPill, LogoSlogan, LogoSPill, LogoSub, LogoWMargin, LogoWOMargin, Long, LS, Medium, PillconstructionOne, PillconstructionThree, PillconstructionTwo, PillWMargin, PillWOMargin, SloganConstruction, Square, SS, TPadding } from "../components/LogoPageObjects"
+import { H1, P3,H3,H5,P2,H2, H4 } from "../components/TextStyles"
 import { LayerProvider } from "../context/brandLayers"
 
 export const LogoPage =()=>{

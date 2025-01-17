@@ -1,5 +1,5 @@
-import { Card } from "../componants/card"
-import { P1, Statment } from "../componants/TextStyles"
+import { Card } from "../components/card"
+import { P1, Statment } from "../components/TextStyles"
 
 export const FourZeroFour = ()=>{
     document.title = '404: Page Not Found'

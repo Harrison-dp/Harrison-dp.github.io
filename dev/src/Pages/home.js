@@ -1,5 +1,5 @@
-import { Card } from "../componants/card"
-import { H1 } from "../componants/TextStyles"
+import { Card } from "../components/card"
+import { H1 } from "../components/TextStyles"
 
 export const Home = ({...props})=>{
     document.title = 'Guidlines: Home'

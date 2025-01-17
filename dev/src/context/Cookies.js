@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react"
 import Cookies from "universal-cookie"
-import { Card } from "../componants/card"
+import { Card } from "../components/card"
 
 const path = '/'
 
@@ -12,7 +12,7 @@ class cookieHandlerClass{
             this.permission = true
             this.requested = true
             this.set= (l='misc',d,p=path) =>{
-                Cookie.set(l,d,{p})
+                Cookie.set(l,d,{expires: new Date(Date.now()+15552000),path: p})
                 return true
             }
             this.get= (l,p)=>{

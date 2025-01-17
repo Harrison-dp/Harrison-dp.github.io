@@ -1,8 +1,8 @@
-import { Card, DescreatCard } from "../componants/card"
-import { DemoCard } from "../componants/carddemo"
-import { CardButton, Dot, Section, VL } from "../componants/Elements"
-import { Slogan } from "../componants/Slogan"
-import { BulletPoint, FP, H1, H2, H3, H4, H5, P1, P2, P3 } from "../componants/TextStyles"
+import { Card, DescreatCard } from "../components/card"
+import { DemoCard } from "../components/carddemo"
+import { CardButton, Dot, Section, VL } from "../components/Elements"
+import { Slogan } from "../components/Slogan"
+import { BulletPoint, FP, H1, H2, H3, H4, H5, P1, P2, P3 } from "../components/TextStyles"
 import { ModeProvider, useModeContext } from "../context/brandLayers"
 
 export const ColoursPage = ({children,layer='One',docked={left:false, right:false, top:false, bottom: false},content_direction='tb',className='',...props})=> {
