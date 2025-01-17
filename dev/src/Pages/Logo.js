@@ -47,11 +47,11 @@ export const LogoPage =()=>{
    
             </Section>
             <HL/>
-            <Section>
+            <Section far>
                 <H2>Construction</H2>
             <Section  alight="center"  AICenter>
                 <H3>Pill construction</H3>
-                <Section horizontal >
+                <Section horizontal far>
                     <P2 style={{flex:'1'}}>The pill is defined as the connection  of two equal sized circles with the diameter of 500 in apposing top-right & bottom-left corners or a box measuring 1080 by 1080 by the means of 45 degree tangents.</P2>
                     <Section style={{flex:'2'}} horizontal far>
                         <PillconstructionOne/>
@@ -61,16 +61,18 @@ export const LogoPage =()=>{
                 </Section>
 
             </Section>
-            <Section horizontal alight="center" spread AICenter>
-                <Section style={{flex:'1'}}>
-                    <H3>Standard logo construction</H3>
+            <Section  alight="center" AICenter>
+            <H3>Standard logo construction</H3>
+
+                <Section horizontal far>
                     <P2 style={{flex:'1'}}>Using the pil construction for a basis, the standard logo is defined as the following, the text, in Brown Pro Bold with character spacing of -41% is defined by half the diameter of the circles that make up up the pill equalling the distance between the top of the 'l' and 'p' in Phillips, the names are alighted to the left and right sides of the pill respectively, the vertical gap is equal to the length the the 'p' descends bellow the 'l'. The text is then cantered vertically within the pill.000</P2>
+                    <Section style={{flex:'2'}} horizontal far>
+                        <LogoConstructionOne/>
+                        <LogoConstructionTwo/>
+                        <LogoConstructionThree/>
+                    </Section>
                 </Section>
-                <Section style={{flex:'2'}} horizontal far>
-                    <LogoConstructionOne/>
-                    <LogoConstructionTwo/>
-                    <LogoConstructionThree/>
-                </Section>
+                
             </Section>
             <Section  alight="center"  AICenter>
             <H3>Construction of the tagline</H3>
@@ -146,23 +148,23 @@ export const LogoPage =()=>{
                 </Section>
             </Section>
             <HL/>
-            <Section style={{flex:1}}>
+            <Section far>
                 <H3>Segment idenifying logos</H3>
                 <Section horizontal >
-                    <Section hug style={{flex:1}}>
+                    <Section hug style={{flex:1}} AICenter>
                         <LayerProvider Segment='REA'>
                             <Logo text margin={20}/>
                             <Logo  />
                         </LayerProvider>
-                        <H5>Estate Agents</H5>
+                        <H5 style={{textAlign:'center'}}>Estate Agents</H5>
                     </Section>
                     <VL/>
-                    <Section hug style={{flex:1}}>
+                    <Section hug style={{flex:1}} AICenter>
                     <LayerProvider Segment='LLS'>
                             <Logo text margin={20}/>
                             <Logo  />
                         </LayerProvider>                        
-                        <H5>Landlords</H5>
+                        <H5 style={{textAlign:'center'}}>Landlords</H5>
                     </Section>
                     <VL/>
                     <Section hug style={{flex:1}}>
@@ -170,7 +172,7 @@ export const LogoPage =()=>{
                             <Logo text margin={20}/>
                             <Logo  />
                         </LayerProvider>                        
-                        <H5>Build to Rent</H5>
+                        <H5 style={{textAlign:'center'}}>Build to Rent</H5>
                     </Section>
                     <VL/>
                     <Section hug style={{flex:1}}>
@@ -178,7 +180,7 @@ export const LogoPage =()=>{
                             <Logo text margin={20}/>
                             <Logo  />
                         </LayerProvider>                        
-                        <H5>Student</H5>
+                        <H5 style={{textAlign:'center'}}>Student</H5>
                     </Section>
                     <VL/>
                     <Section hug style={{flex:1}}>
@@ -186,7 +188,7 @@ export const LogoPage =()=>{
                             <Logo text margin={20}/>
                             <Logo  />
                         </LayerProvider>                        
-                        <H5>Developers</H5>
+                        <H5 style={{textAlign:'center'}}>Developers</H5>
                     </Section>
                     <VL/>
                     <Section hug style={{flex:1}}>
@@ -194,7 +196,7 @@ export const LogoPage =()=>{
                             <Logo text margin={20}/>
                             <Logo  />
                         </LayerProvider>                        
-                        <H5>International</H5>
+                        <H5 style={{textAlign:'center'}}>International</H5>
                     </Section>
                     <VL/>
                     <Section hug style={{flex:1}}>
@@ -202,50 +204,61 @@ export const LogoPage =()=>{
                             <Logo text margin={20}/>
                             <Logo  />
                         </LayerProvider>                        
-                        <H5>FF&E</H5>
+                        <H5 style={{textAlign:'center'}}>FF&E</H5>
                     </Section>
                 </Section>
             </Section>
             <HL/>
-            <Section horizontal far>
-                <Section style={{flex:1}} >
-                    <H3>In partnership badge</H3>
-                    <P3>The in-partnership badge is for use by any of our partners or on any collateral that is pre-agreed to be in another company's branding and should be placed in a corner. The badge comprises two parts, the first is a box with a left and right margin equal to twice the height of the 'D' in 'David Phillips', the length is dependent on the text within, based on the list of approved partner messages coming soon. The second part is simple the logo, height matching the left element, with a connecting device. 
+            <Section  far>
+                <H3>In partnership badge</H3>
+
+                <Section horizontal far >
+                    <P3 style={{flex:1}}>The in-partnership badge is for use by any of our partners or on any collateral that is pre-agreed to be in another company's branding and should be placed in a corner. The badge comprises two parts, the first is a box with a left and right margin equal to twice the height of the 'D' in 'David Phillips', the length is dependent on the text within, based on the list of approved partner messages coming soon. The second part is simple the logo, height matching the left element, with a connecting device. 
                     </P3>
-                </Section>
-                <Section style={{flex:2}} horizontal wrap far>
+                    <Section style={{flex:2}} horizontal wrap far>
+                    <Section horizontal>
                     <FB/>
                     <IPW/>
                     <FIPW/>
-                    <TPadding/>
-                    <CD/>
-                    <IPW/>
-                </Section>
-            </Section>
-            <Section>
-                <H3>Logo lockup guidance</H3>
-                <Section horizontal>
-                    <Section style={{flex:1}}>
-                        <H4>Scaling</H4>
-                        <P3>Depending on weather a logo is ruffly square, longer, or quite long it should be sizes based on the hight of the full logo, the combined hight of 'David Phillips' or the hight of the the gap between the top of the 'P' and bottom of the 'p' in 'Phillips', respectively.
-                        </P3>
                     </Section>
-                    <Section style={{flex:2}} horizontal jSpread wrap>
+
+                    <Section horizontal>
+                        <TPadding/>
+                        <CD/>
+                        <IPW/>
+                    </Section>
+    
+                </Section>
+                </Section>
+                
+            </Section>
+            <Section >
+                <H3>Logo lockup guidance</H3>
+                <Section >
+                    <H4>Scaling</H4>
+                    <Section  horizontal far>
+                        <P3 style={{flex:1}}>Depending on weather a logo is ruffly square, longer, or quite long it should be sizes based on the hight of the full logo, the combined hight of 'David Phillips' or the hight of the the gap between the top of the 'P' and bottom of the 'p' in 'Phillips', respectively.
+                        </P3>
+                        <Section style={{flex:2}} horizontal jSpread wrap far>
                         <Square/>
                         <Medium/>
                         <Long/>
                     </Section>
-                </Section>
-                <Section horizontal>
-                    <Section style={{flex:1}}>
-                        <H4>Spacing and bar </H4>
-                        <P3>at small scale the gap should be equal to margin the the bar half-way between, at large scale the gap should be doubled. An 'x' should only be used in large scale partnership announcements. Spacing between two logos should be equal to whichever company specifies the most.
-                        </P3>
                     </Section>
-                    <Section style={{flex:2}} horizontal jSpread>
+                    
+                </Section>
+                <Section >
+                <H4>Spacing and bar </H4>
+
+                    <Section  horizontal>
+                        <P3 style={{flex:1}}>at small scale the gap should be equal to margin the the bar half-way between, at large scale the gap should be doubled. An 'x' should only be used in large scale partnership announcements. Spacing between two logos should be equal to whichever company specifies the most.
+                        </P3>
+                        <Section style={{flex:2}} horizontal jSpread AICenter>
                         <SS/>
                         <LS/>
                     </Section>
+                    </Section>
+
                 </Section>
             </Section>
         </Card>

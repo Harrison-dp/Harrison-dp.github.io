@@ -24,7 +24,7 @@ const SegmentClipContent=(x,y,z)=>{
         console.error('Failed to copy Hex code: ', err);
       });
 }
-
+console.log(Mode.Absolute)
 return(
         <Card className="main" far Shadow >
             <title>Goudlines: Colour</title>
@@ -69,7 +69,7 @@ return(
                             console.error('Failed to copy Hex code: ', err);
                           });
                     }
-                    return(<H5 >{AbsoluteName}</H5>)
+                    return(<H5 style={{textAlign:'center'}}>{AbsoluteName}</H5>)
 
                 })}
                 </Section>
@@ -102,7 +102,7 @@ return(
             <Section overFlow>
                 <Section horizontal>
                 {Mode.Segments.map(({Name,Accent,Light,Pure,Dark,Umbra})=>{
-                    return(<H5 >{Name}</H5>)
+                    return(<H5 style={{textAlign:'center'}}>{Name}</H5>)
                 })}
                 {console.log(Mode)}
                 </Section>
