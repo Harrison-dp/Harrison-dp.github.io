@@ -1,14 +1,17 @@
 import * as React from "react";
-const SvgYearFurnitureWarranty2 = (props) =>{const {layerProps}=useLayerConstext();return(
+import { useLayerContext } from "../../context/brandLayers";
+
+const SvgYearFurnitureWarranty2 = (props) =>{const {layerProps}=useLayerContext
+();return(
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={160}
-    height={160}
+    width={60}
+    viewBox="0 0 160 160"
     fill="none"
     {...props}
   >
     <g
-      fill={layerProps.Title}
+      fill={layerProps?layerProps.Title:'#1a1a1a'}
       fillRule="evenodd"
       clipPath="url(#year_furniture_warranty_2_svg__a)"
       clipRule="evenodd"

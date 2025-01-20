@@ -6,6 +6,7 @@ import { GuidlinesSubmenu } from "../components/Menus";
 import { ColoursPage } from "../Pages/colours";
 import { ComingSoon } from "../Pages/comingsoon";
 import { FontPage } from "../Pages/Font";
+import { IconsPage } from "../Pages/Icons";
 
 
 const InternalContext = createContext(undefined);
@@ -26,7 +27,7 @@ export const InternalProvider = ({ children }) => {
         new Page('Messaging','Guidlines/',<MessagingPage/>,2,<GuidlinesSubmenu/>),
         new Page('Logo','Guidlines/logo',<LogoPage/>,2,<GuidlinesSubmenu/>),
         new Page('Fonts','Guidlines/fonts',<FontPage/>,2,<GuidlinesSubmenu/>),      
-        new Page('Icons','Guidlines/icons',<ComingSoon/>,2,<GuidlinesSubmenu/>),
+        new Page('Icons','Guidlines/icons',<IconsPage/>,2,<GuidlinesSubmenu/>),
         new Page('Colours','Guidlines/colours',<ColoursPage/>,2,<GuidlinesSubmenu/>),
         new Page('Brand In Use','Guidlines/brandinuse',<ComingSoon/>,2,<GuidlinesSubmenu/>),
         new Page('Request Forms','forms',<ComingSoon/>,1),

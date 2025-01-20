@@ -10,7 +10,7 @@ import { useLayerContext, useModeContext } from '../context/brandLayers';
 export const Section = ({children,layer='One',...props})=>{
     const layerProps = useLayerContext()
     return(
-        <section className={getClasses('Section',props)}id={props.id&& props.id} style={props.style&&props.style}>{children}</section>
+        <section className={getClasses('Section',props)}id={props.id&& props.id} style={props.style&&props.style} onClick={props.onClick && props.onClick}>{children}</section>
     )
 }
 export const HL = ({layer='One',layerProp})=>{
