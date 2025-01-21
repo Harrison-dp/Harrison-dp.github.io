@@ -41,6 +41,7 @@ import SvgCoffeeTable from './CoffeeTable.js'
 import SvgConcierge from './Concierge.js'
 import SvgContactDatabase from './ContactDatabase.js'
 import SvgContactSoftware from './ContactSoftware.js'
+import Svg2Countertop from './Countertop.js'
 import SvgCriticalPath from './CriticalPath.js'
 import SvgCupon from './Cupon.js'
 import SvgCurtains from './Curtains.js'
@@ -74,6 +75,7 @@ import SvgFactoryBoxes from './FactoryBoxes.js'
 import SvgFastVan from './FastVan.js'
 import SvgFireRetardant from './FireRetardant.js'
 import SvgFittedBlinds from './FittedBlinds.js'
+import SvgFittedFurniture from './FittedFurniture.js'
 import SvgFloorPlanning from './FloorPlanning.js'
 import SvgFridge from './Fridge.js'
 import SvgFridgeRemoval from './FridgeRemoval.js'
@@ -186,10 +188,12 @@ import SvgSellFast from './SellFast.js'
 import SvgSettings from './Settings.js'
 import SvgShelves from './Shelves.js'
 import SvgShoeRack from './ShoeRack.js'
+import SvgSink from './Sink.js'
 import SvgSitting from './Sitting.js'
 import SvgSmartSheets from './SmartSheets.js'
 import SvgSofa from './Sofa.js'
 import SvgSpecial from './Special.js'
+import SvgSplashBack from './splashback.js'
 import SvgSquareFoot from './SquareFoot.js'
 import SvgStainResistant from './StainResistant.js'
 import SvgTable from './Table.js'
@@ -480,6 +484,11 @@ export const Icons={obj:{},groupList:[],array:[
     new Icon('Arrow: Up','minidownarrow',<SvgMiniArrowUp/>,Minis),
     new Icon('Arrow: Left','minidownarrow',<SvgMiniArrowLeft/>,Minis),
     new Icon('Arrow: Right','minidownarrow',<SvgMiniArrowRight/>,Minis),
+    new Icon('Splash Back','splashback',<SvgSplashBack/>,furniture),
+    new Icon('Kitchen Counter','countertop',<Svg2Countertop/>,furniture),
+    new Icon('Fitted Furniture','fittedfurniture',<SvgFittedFurniture/>,furniture),
+    new Icon('Sink','kitchensing',<SvgSink/>,furniture),
+
 
 
 
