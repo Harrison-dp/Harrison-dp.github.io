@@ -12,7 +12,7 @@ class cookieHandlerClass{
             this.permission = true
             this.requested = true
             this.set= (l='misc',d,p=path) =>{
-                Cookie.set(l,d,{expires: new Date(Date.now()+15552000),path: p})
+                Cookie.set(l,d,{expires: new Date(Date.now()+15552000000),path: p})//expires in 6 months
                 return true
             }
             this.get= (l,p)=>{
@@ -35,7 +35,7 @@ export const CookieProvider = ({children})=>{
             requested:true,
             permission:true,
             set: (l='misc',d,p=path) =>{
-                Cookie.set(l,d,{expires: new Date(Date.now()+15552000),...p})
+                Cookie.set(l,d,{expires: new Date(Date.now()+15552000000),...p})//expires in 6 months
                 return true
             },
             get: (l,p)=>{
