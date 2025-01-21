@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Card } from "./card"
 import { Dot, HL, Section } from "./Elements"
-import { FP, H1, H3, H4, H5, P1, P3 } from "./TextStyles"
+import { FP, H1, H3, H4, H5, P1, P2, P3 } from "./TextStyles"
 import { ModeProvider, useModeContext } from "../context/brandLayers"
 import { Button, Choice, MultipleChoice, PrimaryButton } from "./Buttons"
 import { getViewBoxValue, Logo } from "./logo"
@@ -23,7 +23,7 @@ export const DemoCard = ()=>{
         <Section horizontal far>
             <Section >
                 <H3>What are Layers & Cards?</H3>
-                <P3>Part of material based design are our cards. We use cards to create depth, the layer refers to the importance of information being help by the card, and where it sits in the visual hierarch. The most visible difference between layers are the colours used, each layer has a number of properties: Background, Title, Copy, Accent, and Shadow. Below is an example of the first 3 of these properties and how they change across layers, in total there are 8 layers, split between the two modes: Light & Dark. Cards act like their own content frame with padding matching the overall content margin. Where card corners are visible they should be rounded, card should either sit within the margin or extend of the edge of the page.</P3>
+                <P2>Part of material based design are our cards. We use cards to create depth, the layer refers to the importance of information being help by the card, and where it sits in the visual hierarch. The most visible difference between layers are the colours used, each layer has a number of properties: Background, Title, Copy, Accent, and Shadow. Below is an example of the first 3 of these properties and how they change across layers, in total there are 8 layers, split between the two modes: Light & Dark. Cards act like their own content frame with padding matching the overall content margin. Where card corners are visible they should be rounded, card should either sit within the margin or extend of the edge of the page.</P2>
                 <H4>Demonstration Card</H4>
                 <Section hug>
                 <H5>Segment</H5>

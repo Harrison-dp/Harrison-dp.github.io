@@ -115,6 +115,10 @@ import SvgMedicalStethiscope from './MedicalStethiscope.js'
 import SvgMessageBubbles from './MessageBubbles.js'
 import SvgMiniAccount from './MiniAccount.js'
 import SvgMiniArrow from './MiniArrow.js'
+import SvgMiniArrowDown from './MiniArrowDown.js'
+import SvgMiniArrowLeft from './MiniArrowLeft.js'
+import SvgMiniArrowRight from './MiniArrowRight.js'
+import SvgMiniArrowUp from './MiniArrowUp.js'
 import SvgMiniBasket from './MiniBasket.js'
 import SvgMiniBin from './MiniBin.js'
 import SvgMiniBin2 from './MiniBin2.js'
@@ -229,7 +233,7 @@ const Minis=new Group('Mini','Mini Icons')
 const WinDress=new Group('WinDress','Window Dressings')
 const CareInstructions = new Group('CareIn','Care Instructions')
 const WinDressFeat = new Group('WinDreFea','Window dressings features')
-const Waredrobe = new Group('Waredrobes','Waredrobes')
+const Waredrobe = new Group('Waredrobes','Fitted Waredrobes')
 const Technology=new Group('Tech','Technology')
 const Rooms = new Group('Rooms','Room types') 
 const handles = new Group('handles','Door handles')
@@ -237,6 +241,7 @@ const esg = new Group('ESG','Environment')
 const design = new Group('Design', 'Product & design')
 const furniture = new Group('Furniture', 'Types of furniture')
 const tools=new Group('Tools','Tools')
+const installation = new Group('Instalation','Instalation')
 
 
 class Icon{
@@ -275,9 +280,9 @@ export const Icons={obj:{},groupList:[],array:[
     new Icon('Light Blocking: Level 3','Block3',<SvgBlock3/>,WinDressFeat),
     new Icon('Light Blocking: Level 4','Block4',<SvgBlock4/>,WinDressFeat),
     new Icon('Light Blocking: Level 5','Block5',<SvgBlock5/>,WinDressFeat),
-    new Icon('Bolt','Bolt',<SvgBolt/>,Technology),
+    new Icon('Bolt','Bolt',<SvgBolt/>,tools),
     new Icon('Bookmark','Bookmark',<SvgBookmark/>),
-    new Icon('Boxes','Boxes',<SvgBoxes/>),
+    new Icon('Boxes','Boxes',<SvgBoxes/>,installation),
     new Icon('Building','Building',<SvgBuilding/>),
     new Icon('Calculate','Calculate',<SvgCalculate/>),
     new Icon('Calendar','Calendar',<SvgCalendar/>),
@@ -306,7 +311,7 @@ export const Icons={obj:{},groupList:[],array:[
     new Icon('Data Insights','DataInsights',<SvgDataInsights/>,Technology),
     new Icon('Date & Time','DateAndTime',<SvgDateAndTime/>),
     new Icon('Date Selection','DateSelection',<SvgDateSelection/>),
-    new Icon('Delivery','Delivery',<SvgDelivery/>),
+    new Icon('Delivery','Delivery',<SvgDelivery/>,installation),
     new Icon('D-Handle B','DHandle2',<SvgDHandle2/>,handles),
     new Icon('Do Not Bleach','DoNotBleach',<SvgDoNotBleach/>,CareInstructions),
     new Icon('Do Not TumbleDry','DoNotTumbleDry',<SvgDoNotTumbleDry/>,CareInstructions),
@@ -316,8 +321,8 @@ export const Icons={obj:{},groupList:[],array:[
     new Icon('Dry Clean A','DryCleanA',<SvgDryCleanA/>,CareInstructions),
     new Icon('Dry Clean B','DryCleanB',<SvgDryCleanB/>,CareInstructions),
     new Icon('Dry Clean C','DryCleanC',<SvgDryCleanC/>,CareInstructions),
-    new Icon('Electric Cooker Connection','ElectricCookerConnection',<SvgElectricCookerConnection/>),
-    new Icon('Electric Only Appliance Connection','ElectricOnlyApplianceConnection',<SvgElectricOnlyApplianceConnection/>),
+    new Icon('Electric Cooker Connection','ElectricCookerConnection',<SvgElectricCookerConnection/>,installation),
+    new Icon('Electric Only Appliance Connection','ElectricOnlyApplianceConnection',<SvgElectricOnlyApplianceConnection/>,installation),
     new Icon('Email','Email',<SvgEmail/>,Technology),
     new Icon('Email Database','EmailDatabase',<SvgEmailDatabase/>,Technology),
     new Icon('Enviromental Care','EnviromentalCare',<SvgEnviromentalCare/>,esg),
@@ -325,12 +330,12 @@ export const Icons={obj:{},groupList:[],array:[
     new Icon('Face A','Face',<SvgFace/>),
     new Icon('Face B','Face3',<SvgFace3/>),
     new Icon('Factory Boxes','FactoryBoxes',<SvgFactoryBoxes/>),
-    new Icon('Fast Van','FastVan',<SvgFastVan/>),
+    new Icon('Fast Van','FastVan',<SvgFastVan/>,installation),
     new Icon('Fire Retardant','FireRetardant',<SvgFireRetardant/>,WinDressFeat),
     new Icon('Fitted Blinds','FittedBlinds',<SvgFittedBlinds/>,WinDress),
     new Icon('Floor Planning','FloorPlanning',<SvgFloorPlanning/>,design),
     new Icon('Fridge','Fridge',<SvgFridge/>,furniture),
-    new Icon('Fridge Removal','FridgeRemoval',<SvgFridgeRemoval/>),
+    new Icon('Fridge Removal','FridgeRemoval',<SvgFridgeRemoval/>,installation),
     new Icon('Furniture Fabrication','FurnitureFabrication',<SvgFurnitureFabrication/>,design),
     new Icon('Games Room','GamesRoom',<SvgGamesRoom/>,Rooms),
     new Icon('Gaming Room','GamingRoom',<SvgGamingRoom/>,Rooms),
@@ -349,8 +354,8 @@ export const Icons={obj:{},groupList:[],array:[
     new Icon('Can Iron','IronTrue',<SvgIronTrue/>,CareInstructions),
     new Icon('J-Handle','JHandle',<SvgJHandle/>,handles),
     new Icon('J-Handle2','JHandle2',<SvgJHandle2/>,handles),
-    new Icon('Key','Key',<SvgKey/>),
-    new Icon('Keys','Keys',<SvgKeys/>),
+    new Icon('Key','Key',<SvgKey/>,installation),
+    new Icon('Keys','Keys',<SvgKeys/>,installation),
     new Icon('Kitchen','Kitchen',<SvgKitchen/>,Rooms),
     new Icon('Kitchen Set','KitchenSet',<SvgKitchenSet/>,furniture),
     new Icon('Lamp','Lamp',<SvgLamp/>,furniture),
@@ -402,7 +407,7 @@ export const Icons={obj:{},groupList:[],array:[
     new Icon('More Offers','MoreOffers',<SvgMoreOffers/>),
     new Icon('More Signupds','MoreSignupds',<SvgMoreSignupds/>),
     new Icon('More Special','MoreSpecial',<SvgMoreSpecial/>),
-    new Icon('Moving Boxes','MovingBoxes',<SvgMovingBoxes/>),
+    new Icon('Moving Boxes','MovingBoxes',<SvgMovingBoxes/>,installation),
     new Icon('News','News',<SvgNews/>),
     new Icon('Occassional Chair','OccassionalChair',<SvgOccassionalChair/>,furniture),
     new Icon('Outdoor Spaces','OutdoorSpaces',<SvgOutdoorSpaces/>,Rooms),
@@ -428,7 +433,7 @@ export const Icons={obj:{},groupList:[],array:[
     new Icon('Scales','Scales',<SvgScales/>),
     new Icon('Sell','Sell',<SvgSell/>),
     new Icon('Sell Fast','SellFast',<SvgSellFast/>),
-    new Icon('Settings','Settings',<SvgSettings/>),
+    new Icon('Settings','Settings',<SvgSettings/>,Minis),
     new Icon('Shelves','Shelves',<SvgShelves/>,Waredrobe),
     new Icon('Shoe Rack','ShoeRack',<SvgShoeRack/>,Waredrobe),
     new Icon('Sitting','Sitting',<SvgSitting/>),
@@ -449,28 +454,32 @@ export const Icons={obj:{},groupList:[],array:[
     new Icon('Umbrella','Umbrella',<SvgUmbrella/>),
     new Icon('UV Blocking','UvBlocking',<SvgUvBlocking/>,WinDressFeat),
     new Icon('Vacuum','Vacuum',<SvgVacuum/>),
-    new Icon('Van','Van',<SvgVan/>),
-    new Icon('Van Award','VanAward',<SvgVanAward/>),
-    new Icon('Van Location','VanLocation',<SvgVanLocation/>),
+    new Icon('Van','Van',<SvgVan/>,installation),
+    new Icon('Van Award','VanAward',<SvgVanAward/>,installation),
+    new Icon('Van Location','VanLocation',<SvgVanLocation/>,installation),
     new Icon('Venetion Blinds','VenetionBlinds',<SvgVenetionBlinds/>,WinDress),
     new Icon('Vertica Blinds','VerticaBlinds',<SvgVerticaBlinds/>,WinDress),
     new Icon('Waredrobe Inside','WaredrobeInside',<SvgWaredrobeInside/>,Waredrobe),
-    new Icon('Warranty','Warranty',<SvgWarranty/>),
+    new Icon('Warranty','Warranty',<SvgWarranty/>,design),
     new Icon('Wash At Or Below 31','WashAtOrBelow31',<SvgWashAtOrBelow31/>,CareInstructions),
     new Icon('Washing Machine','WashingMachine',<SvgWashingMachine/>,furniture),
-    new Icon('Water Connection','WaterConnection',<SvgWaterConnection/>),
+    new Icon('Water Connection','WaterConnection',<SvgWaterConnection/>,installation),
     new Icon('Water Resistant','WaterResistant',<SvgWaterResistant/>,WinDressFeat),
-    new Icon('White Gloves','WhiteGloves',<SvgWhiteGloves/>),
+    new Icon('White Gloves','WhiteGloves',<SvgWhiteGloves/>,installation),
     new Icon('Wipe Clean','WipeClean',<SvgWipeClean/>,WinDressFeat),
     new Icon('World Wide','WorldWide',<SvgWorldWide/>),
     new Icon('World Location','WorlWideLocation',<SvgWorlWideLocation/>),
-    new Icon('2 Year Warranty','YearFurnitureWarranty2',<SvgYearFurnitureWarranty2/>),
+    new Icon('2 Year Warranty','YearFurnitureWarranty2',<SvgYearFurnitureWarranty2/>,design),
     new Icon('Teams Room','ZoomRoom',<SvgZoomRoom/>,Technology),
-    new Icon('Show All','showall',<SvgMiniShowAll/>,Minis),
-    new Icon('Your Team','yourteam',<SvgMiniYourTeam/>,Minis),
-    new Icon('Yours Only','onlyyours',<SvgMiniYoursOnly/>,Minis),
+    new Icon('Show: All','showall',<SvgMiniShowAll/>,Minis),
+    new Icon('Show: Team','yourteam',<SvgMiniYourTeam/>,Minis),
+    new Icon('Show: Yours','onlyyours',<SvgMiniYoursOnly/>,Minis),
     new Icon('Phone','miniphone',<SvgMiniPhoneCall/>,Minis),
     new Icon('Email','emial',<SvgminiEmail/>,Minis),
+    new Icon('Arrow: Down','minidownarrow',<SvgMiniArrowDown/>,Minis),
+    new Icon('Arrow: Up','minidownarrow',<SvgMiniArrowUp/>,Minis),
+    new Icon('Arrow: Left','minidownarrow',<SvgMiniArrowLeft/>,Minis),
+    new Icon('Arrow: Right','minidownarrow',<SvgMiniArrowRight/>,Minis),
 
 
 
@@ -484,4 +493,36 @@ Icons.array.map(Icon=>{
         Icons.groupList.push(Icon.group)
     }
     Icons[Icon.group.code].array.push(Icon)
+})
+
+
+
+Icons.array.sort((a, b) => {
+    if (a.name < b.name) {
+      return -1;
+    }
+    if (a.name > b.name) {
+      return 1;
+    }
+    return 0;
+  });
+Icons.groupList.sort((a, b) => {
+    if (a < b) {
+      return -1;
+    }
+    if (a > b) {
+      return 1;
+    }
+    return 0;
+  });
+Icons.groupList.map((group)=>{
+    Icons[group.code].array.sort((a, b) => {
+        if (a.name < b.name) {
+          return -1;
+        }
+        if (a.name > b.name) {
+          return 1;
+        }
+        return 0;
+      });
 })
