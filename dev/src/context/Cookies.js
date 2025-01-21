@@ -35,7 +35,7 @@ export const CookieProvider = ({children})=>{
             requested:true,
             permission:true,
             set: (l='misc',d,p=path) =>{
-                Cookie.set(l,d,{p})
+                Cookie.set(l,d,{expires: new Date(Date.now()+15552000),...p})
                 return true
             },
             get: (l,p)=>{
