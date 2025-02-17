@@ -2,6 +2,7 @@ import Svg2YearWarrenty from './2YearWarrenty.js'
 import Svg3D from './3D.js'
 import Svg3DModeling from './3DModeling.js'
 import Svg5YearWarrenty from './5YearWarrenty.js'
+import SvgAddressBook from './AddressBook.js'
 import SvgAlarmClock from './AlarmClock.js'
 import SvgApi from './Api.js'
 import SvgArHeadset from './ArHeadset.js'
@@ -14,6 +15,7 @@ import SvgBathroom from './Bathroom.js'
 import SvgBedOne from './BedOne.js'
 import SvgBedsideTable from './BedsideTable.js'
 import SvgBedTwo from './BedTwo.js'
+import SvgMiniBell from './bell.js'
 import SvgBicycle from './Bicycle.js'
 import SvgBlock0 from './Block0.js'
 import SvgBlock1 from './Block1.js'
@@ -37,6 +39,7 @@ import SvgCentralisedData from './CentralisedData.js'
 import SvgChair from './Chair.js'
 import SvgCinima from './Cinima.js'
 import SvgCleanAndTidy from './CleanAndTidy.js'
+import SvgCloseIcon from './close.js'
 import SvgCoffeeTable from './CoffeeTable.js'
 import SvgConcierge from './Concierge.js'
 import SvgContactDatabase from './ContactDatabase.js'
@@ -68,6 +71,7 @@ import SvgElectricOnlyApplianceConnection from './ElectricOnlyApplianceConnectio
 import SvgEmail from './Email.js'
 import SvgEmailDatabase from './EmailDatabase.js'
 import SvgEnviromentalCare from './EnviromentalCare.js'
+import SvgEyeClosed from './eyeclosed.js'
 import SvgFabricOptions from './FabricOptions.js'
 import SvgFace from './Face.js'
 import SvgFace3 from './Face3.js'
@@ -83,6 +87,7 @@ import SvgFurnitureFabrication from './FurnitureFabrication.js'
 import SvgGamesRoom from './GamesRoom.js'
 import SvgGamingRoom from './GamingRoom.js'
 import SvgGym from './Gym.js'
+import SvgHamberger from './Hamberger.js'
 import SvgHammer from './Hammer.js'
 import SvgHardHat from './HardHat.js'
 import SvgHoldingALightBulb from './HoldingALightBulb.js'
@@ -162,8 +167,11 @@ import SvgMoreSpecial from './MoreSpecial.js'
 import SvgMovingBoxes from './MovingBoxes.js'
 import SvgNews from './News.js'
 import SvgOccassionalChair from './OccassionalChair.js'
+import SvgEyeOpen from './openeye.js'
 import SvgOutdoorSpaces from './OutdoorSpaces.js'
 import SvgOven from './Oven.js'
+import SvgPadlock from './Padlock.js'
+import SvgMiniPadlock from './padlockmini.js'
 import SvgPanelBlinds from './PanelBlinds.js'
 import SvgPeopleData from './PeopleData.js'
 import SvgPhone from './Phone.js'
@@ -171,6 +179,7 @@ import SvgPower from './Power.js'
 import SvgPrinter from './Printer.js'
 import SvgProcessingUnit from './ProcessingUnit.js'
 import SvgQuotation from './Quotation.js'
+import SvgQuoteApproved from './QuoteApproved.js'
 import SvgRail from './Rail.js'
 import SvgReading from './Reading.js'
 import SvgRecycle from './Recycle.js'
@@ -183,6 +192,7 @@ import SvgRollerBLinds from './RollerBLinds.js'
 import SvgRomanBlinds from './RomanBlinds.js'
 import SvgRuller from './Ruller.js'
 import SvgScales from './Scales.js'
+import SvgBadgeSecure from './secure.js'
 import SvgSell from './Sell.js'
 import SvgSellFast from './SellFast.js'
 import SvgSettings from './Settings.js'
@@ -213,6 +223,7 @@ import SvgVanAward from './VanAward.js'
 import SvgVanLocation from './VanLocation.js'
 import SvgVenetionBlinds from './VenetionBlinds.js'
 import SvgVerticaBlinds from './VerticaBlinds.js'
+import SvgWallet from './Wallet.js'
 import SvgWaredrobeInside from './WaredrobeInside.js'
 import SvgWarranty from './Warranty.js'
 import SvgWashAtOrBelow31 from './WashAtOrBelow31.js'
@@ -488,6 +499,20 @@ export const Icons={obj:{},groupList:[],array:[
     new Icon('Kitchen Counter','countertop',<Svg2Countertop/>,furniture),
     new Icon('Fitted Furniture','fittedfurniture',<SvgFittedFurniture/>,furniture),
     new Icon('Sink','kitchensing',<SvgSink/>,furniture),
+    new Icon('Quote: Approved','approvedquote',<SvgQuoteApproved/>),
+    new Icon('Eye: Open','eyeopen',<SvgEyeOpen/>,Minis),
+    new Icon('Eye: Closed','eyeclosed',<SvgEyeClosed/>,Minis),
+    new Icon('Lock','padlock',<SvgPadlock/>),
+    new Icon('Lock','minilock',<SvgMiniPadlock/>,Minis),
+    new Icon('Bell','minibell',<SvgMiniBell/>,Minis),
+    new Icon('Hamberger Menu','Hamberger',<SvgHamberger/>,Minis),
+    new Icon('Close Button','closebutton',<SvgCloseIcon/>,Minis),
+    new Icon('Security','miniSecurity',<SvgBadgeSecure/>,Minis),
+    new Icon('Address Book','addressbook',<SvgAddressBook/>,),
+    new Icon('Wallet ','wallet',<SvgWallet/>,),
+
+
+
 
 
 
