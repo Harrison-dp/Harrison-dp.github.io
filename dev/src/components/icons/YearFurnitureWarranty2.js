@@ -11,7 +11,7 @@ const SvgYearFurnitureWarranty2 = (props) =>{const {layerProps}=useLayerContext
     {...props}
   >
     <g
-      fill={layerProps?layerProps.Title:'#1a1a1a'}
+      fill={layerProps?props.Inactive?layerProps.Accent:layerProps.Title:'#494444'}
       fillRule="evenodd"
       clipPath="url(#year_furniture_warranty_2_svg__a)"
       clipRule="evenodd"

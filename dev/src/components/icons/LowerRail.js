@@ -17,7 +17,7 @@ const SvgLowerRail = (props) =>{const {layerProps}=useLayerContext
       clipRule="evenodd"
     />
     <path
-      fill={layerProps?layerProps.Title:'#1a1a1a'}
+      fill={layerProps?props.Inactive?layerProps.Accent:layerProps.Title:'#494444'}
       fillRule="evenodd"
       d="M44.865 94.852V79.898c0-1.147.93-2.077 2.077-2.077h65.797c1.147 0 2.077.93 2.077 2.077v14.954a2.077 2.077 0 0 1-4.154 0v-2.908H49.019v2.908a2.078 2.078 0 0 1-4.154 0m65.797-7.062v-5.815H49.019v5.816zm-34.877 13.905a2.078 2.078 0 0 1-1.857-3.716l9.969-4.984a2.08 2.08 0 0 1 1.857 0l9.97 4.984a2.08 2.08 0 0 1 .928 2.787 2.08 2.08 0 0 1-2.786.929l-9.04-4.52z"
       clipRule="evenodd"

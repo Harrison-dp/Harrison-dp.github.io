@@ -17,7 +17,7 @@ const SvgShoeRack = (props) =>{const {layerProps}=useLayerContext
       clipRule="evenodd"
     />
     <path
-      fill={layerProps?layerProps.Title:'#1a1a1a'}
+      fill={layerProps?props.Inactive?layerProps.Accent:layerProps.Title:'#494444'}
       fillRule="evenodd"
       d="M52.771 121.775h-5.815a2.078 2.078 0 0 1 0-4.154h5.815v-2.907c0-1.147.93-2.077 2.077-2.077h49.846c1.147 0 2.077.93 2.077 2.077v2.907h5.816c1.145 0 2.077.931 2.077 2.077a2.08 2.08 0 0 1-2.077 2.077h-5.816v2.908c0 1.147-.93 2.077-2.077 2.077H54.848a2.077 2.077 0 0 1-2.077-2.077zm49.846-4.154v-.83H56.925v.83zm-45.692 4.154v.831h45.692v-.831z"
       clipRule="evenodd"

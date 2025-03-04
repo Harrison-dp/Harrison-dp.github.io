@@ -17,7 +17,7 @@ const SvgShelves = (props) =>{const {layerProps}=useLayerContext
       clipRule="evenodd"
     />
     <path
-      fill={layerProps?layerProps.Title:'#1a1a1a'}
+      fill={layerProps?props.Inactive?layerProps.Accent:layerProps.Title:'#494444'}
       fillRule="evenodd"
       d="M62.916 24.976c0-1.145.931-2.077 2.077-2.077H94.9a2.078 2.078 0 0 1 2.01 2.602v108.612q.067.253.067.525c0 1.146-.93 2.077-2.077 2.077H64.993a2.08 2.08 0 0 1-2.077-2.077zm29.84 2.077H67.07v15.785h25.687zm0 35.723V46.992H67.07v15.784zm0 19.939V66.93H67.07v15.785zm0 49.846v-5.815H67.07v5.815zm0-29.908V86.869H67.07v15.784zm-25.686 4.154v15.785h25.687v-15.785z"
       clipRule="evenodd"

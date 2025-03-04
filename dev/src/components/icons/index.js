@@ -6,6 +6,7 @@ import SvgAddressBook from './AddressBook.js'
 import SvgAlarmClock from './AlarmClock.js'
 import SvgApi from './Api.js'
 import SvgArHeadset from './ArHeadset.js'
+import SvgAroundTheWorld from './aroundtheworld.js'
 import SvgArrowLine from './ArrowLine.js'
 import SvgArtAndMirrors from './ArtAndMirrors.js'
 import SvgAward from './Award.js'
@@ -27,9 +28,11 @@ import SvgBolt from './Bolt.js'
 import SvgBookmark from './Bookmark.js'
 import SvgBoxes from './Boxes.js'
 import SvgBuilding from './Building.js'
+import SvgBus from './bus.js'
 import SvgCalculate from './Calculate.js'
 import SvgCalendar from './Calendar.js'
 import SvgCamera from './Camera.js'
+import SvgCar from './car.js'
 import SvgCarbonFootprint from './CarbonFootprint.js'
 import SvgCard from './Card.js'
 import SvgCash from './Cash.js'
@@ -175,6 +178,7 @@ import SvgMiniPadlock from './padlockmini.js'
 import SvgPanelBlinds from './PanelBlinds.js'
 import SvgPeopleData from './PeopleData.js'
 import SvgPhone from './Phone.js'
+import SvgPlane from './plane.js'
 import SvgPower from './Power.js'
 import SvgPrinter from './Printer.js'
 import SvgProcessingUnit from './ProcessingUnit.js'
@@ -188,6 +192,7 @@ import SvgReduceEmissions2 from './ReduceEmissions2.js'
 import SvgReduceResources from './ReduceResources.js'
 import SvgRefreshRestart from './RefreshRestart.js'
 import SvgReview from './Review.js'
+import SvgRhino from './Rhino.js'
 import SvgRollerBLinds from './RollerBLinds.js'
 import SvgRomanBlinds from './RomanBlinds.js'
 import SvgRuller from './Ruller.js'
@@ -208,11 +213,13 @@ import SvgSquareFoot from './SquareFoot.js'
 import SvgStainResistant from './StainResistant.js'
 import SvgTable from './Table.js'
 import SvgTablet from './Tablet.js'
+import SvgTea from './tea.js'
 import SvgTeams from './Teams.js'
 import SvgThermal from './Thermal.js'
 import SvgTimeCalculation from './TimeCalculation.js'
 import SvgToolBox from './ToolBox.js'
 import SvgTowel from './Towel.js'
+import SvgTree from './tree.js'
 import SvgUkBased from './UkBased.js'
 import SvgUkLocations from './UkLocations.js'
 import SvgUmbrella from './Umbrella.js'
@@ -257,6 +264,7 @@ const design = new Group('Design', 'Product & design')
 const furniture = new Group('Furniture', 'Types of furniture')
 const tools=new Group('Tools','Tools')
 const installation = new Group('Instalation','Instalation')
+const Transport = new Group('Transport','Transport')
 
 
 class Icon{
@@ -288,7 +296,7 @@ export const Icons={obj:{},groupList:[],array:[
     new Icon('Single Bed','BedOne',<SvgBedOne/>,furniture),
     new Icon('Bedside Table','BedsideTable',<SvgBedsideTable/>,furniture),
     new Icon('Double Bed','BedTwo',<SvgBedTwo/>,furniture),
-    new Icon('Bicycle','Bicycle',<SvgBicycle/>,esg),
+    new Icon('Bicycle','Bicycle',<SvgBicycle/>,Transport),
     new Icon('Light Blocking: Level 0','Block0',<SvgBlock0/>,WinDressFeat),
     new Icon('Light Blocking: Level 1','Block1',<SvgBlock1/>,WinDressFeat),
     new Icon('Light Blocking: Level 2','Block2',<SvgBlock2/>,WinDressFeat),
@@ -345,7 +353,7 @@ export const Icons={obj:{},groupList:[],array:[
     new Icon('Face A','Face',<SvgFace/>),
     new Icon('Face B','Face3',<SvgFace3/>),
     new Icon('Factory Boxes','FactoryBoxes',<SvgFactoryBoxes/>),
-    new Icon('Fast Van','FastVan',<SvgFastVan/>,installation),
+    new Icon('Fast Van','FastVan',<SvgFastVan/>,Transport),
     new Icon('Fire Retardant','FireRetardant',<SvgFireRetardant/>,WinDressFeat),
     new Icon('Fitted Blinds','FittedBlinds',<SvgFittedBlinds/>,WinDress),
     new Icon('Floor Planning','FloorPlanning',<SvgFloorPlanning/>,design),
@@ -469,9 +477,9 @@ export const Icons={obj:{},groupList:[],array:[
     new Icon('Umbrella','Umbrella',<SvgUmbrella/>),
     new Icon('UV Blocking','UvBlocking',<SvgUvBlocking/>,WinDressFeat),
     new Icon('Vacuum','Vacuum',<SvgVacuum/>),
-    new Icon('Van','Van',<SvgVan/>,installation),
-    new Icon('Van Award','VanAward',<SvgVanAward/>,installation),
-    new Icon('Van Location','VanLocation',<SvgVanLocation/>,installation),
+    new Icon('Van','Van',<SvgVan/>,Transport),
+    new Icon('Van Award','VanAward',<SvgVanAward/>,Transport),
+    new Icon('Van Location','VanLocation',<SvgVanLocation/>,Transport),
     new Icon('Venetion Blinds','VenetionBlinds',<SvgVenetionBlinds/>,WinDress),
     new Icon('Vertica Blinds','VerticaBlinds',<SvgVerticaBlinds/>,WinDress),
     new Icon('Waredrobe Inside','WaredrobeInside',<SvgWaredrobeInside/>,Waredrobe),
@@ -492,9 +500,9 @@ export const Icons={obj:{},groupList:[],array:[
     new Icon('Phone','miniphone',<SvgMiniPhoneCall/>,Minis),
     new Icon('Email','emial',<SvgminiEmail/>,Minis),
     new Icon('Arrow: Down','minidownarrow',<SvgMiniArrowDown/>,Minis),
-    new Icon('Arrow: Up','minidownarrow',<SvgMiniArrowUp/>,Minis),
-    new Icon('Arrow: Left','minidownarrow',<SvgMiniArrowLeft/>,Minis),
-    new Icon('Arrow: Right','minidownarrow',<SvgMiniArrowRight/>,Minis),
+    new Icon('Arrow: Up','miniuparrow',<SvgMiniArrowUp/>,Minis),
+    new Icon('Arrow: Left','minileftarrow',<SvgMiniArrowLeft/>,Minis),
+    new Icon('Arrow: Right','minirightarrow',<SvgMiniArrowRight/>,Minis),
     new Icon('Splash Back','splashback',<SvgSplashBack/>,furniture),
     new Icon('Kitchen Counter','countertop',<Svg2Countertop/>,furniture),
     new Icon('Fitted Furniture','fittedfurniture',<SvgFittedFurniture/>,furniture),
@@ -510,6 +518,13 @@ export const Icons={obj:{},groupList:[],array:[
     new Icon('Security','miniSecurity',<SvgBadgeSecure/>,Minis),
     new Icon('Address Book','addressbook',<SvgAddressBook/>,),
     new Icon('Wallet ','wallet',<SvgWallet/>,),
+    new Icon('Rhino ','Rhino',<SvgRhino/>,esg),
+    new Icon('Bus ','bus',<SvgBus/>,Transport),
+    new Icon('Car ','car',<SvgCar/>,Transport),
+    new Icon('tree ','tree',<SvgTree/>,esg),
+    new Icon('Around the world','Aroundtheworld',<SvgAroundTheWorld/>,esg),
+    new Icon('Tea ','Tea',<SvgTea/>,),
+    new Icon('Plane ','plane',<SvgPlane/>,Transport),
 
 
 

@@ -145,11 +145,12 @@ export const Source = ({children,layer='One',layerProp=undefined, ...props})=>{
 }
 export const FP = ({children,layer='One',layerProp=undefined, ...props})=>{
     const {layerProps} = useLayerContext()
+    const colour = props.Accent?layerProps.Accent:layerProps.Title
     return(
         <p 
         {...props} 
         className={getClasses('fineprint',props)} style={{
-            color:layerProps.Copy,
+            color:colour,
             ...props.style
         }}>{children}</p>
     )

@@ -109,6 +109,7 @@ section.gap_tight{
 }
 
 .h_scroll{
+    overflow: visible;
     overflow-x: scroll;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none
@@ -431,3 +432,32 @@ button.primary_button{
 .drop_down_button{
     width: fill;
 }
+
+a.CardButton{
+    text-decoration: none;
+    height: auto;
+    border-radius: var(--BorderRadius);
+}
+
+button{
+    background: none;
+    padding: 0;
+    border-style: none;
+}
+/* button:hover{
+    cursor: pointer;
+} */
+
+a.fill_fixed{
+    width: fill;
+}
+.Width_auto{
+    width: auto;
+}
+
+/* @media only screen and (min-width: 768px) {
+    .cd_lr,.Section.cd_lr{
+        flex-direction: column;
+    }
+
+} */

@@ -14,13 +14,14 @@ import { useModeContext } from './context/brandLayers.js';
 import { useCookiesContext } from './context/Cookies.js';
 import { Button } from './components/Buttons.js';
 import { CookieRequest } from './components/cookieRequest.js';
+import { Footer } from './components/footer.js';
 
 function App() {
   const pages = useInternalContext()
   const {Mode,setMode} = useModeContext()
   const {cookieHandler,setCookieHandler}=useCookiesContext()
   return (
-    <div layer='Two' id='Body'style={{background: Mode.Layers.Two.Background}}  >
+    <Section layer='Two' id='Body'style={{background: Mode.Layers.Two.Background}}  >
       <g>
       <HeaderMenu/>
       </g>
@@ -29,8 +30,9 @@ function App() {
         {pages.map(({to,component})=><Route path={to} key={to}element={component}/>)}
         <Route path='*' element={<FourZeroFour/>}/>
       </Routes>
+      <Footer/>
         
-    </div>
+    </Section>
     
   );
 }

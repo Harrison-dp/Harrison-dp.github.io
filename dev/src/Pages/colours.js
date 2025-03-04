@@ -35,6 +35,7 @@ return(
                     <H2>Our core colour spectrum</H2>
                     <P2>Our foundational colours are a saturanted grey specturm from pure white to dark.</P2>
                 </Section>
+            
                 <DescreatCard horizontal touching style={{height:'150px'}} Shadow>
                     {Mode.Absolute.map(({Background,Title,Copy,AbsoluteName,hex})=>{
                         const onClickevent=()=>{
@@ -54,6 +55,10 @@ return(
                 </DescreatCard>
                 <FP>Click to copy hex code.</FP>
             </Section>
+            <Section>
+                    <H3>What are Layers & Cards?</H3>
+                                    <P2>Part of material based design are our cards. We use cards to create depth, the layer refers to the importance of information being help by the card, and where it sits in the visual hierarch. The most visible difference between layers are the colours used, each layer has a number of properties: Background, Title, Copy, Accent, and Shadow. Below is an example of the first 3 of these properties and how they change across layers, in total there are 8 layers, split between the two modes: Light & Dark. Cards act like their own content frame with padding matching the overall content margin. Where card corners are visible they should be rounded, card should either sit within the margin or extend of the edge of the page.</P2>
+                </Section>
             <DemoCard/>
             <Section overFlow>
             <H3>Layer table</H3>

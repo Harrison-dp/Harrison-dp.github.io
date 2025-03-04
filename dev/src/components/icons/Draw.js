@@ -23,7 +23,7 @@ const SvgDraw = (props) =>{const {layerProps}=useLayerContext
       clipRule="evenodd"
     />
     <path
-      fill={layerProps?layerProps.Title:'#1a1a1a'}
+      fill={layerProps?props.Inactive?layerProps.Accent:layerProps.Title:'#494444'}
       fillRule="evenodd"
       d="M62.906 79.807c0-1.145.93-2.076 2.077-2.076h29.841c1.147 0 2.077.93 2.077 2.076v54.306q.066.253.067.525c0 1.147-.93 2.077-2.077 2.077H64.983a2.077 2.077 0 0 1-2.077-2.077zm29.84 42.785V81.884H67.06v40.708zm0 9.969v-5.815H67.06v5.815zm-7.824-34.726a2.078 2.078 0 0 1 0 4.153h-9.97a2.078 2.078 0 0 1 0-4.153zm0-9.97a2.078 2.078 0 0 1 0 4.154h-9.97a2.078 2.078 0 0 1 0-4.154zm0 19.939a2.077 2.077 0 0 1 0 4.154h-9.97a2.077 2.077 0 0 1 0-4.154z"
       clipRule="evenodd"

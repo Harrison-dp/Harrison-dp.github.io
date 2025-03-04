@@ -50,8 +50,8 @@ const Colours = {Array:[
     new ColourObject('var(--B)','#F2EFED','Bone','B'),
     new ColourObject('var(--S)','#D9D2CA','Stone','S'),
     new ColourObject('var(--G)','#A0948E','Griege','G'),
-    new ColourObject('var(--E)','{layerProps.Copy}','Evening','E'),
-    new ColourObject('var(--T)','#494444','Typhoon','T'),
+    new ColourObject('var(--T)','#7A6F6D','Typhoon','T'),
+    new ColourObject('var(--E)','#494444','Evening','E'),
     new ColourObject('var(--A)','#292428','Aubergine','A'),
     new ColourObject('var(--D)','#1A1A1A','Dark','D'),
     new ColourObject('var(--Z)','#000000','Black','Z')
@@ -71,8 +71,8 @@ const Z = new ColourObject('var(--Z)','#000000','Black','Z')
 
 
 const Layers ={Array:[
-    new layerPropsClass(W.Name ,W,E,E,S,S),
-    new layerPropsClass(B.Name ,B,E,E,S,G),
+    new layerPropsClass(W.Name ,W,T,E,S,S),
+    new layerPropsClass(B.Name ,B,T,E,S,G),
     new layerPropsClass(S.Name ,S,E,D,B,G),
     new layerPropsClass(G.Name ,G,E,D,S,T),
     new layerPropsClass(T.Name ,T,B,W,E,E),

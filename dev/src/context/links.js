@@ -7,6 +7,7 @@ import { ColoursPage } from "../Pages/colours";
 import { ComingSoon } from "../Pages/comingsoon";
 import { FontPage } from "../Pages/Font";
 import { IconsPage } from "../Pages/Icons";
+import { Icons } from "../components/icons/index";
 
 
 const InternalContext = createContext(undefined);
@@ -22,7 +23,7 @@ export const InternalProvider = ({ children }) => {
         }
       }
       const pages = [
-        new Page('Home','/',<ComingSoon/>,1),
+        new Page('Home','/',<Home/>,1),
         new Page('Brand Guidlines','Guidlines/',<MessagingPage/>,1,<GuidlinesSubmenu/>),
         new Page('Messaging','Guidlines/',<MessagingPage/>,2,<GuidlinesSubmenu/>),
         new Page('Logo','Guidlines/logo',<LogoPage/>,2,<GuidlinesSubmenu/>),
@@ -41,3 +42,6 @@ export const InternalProvider = ({ children }) => {
 };
 
 export const useInternalContext = () => useContext(InternalContext);
+
+
+

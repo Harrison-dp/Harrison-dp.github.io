@@ -28,7 +28,7 @@ export const getClasses = (self,props={})=>{
     if(props.top && props.top === true)Classes = Classes+' docked_top'
     if(props.bottom && props.bottom === true)Classes = Classes+' docked_bottom'
     if(!props.overFlow && !props.hScroll && !props.vScroll)Classes= Classes+' hide_overflow'
-    if(props.overflow)Classes = Classes+' show_overflow'
+    if(props.overFlow)Classes = Classes+' show_overflow'
     if(props.far)Classes=Classes+' relationship_far'
     else if(props.touching)Classes=Classes+' touching_content'
     if(props.hug)Classes=Classes+' hug_content'
@@ -39,6 +39,8 @@ export const getClasses = (self,props={})=>{
     if(props.spread)Classes=Classes+' gap_spread'
     if(props.jSpread)Classes=Classes+' justify_spread'
     if(props.wrap)Classes=Classes+' flex_wrap'
+    if(props.fill)Classes=Classes+' fill_fixed'
+    if(props.WidthA)Classes=Classes+' Width_auto'
 
     if(props.className)Classes=Classes+' '+props.className
     if(props.AICenter)Classes=Classes+' AICentre';else Classes=Classes+' AIStretch'

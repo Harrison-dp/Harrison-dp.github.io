@@ -51,7 +51,7 @@ export const HeaderMenu = ({...props})=>{
                     <MenuButton key={name} to={to} name={name}/>
                     
                     ))}
-                        <button type='button' onClick={clickdo}>switch to: {Modes[Mode.Next].Title}</button>
+                        {/* <button type='button' onClick={clickdo}>switch to: {Modes[Mode.Next].Title}</button> */}
 
                     </Section>
                 </Section>
