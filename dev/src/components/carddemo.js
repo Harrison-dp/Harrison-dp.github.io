@@ -35,6 +35,7 @@ export const DemoCard = ()=>{
                     <Choice value={'INT'}>International</Choice>
                     <Choice value={'FFE'}>Contractors</Choice>
                     <Choice value={'BFS'}>Student</Choice>
+                    <Choice value={'DEF'}>Defualt</Choice>
 
 
                 </MultipleChoice>

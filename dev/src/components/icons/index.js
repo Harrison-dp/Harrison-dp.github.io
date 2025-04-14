@@ -51,6 +51,8 @@ import Svg2Countertop from './Countertop.js'
 import SvgCriticalPath from './CriticalPath.js'
 import SvgCupon from './Cupon.js'
 import SvgCurtains from './Curtains.js'
+import SvgCushionFirm from './CushionFirm.js'
+import SvgCushionSoft from './CushionSoft.js'
 import SvgCustomeMessured from './CustomeMessured.js'
 import SvgCustomerDataSoftware from './CustomerDataSoftware.js'
 import SvgCustomerService from './CustomerService.js'
@@ -78,6 +80,7 @@ import SvgEyeClosed from './eyeclosed.js'
 import SvgFabricOptions from './FabricOptions.js'
 import SvgFace from './Face.js'
 import SvgFace3 from './Face3.js'
+import SvgFace2 from './Face2.js'
 import SvgFactoryBoxes from './FactoryBoxes.js'
 import SvgFastVan from './FastVan.js'
 import SvgFireRetardant from './FireRetardant.js'
@@ -116,6 +119,7 @@ import SvgLibrary from './Library.js'
 import SvgLightBulb from './LightBulb.js'
 import SvgLocation from './Location.js'
 import SvgLowerRail from './LowerRail.js'
+import SvgLShapedSofa from './Lsofa.js'
 import SvgManual from './Manual.js'
 import SvgMartindale from './Martindale.js'
 import SvgMaterialChange from './MaterialChange.js'
@@ -162,6 +166,7 @@ import SvgMiniWallet from './MiniWallet.js'
 import SvgMiniWeb from './MiniWeb.js'
 import SvgMiniYoursOnly from './MiniYoursOnly.js'
 import SvgMiniYourTeam from './MiniYourTeam.js'
+import SvgModularSofa from './modularsofa.js'
 import SvgMonitor from './Monitor.js'
 import SvgMoodboard from './Moodboard.js'
 import SvgMoreOffers from './MoreOffers.js'
@@ -191,6 +196,7 @@ import SvgReduceCarbon from './ReduceCarbon.js'
 import SvgReduceEmissions2 from './ReduceEmissions2.js'
 import SvgReduceResources from './ReduceResources.js'
 import SvgRefreshRestart from './RefreshRestart.js'
+import SvgSofaCushion from './RemovalbeCoushions.js'
 import SvgReview from './Review.js'
 import SvgRhino from './Rhino.js'
 import SvgRollerBLinds from './RollerBLinds.js'
@@ -207,6 +213,7 @@ import SvgSink from './Sink.js'
 import SvgSitting from './Sitting.js'
 import SvgSmartSheets from './SmartSheets.js'
 import SvgSofa from './Sofa.js'
+import SvgSofaWidth from './SofaWidth.js'
 import SvgSpecial from './Special.js'
 import SvgSplashBack from './splashback.js'
 import SvgSquareFoot from './SquareFoot.js'
@@ -243,6 +250,62 @@ import SvgWorldWide from './WorldWide.js'
 import SvgWorlWideLocation from './WorlWideLocation.js'
 import SvgYearFurnitureWarranty2 from './YearFurnitureWarranty2.js'
 import SvgZoomRoom from './ZoomRoom.js'
+import Svggraphbar from './GraphBar.js'
+import Svggraphline from './GraphLine.js'
+import Svggraphpercentage from './GraphPercentage.js'
+import Svggraphpie from './GraphPie.js'
+import SvgSignal from './Signal.js'
+import SvgQRCode from './QRCode.js'
+import SvgTrendUp from './TrendUp.js'
+import SvgTrendDown from './TrendDown.js'
+import SvgAccountabilityToDeliver from "./AccountabilityToDeliver";
+import SvgBeCreativeHaveFun from "./BeCreativeHaveFun";
+import SvgBeFlexable from "./BeFlexable";
+import SvgBluePrint from "./Blueprint";
+import SvgBrain from "./Brain";
+import SvgCareerPath from "./CareerPath";
+import SvgCelebrateTogether from "./CelebbrateTogether";
+import SvgCelebrateSuccess from "./CelebratingSuccess";
+import SvgClarityIsSanity from "./ClarityIsSanity";
+import SvgClearBreifToColleages from "./ClearBreifToColleages";
+import SvgClearExpectations from "./ClearExpectations";
+import SvgClearVision from "./ClearVision";
+import SvgClientCenteredExpertise from "./ClientCenteredExpertise";
+import SvgClientCommunication from "./ClientCommunication";
+import SvgClientSuccess from "./ClientSuccess";
+import SvgColourSamples from "./ColourSamples";
+import SvgColourSamples1 from "./ColourSamples1";
+import SvgCommercialMindset from "./CommercialMindset";
+import SvgCommercialMindset3 from "./CommercialMindset3";
+import SvgCustomer from "./Customer";
+import SvgDeviceFreeMeetings from "./DeviceFreeMeetings";
+import SvgDifferentiationMastery from "./DifferentiationMastery";
+import SvgEnjoyTheJourney from "./EnjoyTheJourney";
+import SvgEntrepreneurialSpiritEnjoyment from "./EntrepreneurialSpiritEnjoyment";
+import SvgFindJoyInOvercomingChallenges from "./FindJoyInOvercomingChallenges";
+import SvgMeetingCommitments from "./MeetingCommitments";
+// import SvgMeetingCommitments from "./MeetingCommitments";
+import SvgMessureSquare from "./MessureSquare";
+import SvgOpenCollaboaration from "./OpenCollaboaration";
+import SvgOwnYourSuccess from "./OwnYourSuccess";
+import SvgPen from "./Pen";
+import SvgProductSectorExpertise from "./ProductSectorExpertise";
+import SvgProductIntegrity from "./ProductIntegrity";
+import SvgProgressSharing from "./ProgressSharing";
+import SvgRegularCheckins from "./RegularCheckins";
+import SvgResilientceAdaptabilityPassion from "./ResilientceAdaptabilityPassion";
+import SvgSetGoals from "./SetGoals";
+import SvgShareKnowledge from "./ShareKnowledge";
+import SvgSolveProblems from "./SolveProblems";
+import SvgStayInformed from "./StayInformed";
+import SvgStayPositive from "./StayPositive";
+import SvgSundownRule from "./SundownRule";
+import SvgSupportFun from "./SupportFun";
+import SvgTailoredMessaging from "./TailoredMessaging";
+import SvgTargetPlanning from "./TargetPlanning";
+import SvgTeamAlignment from "./TeamAlignment";
+import SvgTeamContribution from "./TeamContribution";
+import SvgUKFRCertified from "./UKFRCertified";
 
 class Group{
     constructor(c,n){
@@ -263,8 +326,12 @@ const esg = new Group('ESG','Environment')
 const design = new Group('Design', 'Product & design')
 const furniture = new Group('Furniture', 'Types of furniture')
 const tools=new Group('Tools','Tools')
-const installation = new Group('Instalation','Instalation')
+const installation = new Group('installation','installation')
 const Transport = new Group('Transport','Transport')
+// const newicon = new Group('newicon','newicon')
+const Values = new Group('Values','Values')
+const Sales = new Group('Sales','Sales')
+
 
 
 class Icon{
@@ -350,8 +417,9 @@ export const Icons={obj:{},groupList:[],array:[
     new Icon('Email Database','EmailDatabase',<SvgEmailDatabase/>,Technology),
     new Icon('Enviromental Care','EnviromentalCare',<SvgEnviromentalCare/>,esg),
     new Icon('Fabric Options','FabricOptions',<SvgFabricOptions/>,design),
-    new Icon('Face A','Face',<SvgFace/>),
-    new Icon('Face B','Face3',<SvgFace3/>),
+    new Icon('Face A','Face1',<SvgFace/>),
+    new Icon('Face B','Face2',<SvgFace2/>),
+    new Icon('Face C','Face3',<SvgFace3/>),
     new Icon('Factory Boxes','FactoryBoxes',<SvgFactoryBoxes/>),
     new Icon('Fast Van','FastVan',<SvgFastVan/>,Transport),
     new Icon('Fire Retardant','FireRetardant',<SvgFireRetardant/>,WinDressFeat),
@@ -492,7 +560,7 @@ export const Icons={obj:{},groupList:[],array:[
     new Icon('Wipe Clean','WipeClean',<SvgWipeClean/>,WinDressFeat),
     new Icon('World Wide','WorldWide',<SvgWorldWide/>),
     new Icon('World Location','WorlWideLocation',<SvgWorlWideLocation/>),
-    new Icon('2 Year Warranty','YearFurnitureWarranty2',<SvgYearFurnitureWarranty2/>,design),
+    new Icon('5 Year Warranty','YearFurnitureWarranty5',<SvgYearFurnitureWarranty2/>,design),
     new Icon('Teams Room','ZoomRoom',<SvgZoomRoom/>,Technology),
     new Icon('Show: All','showall',<SvgMiniShowAll/>,Minis),
     new Icon('Show: Team','yourteam',<SvgMiniYourTeam/>,Minis),
@@ -525,6 +593,69 @@ export const Icons={obj:{},groupList:[],array:[
     new Icon('Around the world','Aroundtheworld',<SvgAroundTheWorld/>,esg),
     new Icon('Tea ','Tea',<SvgTea/>,),
     new Icon('Plane ','plane',<SvgPlane/>,Transport),
+    new Icon('Sofa Cushion','sofacushion',<SvgSofaCushion/>,design),
+    new Icon('Modular Sofa','sofamodular',<SvgModularSofa/>,design),
+    new Icon('L-Shaped Sofa','Lsofa',<SvgLShapedSofa/>,design),
+    new Icon('Sofa Width','SofaWidth',<SvgSofaWidth/>,design),
+    new Icon('Cushion: Firm','CushionFirm',<SvgCushionFirm/>,design),
+    new Icon('Cushion: Soft','CushionSofa',<SvgCushionSoft/>,design),
+    new Icon('Graph: Bar','graphbar',<Svggraphbar/>,Minis),
+    new Icon('Graph: Line','graphline',<Svggraphline/>,Minis),
+    new Icon('Graph: Percentage','graphpercentage',<Svggraphpercentage/>,Minis),
+    new Icon('Graph: Pie','graphpie',<Svggraphpie/>,Minis),
+    new Icon('Trend: Possative','TrendUp',<SvgTrendUp/>,Minis),
+    new Icon('Trend: Negative','TrendDown',<SvgTrendDown/>,Minis),
+    new Icon('Contactless/ Wireless','signal',<SvgSignal/>,Minis),
+    new Icon('QR Code','qrcode',<SvgQRCode/>,Minis),
+    new Icon('Accountability To Deliver','AccountabilityToDeliver',<SvgAccountabilityToDeliver/>,installation),
+    new Icon('Be Creative Have Fun','BeCreativeHaveFun',<SvgBeCreativeHaveFun/>,design),
+    new Icon('Be Flexable','BeFlexable',<SvgBeFlexable/>,Values),
+    new Icon('Blue Print','BluePrint',<SvgBluePrint/>,design),
+    new Icon('Brain','Brain',<SvgBrain/>,Minis),
+    new Icon('Career Path','CareerPath',<SvgCareerPath/>,Values),
+    new Icon('Celebrate Together','CelebrateTogether',<SvgCelebrateTogether/>,Values),
+    new Icon('Celebrate Success','CelebrateSuccess',<SvgCelebrateSuccess/>,Generic),
+    new Icon('Clarity Is Sanity','ClarityIsSanity',<SvgClarityIsSanity/>,Values),
+    new Icon('Multi-Page Document','MPDocument',<SvgClearBreifToColleages/>,Generic),
+    new Icon('Clear Expectations','ClearExpectations',<SvgClearExpectations/>,Values),
+    new Icon('Clear Vision','ClearVision',<SvgClearVision/>,Generic),
+    new Icon('Client Centered Expertise','ClientCenteredExpertise',<SvgClientCenteredExpertise/>,Sales),
+    new Icon('Client Communication','ClientCommunication',<SvgClientCommunication/>,Sales),
+    new Icon('Client Success','ClientSuccess',<SvgClientSuccess/>,Sales),
+    new Icon('Colour Samples','ColourSamples',<SvgColourSamples/>,design),
+    new Icon('Laser Messure','LaserMessure',<SvgColourSamples1/>,design),
+    new Icon('Commercial Mindset','CommercialMindset',<SvgCommercialMindset/>,Sales),
+    new Icon('Puzzle','MiniPuzzle',<SvgCommercialMindset3/>,Minis),
+    new Icon('Customer','Customer',<SvgCustomer/>,Minis),
+    new Icon('Device Free Meetings','DeviceFreeMeetings',<SvgDeviceFreeMeetings/>,Technology),
+    new Icon('Differentiation Mastery','DifferentiationMastery',<SvgDifferentiationMastery/>,Generic),
+    new Icon('Enjoy The Journey','EnjoyTheJourney',<SvgEnjoyTheJourney/>,Values),
+    new Icon('Entrepreneurial Spirit & Enjoyment','EntrepreneurialSpiritEnjoyment',<SvgEntrepreneurialSpiritEnjoyment/>,Values),
+    new Icon('Find Joy In Overcoming Challenges','FindJoyInOvercomingChallenges',<SvgFindJoyInOvercomingChallenges/>,Sales),
+    new Icon('Meeting Commitments','MeetingCommitments',<SvgMeetingCommitments/>,Generic),
+    new Icon('Messure Square','MessureSquare',<SvgMessureSquare/>,tools),
+    new Icon('Open Collaboaration','OpenCollaboaration',<SvgOpenCollaboaration/>,Generic),
+    new Icon('Own Your Success','OwnYourSuccess',<SvgOwnYourSuccess/>,Values),
+    new Icon('Pen','Pen',<SvgPen/>,tools),
+    new Icon('Product Sector Expertise','ProductSectorExpertise',<SvgProductSectorExpertise/>,Sales),
+    new Icon('Product Integrity','ProductIntegrity',<SvgProductIntegrity/>,design),
+    new Icon('Progress Sharing','ProgressSharing',<SvgProgressSharing/>,Generic),
+    new Icon('Regular Checkins','RegularCheckins',<SvgRegularCheckins/>,Generic),
+    new Icon('Knight','ResilientceAdaptabilityPassion',<SvgResilientceAdaptabilityPassion/>,Sales),
+    new Icon('Set Goals','SetGoals',<SvgSetGoals/>,Sales),
+    new Icon('Share Knowledge','ShareKnowledge',<SvgShareKnowledge/>,Values),
+    new Icon('Solve Problems','SolveProblems',<SvgSolveProblems/>,Values),
+    new Icon('Stay Informed','StayInformed',<SvgStayInformed/>,Generic),
+    new Icon('Stay Positive','StayPositive',<SvgStayPositive/>,Values),
+    new Icon('Sundown Rule','SundownRule',<SvgSundownRule/>,Values),
+    new Icon('Support Fun','SupportFun',<SvgSupportFun/>,Values),
+    new Icon('Tailored Messaging','TailoredMessaging',<SvgTailoredMessaging/>,Generic),
+    new Icon('Target Planning','TargetPlanning',<SvgTargetPlanning/>,Sales),
+    new Icon('Team Alignment','TeamAlignment',<SvgTeamAlignment/>,Generic),
+    new Icon('Team Contribution','TeamContribution',<SvgTeamContribution/>,Generic),
+    new Icon('UKFR Certified','UKFRCertified',<SvgUKFRCertified/>,Generic),
+
+
 
 
 

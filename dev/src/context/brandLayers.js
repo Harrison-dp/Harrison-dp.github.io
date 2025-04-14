@@ -10,13 +10,14 @@ class ColourObject{
     }
 }// creates an onject with css hex name and reference
 class layerPropsClass{
-    constructor(Name,b,t,c,a,s){
+    constructor(Name,b,t,c,a,s,f){
         this.AbsoluteName=b.Name
         this.Background = b.css
         this.Title = t.css
         this.Copy = c.css
         this.Accent = a.css
         this.Shadow = s.css
+        this.Focul = f.css
         this.ColourNames={
             Background:b.Name,
             Title:t.Name,
@@ -32,7 +33,7 @@ class layerPropsClass{
             Shadow:s.hex
         }
     }
-}// creates the 
+}// creates the object with each of the layer properties
 
 class Segmentlayers{
     constructor(Name,Accent,Light,Pure,Dark,Umbra,code){
@@ -71,24 +72,27 @@ const Z = new ColourObject('var(--Z)','#000000','Black','Z')
 
 
 const Layers ={Array:[
-    new layerPropsClass(W.Name ,W,T,E,S,S),
-    new layerPropsClass(B.Name ,B,T,E,S,G),
-    new layerPropsClass(S.Name ,S,E,D,B,G),
-    new layerPropsClass(G.Name ,G,E,D,S,T),
-    new layerPropsClass(T.Name ,T,B,W,E,E),
-    new layerPropsClass(E.Name ,E,B,W,A,A),
-    new layerPropsClass(A.Name ,A,S,B,E,D),
-    new layerPropsClass(D.Name ,D,S,B,E,Z),
+    new layerPropsClass(W.Name ,W,T,E,S,S,T),
+    new layerPropsClass(B.Name ,B,T,E,S,G,T),
+    new layerPropsClass(S.Name ,S,E,D,B,G,E),
+    new layerPropsClass(G.Name ,G,E,D,S,T,E),
+    new layerPropsClass(T.Name ,T,B,W,E,E,B),
+    new layerPropsClass(E.Name ,E,B,W,A,A,B),
+    new layerPropsClass(A.Name ,A,S,B,E,D,S),
+    new layerPropsClass(D.Name ,D,S,B,E,Z,S),
 ]}
 Layers.Array.map((L)=>Layers[L.AbsoluteName] = L)
 class SegmentBlock{
     constructor(F=Segments[0]){
-        this.One = new layerPropsClass(F.Code+'One',      W,          F.Pure,     A,          F.Light,  S)
-        this.Two = new layerPropsClass(F.Code+'Two',      F.Accent,   F.Pure,     E,          F.Light,   F.Light)
-        this.Three = new layerPropsClass(F.Code+'Three',  F.Light,    F.Umbra,    A,          F.Accent,   F.Dark)
-        this.Four = new layerPropsClass(F.Code+'Four',    F.Dark,     F.Accent,     W,          F.Umbra,   F.Umbra)
-        this.Five = new layerPropsClass(F.Code+'Five',    F.Umbra,    F.Accent,   B,          F.Dark,     A)
-        this.Six = new layerPropsClass(F.Code+'Six',      A,          F.Pure,     B,          F.Umbra,    D)
+        this.One = new layerPropsClass(F.Code+'One',      W,          T,     A,    F.Light,      S,      F.Pure)
+        this.Two = new layerPropsClass(F.Code+'One',      W,          F.Pure,     A,    F.Light,      S,      F.Pure)
+        this.Three = new layerPropsClass(F.Code+'Two',    F.Accent,   F.Pure,     E,    F.Light,      F.Light,F.Accent)
+        this.Four = new layerPropsClass(F.Code+'Three',   F.Light,    F.Umbra,    A,    F.Accent,     F.Dark, F.Accent)
+        this.Five = new layerPropsClass(F.Code+'Four',    F.Dark,     F.Accent,   W,    F.Umbra,      F.Umbra,F.Accent)
+        this.Six = new layerPropsClass(F.Code+'Five',     F.Umbra,    F.Accent,   B,    F.Dark,       A,      F.Accent)
+        this.Seven = new layerPropsClass(F.Code+'Six',    A,          F.Pure,     B,    F.Umbra,      D,      F.Pure)
+        this.Eight = new layerPropsClass(F.Code+'Six',    A,          S,     B,    F.Umbra,      D,      F.Pure)
+
     }
 }
 export const Segments={Array:[
@@ -98,20 +102,24 @@ export const Segments={Array:[
     new Segmentlayers('Student','#FFF9E5','#FCCE4C','#FEC200','#CE9D00','#544420','BFS'),
     new Segmentlayers('Developers','#FFECE5','#FC7247','#FD561A','#D23C06','#542E25','DEV'),
     new Segmentlayers('International','#FFE5E5','#DE4F4F','#DB1616','#BA0000','#4D2124','INT'),
-    new Segmentlayers('Contractors','#FFE5F9','#CE6FB7','#BA539E','#A3137C','#462E40','FFE')
+    new Segmentlayers('Contractors','#FFE5F9','#CE6FB7','#BA539E','#A3137C','#462E40','FFE'),
+    new Segmentlayers('Defaut','#FACBCE','#CB5E65','#B7454D','#73262b','#382529','DEF')
+
 ],Dark:{},Light:{}}
 Segments.Array.map((S)=>Segments[S.Code] = new SegmentBlock(S))
 Segments.Array.map((S)=>{
     let x = new SegmentBlock(S)
-    Segments.Dark[S.Code] = {One:{RelativeName:S.Code+'One',...x.Six},
-                            Two:{RelativeName:S.Code+'Two',...x.Five},
-                            Three:{RelativeName:S.Code+'Three',...x.Four}
+    Segments.Dark[S.Code] = {   One:{RelativeName:S.Code+'One',...x.Eight},
+                                Two:{RelativeName:S.Code+'Two',...x.Seven},
+                                Three:{RelativeName:S.Code+'Three',...x.Six},
+                                Four:{RelativeName:S.Code+'Three',...x.Five}
                         }})
 Segments.Array.map((S)=>{
     let x = new SegmentBlock(S)
-    Segments.Light[S.Code] = {One:{RelativeName:S.Code+'One',...x.One},
-    Two:{RelativeName:S.Code+'Two',...x.Two},
-    Three:{RelativeName:S.Code+'Three',...x.Three}
+    Segments.Light[S.Code] = {  One:{RelativeName:S.Code+'One',...x.One},
+                                Two:{RelativeName:S.Code+'Two',...x.Two},
+                                Three:{RelativeName:S.Code+'Three',...x.Three},
+                                Four:{RelativeName:S.Code+'Three',...x.Four}
 }})
 class segLight{
     constructor(Seg,){

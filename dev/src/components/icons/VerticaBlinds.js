@@ -1,7 +1,8 @@
 import * as React from "react";
-import { useLayerContext } from "../../context/brandLayers";
+import { useLayerContext } from "../../context/brandLayers.js";
 
-const SvgVerticaBlinds = (props) =>{const {layerProps}=useLayerContext();return(
+const SvgVerticaBlinds = (props) =>{
+const {layerProps}=useLayerContext();return(
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={60}

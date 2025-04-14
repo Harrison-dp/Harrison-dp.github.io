@@ -36,7 +36,6 @@ export const Button = ({children,type,onClick=undefined,...props})=>{
 export const PrimaryButton=({children,type,onClick=undefined,...props})=>{
     const {Mode}=useModeContext()
     const {layerProps}=useLayerContext()
-    const buttonLayerProps = Mode.Absolute[layerProps.Accent]
 
     return(
         <button onClick={onClick} className='reset default_button primary_button' style={{background:props.Active?layerProps.Accent:layerProps.Background,outline:layerProps.Accent+'var(--Strock) solid'}}>
@@ -59,7 +58,7 @@ export const MultipleChoice = ({children,OnSelect=()=>{},...props})=>{
     const [show, setShow]=useState(false)
     const toggleShow=()=>setShow(!show)
     props.horizontal=true
-    if(Children.count(children)<5)return(
+    if(Children.count(children)<7)return(
         <ChoiceContext.Provider value={{Selected:Selected}}>
             <div class={getClasses('multiple_choice_holder',props)}style={{background:layerProps.Background,outline:layerProps.Accent+'var(--Strock) solid'}}>
                 {Children.map(children,(child,index)=>{
@@ -122,5 +121,16 @@ export const TickBox = ({children,Active,OnClick,...props})=>{
 
             <H5>{children}</H5>
         </section>
+    )
+}
+
+
+export const TextInput=({onChange,placeholder,value})=>{
+    const {layerProps} = useLayerContext()
+    const {Mode}=useModeContext()
+    const FieldLayerProps = Mode.Absolute[layerProps.Accent]
+    console.log(Mode.Absolute[layerProps.Accent])
+    return(
+        <input onChange={onChange} placeholder={placeholder} value={value} style={{background:layerProps.Accent,color:layerProps.Title}}/>
     )
 }

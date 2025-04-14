@@ -1,3 +1,4 @@
+import { Card } from "./card"
 import { Section } from "./Elements"
 import { Logo } from "./logo"
 import { Bcorp, Facebook, Instagam, LinkedIn, TikTok, YouTube } from "./Socialbuttons"
@@ -5,7 +6,7 @@ import { FP, P2, P3 } from "./TextStyles"
 
 export const Footer=()=>{
     return(
-        <Section AICenter far>
+        <Card AICenter far layer='Two'left right bottom>
             <Section className='main' horizontal jSpread AICenter>
                 <Section horizontal AICenter far>
                     <Logo text margin={0} height='115'/>
@@ -27,7 +28,7 @@ export const Footer=()=>{
                 </Section>
                 <Bcorp/>
             </Section>
-            <Section className='main'><FP Accent>Copyright © 2025, David Phillips UK. All rights reserved. See our terms of use and privacy notice.</FP></Section>
-        </Section>
+            <Section className='main'><FP>Copyright © 2025, David Phillips UK. All rights reserved. See our terms of use and privacy notice. Reg.No: 3670521 VAT No: 858322900</FP></Section>
+        </Card>
     )
 }

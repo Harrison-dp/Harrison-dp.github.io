@@ -41,6 +41,8 @@ export const getClasses = (self,props={})=>{
     if(props.wrap)Classes=Classes+' flex_wrap'
     if(props.fill)Classes=Classes+' fill_fixed'
     if(props.WidthA)Classes=Classes+' Width_auto'
+    if(props.absolute=='topright')Classes=Classes+' AB_top_right'
+    if(props.textwrap)Classes=Classes+' text_wrap'
 
     if(props.className)Classes=Classes+' '+props.className
     if(props.AICenter)Classes=Classes+' AICentre';else Classes=Classes+' AIStretch'

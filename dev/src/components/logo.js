@@ -53,7 +53,7 @@ export const Logo =({margin=100,...props})=>{
 
 export const Pill = ({...props})=>{
     const {layerProps}=useLayerContext()
-    const colour = props.alone?layerProps.Title:layerProps.Accent
+    const colour = props.alone?layerProps.Focul:layerProps.Accent
     return(
         <path fill-rule="evenodd" clip-rule="evenodd" d="M1006.73 426.743C961.48 471.995 472.014 961.492 426.76 1006.74C381.504 1052 319.003 1080 250.01 1080C112.026 1080 0 967.981 0 830.002C0 761.012 28.0066 698.512 73.2608 653.259C118.515 608.007 607.981 118.511 653.235 73.258C698.49 28.0056 760.993 0 829.985 0C967.969 0 1080 112.021 1080 250.001C1080 318.99 1051.98 381.491 1006.73 426.743Z"fill={colour}/>
     )

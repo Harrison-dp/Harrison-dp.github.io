@@ -8,7 +8,6 @@ import { H1, H2 } from "../components/TextStyles"
 import { SharePointLinks } from "../context/SharePointLinks"
 import { FormLinks } from "../context/FormLinks"
 
-
 export const Home = ({...props})=>{
     document.title = 'Guidlines: Home'
 
@@ -50,7 +49,8 @@ export const Home = ({...props})=>{
                     />
                     <LinkCard Shadow 
                         title='iDesign'
-                        icon={<Svg2Countertop/>}
+                      
+  icon={<Svg2Countertop/>}
                     />
                     <LinkCard Shadow
                         title='PODFather'

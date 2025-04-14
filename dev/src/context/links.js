@@ -8,6 +8,9 @@ import { ComingSoon } from "../Pages/comingsoon";
 import { FontPage } from "../Pages/Font";
 import { IconsPage } from "../Pages/Icons";
 import { Icons } from "../components/icons/index";
+import { People } from "../Pages/People";
+import { ValuesPage } from "../Pages/Values";
+import { DeliveryMapPage } from "../Pages/DeliveryMap";
 
 
 const InternalContext = createContext(undefined);
@@ -31,7 +34,10 @@ export const InternalProvider = ({ children }) => {
         new Page('Icons','Guidlines/icons',<IconsPage/>,2,<GuidlinesSubmenu/>),
         new Page('Colours','Guidlines/colours',<ColoursPage/>,2,<GuidlinesSubmenu/>),
         new Page('Brand In Use','Guidlines/brandinuse',<ComingSoon/>,2,<GuidlinesSubmenu/>),
-        new Page('Request Forms','forms',<ComingSoon/>,1),
+        // new Page('People','People',<People/>,1),
+        // new Page('Values','Values',<ValuesPage/>,1),
+        new Page('Delivery Map','DeliveryMap',<DeliveryMapPage/>,1)
+
     ]
     // console.log('Here')
     return (

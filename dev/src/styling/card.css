@@ -22,6 +22,8 @@
     /* Developer */             --DEVAccent:#FFECE5;--DEVLight: #fc7247;--DEVPure:  #fd561a;--DEVDark:  #d23c06;--DEVUmbra: #542e25;
     /* International */         --INTAccent:#FFE5E5;--INTLight: #de4f4f;--INTPure:  #db1616;--INTDark:  #ba0000;--INTUmbra: #4d2124;
     /* contractors */           --FFEAccent:#FFE5F9;--FFELight: #ce6fb7;--FFEPure:  #ba539e;--FFEDark:  #a3137c;--FFEUmbra: #462e40;
+    /* Defualt */               --DEFAccent:#FACBCE;--DEFLight: #CB5E65;--DEFPure:  #B7454D;--DEFDark:  #73262b;--DEFUmbra: #382529;
+
     /* Absolute Layers ============================================================*/
     /*                      Background          Title               Copy                Accent                  Shadow  */
     /* white */     --WB:  var(--W); --WT:  var(--E);  --WC:  var(--E);   --WA:  var(--S);    --WS:  var(--S);
@@ -381,6 +383,20 @@ font-family: BrownPro;
 .Inner_Shadow_FFEOne_Dark{       box-shadow: inset 0px 0px var(--Gap) 0px var(--AS);}
 .Inner_Shadow_FFETwo_Dark{       box-shadow: inset 0px 0px var(--Gap) 0px var(--DS);}
 .Inner_Shadow_FFEThree_Dark{     box-shadow: inset 0px 0px var(--Gap) 0px var(--FFEUmbra);}
+/* ===================================================== */
+.Shadow_DEFOne_Light{      box-shadow: 0px 0px var(--Gap) 0px var(--WS);}
+.Shadow_DEFTwo_Light{      box-shadow: 0px 0px var(--Gap) 0px var(--DEFLight);}
+.Shadow_DEFThree_Light{    box-shadow: 0px 0px var(--Gap) 0px var(--DEFDark);}
+.Shadow_DEFOne_Dark{       box-shadow: 0px 0px var(--Gap) 0px var(--AS);}
+.Shadow_DEFTwo_Dark{       box-shadow: 0px 0px var(--Gap) 0px var(--AS);}
+.Shadow_DEFThree_Dark{     box-shadow: 0px 0px var(--Gap) 0px var(--DEFUmbra);}
+
+.Inner_Shadow_DEFOne_Light{      box-shadow: inset 0px 0px var(--Gap) 0px var(--WS);}
+.Inner_Shadow_DEFTwo_Light{      box-shadow: inset 0px 0px var(--Gap) 0px var(--DEFLight);}
+.Inner_Shadow_DEFThree_Light{    box-shadow: inset 0px 0px var(--Gap) 0px var(--DEFDark);}
+.Inner_Shadow_DEFOne_Dark{       box-shadow: inset 0px 0px var(--Gap) 0px var(--AS);}
+.Inner_Shadow_DEFTwo_Dark{       box-shadow: inset 0px 0px var(--Gap) 0px var(--DS);}
+.Inner_Shadow_DEFThree_Dark{     box-shadow: inset 0px 0px var(--Gap) 0px var(--DEFUmbra);}
 div.Dot{
     width: var(--Margin);
     height: var(--Margin);
@@ -448,8 +464,9 @@ button{
     cursor: pointer;
 } */
 
-a.fill_fixed{
+a.fill_fixed,.fill_fixed{
     width: fill;
+    min-width: fit-content;
 }
 .Width_auto{
     width: auto;
@@ -461,3 +478,27 @@ a.fill_fixed{
     }
 
 } */
+
+
+image.AvitarImage{
+    width: 120px;
+    height: 120px;
+    border-radius: 60px;
+    background-color: #1641c5;
+}
+
+
+.AB_top_right{
+    position: fixed;
+    right: var(--Margin);
+    top: var(--Margin);
+}
+.text_wrap{
+    text-wrap:unset
+}
+
+input{
+    border-style: none;
+    padding: var(--Gap);
+    border-radius: var(--BorderRadius);
+}
