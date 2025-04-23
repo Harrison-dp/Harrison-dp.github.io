@@ -80,7 +80,7 @@ export const H5 = ({children,layer='One',layerProp=undefined, ...props})=>{
         <h5 
         {...props} 
         className={getClasses('',props)} style={{
-            color:layerProps.Copy,
+            color:props.Accent?layerProps.Accent:layerProps.Copy,
             ...props.style
         }}>{children}</h5>
     )
@@ -93,7 +93,7 @@ export const Quote = ({children,layer='One',layerProp=undefined, ...props})=>{
         <p 
             {...props} 
             className={getClasses('Quote',props)} style={{
-            color:layerProps.Copy,
+            color:props.Accent?layerProps.Accent:layerProps.Copy,
             ...props.style
         }}>{children}</p>
         </div>
@@ -105,7 +105,7 @@ export const P1 = ({children,layer='One',layerProp=undefined, ...props})=>{
         <p 
         {...props} 
         className={getClasses('p1',props)} style={{
-            color:layerProps.Copy,
+            color:props.Accent?layerProps.Accent:layerProps.Copy,
             ...props.style
         }}>{children}</p>
     )
@@ -116,7 +116,7 @@ export const P2 = ({children,layer='One',layerProp=undefined, ...props})=>{
         <p 
         {...props} 
         className={getClasses('p2',props)} style={{
-            color:layerProps.Copy,
+            color:props.Accent?layerProps.Accent:layerProps.Copy,
             ...props.style
         }}>{children}</p>
     )
@@ -127,7 +127,7 @@ export const P3 = ({children,layer='One',layerProp=undefined, ...props})=>{
         <p 
         {...props} 
         className={getClasses('p3',props)} style={{
-            color:layerProps.Copy,
+            color:props.Accent?layerProps.Accent:layerProps.Copy,
             ...props.style
         }}>{children}</p>
     )
@@ -138,7 +138,7 @@ export const Source = ({children,layer='One',layerProp=undefined, ...props})=>{
         <p 
         {...props} 
         className={getClasses('Quote_Source',props)} style={{
-            color:layerProps.Copy,
+            color:props.Accent?layerProps.Accent:layerProps.Copy,
             ...props.style
         }}>{children}</p>
     )
@@ -161,7 +161,7 @@ export const Statment = ({children,layer='One',layerProp=undefined,...props})=>{
         <h1
         {...props} 
         className={getClasses('statment_text',props)} style={{
-            color:layerProps.Copy,
+            color:props.Accent?layerProps.Accent:layerProps.Copy,
             ...props.style
         }}>{children}</h1>
     )

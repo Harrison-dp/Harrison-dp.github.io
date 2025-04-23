@@ -114,7 +114,7 @@ export const LogoPage =()=>{
                     </Section>
                 </Section>
             </Section>
-            <Card layer='Three' Segment='INT' left right report >
+            <Card layer='Three' Segment='INT' left right>
                 <H3>Don'ts of logo use</H3>
                 <Section horizontal spread>
                 <Section style={{flex:1}}>

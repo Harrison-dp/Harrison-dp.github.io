@@ -40,7 +40,7 @@ export const HeaderMenu = ({...props})=>{
         updateMode(Mode.Next)
     }
     return(
-        <header id='headermenu' style={{background:Mode.Layers.One.Background}}>
+        <header id='headermenu' style={{background:Mode.Layers.One.Background,zIndex:'2'}}>
             <LayerProvider layer='One'>
                 <Section layer='One' AICenter tight cornerRadius='0px' position='fixed' id='HeaderSection'>
                     <Logo height='80px'margin='100'/>

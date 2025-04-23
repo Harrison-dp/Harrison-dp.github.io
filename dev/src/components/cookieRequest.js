@@ -10,7 +10,7 @@ export const CookieRequest = ()=>{
     const Y = ()=>AcceptCookies()
     const N = ()=>DeclineCookies()
     return !cookieHandler.requested ?
-        <Card layer='Three' className='overlay'>
+        <Card layer='Three' className='overlay' style={{zIndex:'5',position:'fixed'}} Shadow>
             <H2>Accept Cookies</H2>
             <P2>cookies are used to save your theme preferances and quick acess bar settings.</P2>
             <Section horizontal>

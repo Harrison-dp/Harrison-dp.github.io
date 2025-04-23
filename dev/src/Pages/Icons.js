@@ -6,7 +6,7 @@ import { Icons } from "../components/icons/index"
 import { Slogan } from "../components/Slogan"
 import { BulletPoint, FP, H1, H2, H3, H4, H5, P1, P2, P3, ST } from "../components/TextStyles"
 import { ModeProvider, useModeContext } from "../context/brandLayers"
-import { Button } from "../components/Buttons"
+import { Button, Choice, Lable, MultipleChoice } from "../components/Buttons"
 import { useState } from "react"
 import { CircleFrame, CorenrRadius, FrameDimentions, IconGroup, LineWidth, RectangleFrame, SmallIcon, SquareFrame, StrokeScale } from "../components/IconsPage"
 
@@ -24,22 +24,47 @@ export const IconsPage = ({children,layer='One',docked={left:false, right:false,
     //     e.preventDefault();
     //   });
     const {Mode}=useModeContext()
+    const [Copy,setCopy]=useState('svg')
     const addToClipBoard =(icon)=>{
-        navigator.clipboard.writeText(renderToString(icon.element)).then(() => {
-            alert(icon.name+' Icon added to clipboard (for Figma only)');
-        }).catch(err => {
-            alert('Failed to copy '+icon.name+' Icon.');
-            console.error('Failed to copy Icon: ', err);
-        });
+        switch(Copy){
+            case('svg'):
+            navigator.clipboard.writeText(renderToString(icon.element)).then(() => {
+                alert(icon.name+' Icon added to clipboard (for Figma only)');
+            }).catch(err => {
+                alert('Failed to copy '+icon.name+' Icon.');
+                console.error('Failed to copy Icon: ', err);
+            });
+            case('code'):
+            navigator.clipboard.writeText(icon.code).then(() => {
+                console.log(icon.name+' Icon code added to clipboard');
+            }).catch(err => {
+                alert('Failed to copy '+icon.name+' code.');
+                console.error('Failed to copy Icon code: ', err);
+            });
+        }
+
     }
     const displayDefault = {}
     Icons.groupList.map((group)=>{displayDefault[group.code] = false})
     const [display,setDisplay] = useState(displayDefault)
+    const CopyModeSetter=(id,value)=>{setCopy(value)}
     return(
         <Card className="main" far Shadow >
-            <Section>
+            <Section jSpread >
             <H1>David Phillips Icon Library</H1>
-            <ST>We currently have {Icons.array.length} icons across {Icons.groupList.length} catagories.</ST>
+            <Section horizontal AICenter>
+            <P1>We currently have {Icons.array.length} icons across {Icons.groupList.length} catagories.</P1>
+            <Section hug overFlow horizontal AICenter>
+            <Lable content={'Copy:'} id={'CopySelector'}/>
+            <MultipleChoice OnSelect={CopyModeSetter} id={'CopySelector'} hug>
+                <Choice value='svg' Default>SVG</Choice>
+                <Choice value='code'>Code</Choice>
+                <Choice value='unicode'>Unicode</Choice>
+            </MultipleChoice>
+            </Section>
+            
+            </Section>
+   
             </Section>
             <Section >
                 {Icons.groupList.map((group)=>{

@@ -97,7 +97,7 @@ section.gap_spread{
 .relationship_far{
     gap: var(--Margin);
 }
-.hug_content, section.hug_content{
+.hug_content, section.hug_content,div.hug_content{
     width: fit-content;
     height: fit-content;
 }
@@ -114,8 +114,8 @@ section.gap_tight{
     overflow: visible;
     overflow-x: scroll;
     -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none
-
+    scrollbar-width: none;
+        width: 100vw;
 }
 /* Hide scrollbar for IE, Edge and Firefox */
 
@@ -489,9 +489,9 @@ image.AvitarImage{
 
 
 .AB_top_right{
-    position: fixed;
-    right: var(--Margin);
-    top: var(--Margin);
+    position: absolute;
+    right: var(--Gap);
+    top: var(--Gap);
 }
 .text_wrap{
     text-wrap:unset
@@ -501,4 +501,111 @@ input{
     border-style: none;
     padding: var(--Gap);
     border-radius: var(--BorderRadius);
+}
+
+section.Cascade{
+    display: flex;
+    flex-flow: wrap;
+    gap: var(--Gap);
+    overflow: visible;
+}
+.Table_Row{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--Gap);
+    border-radius: var(--BorderRadius);
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+.Table_Cell{
+    padding:var(--Gap);
+    align-items: center;
+    justify-content:center;
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+
+.Date_Input{
+    padding-left: var(--Gap);
+    border-radius: var(--BorderRadius);
+    background-color: red;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Status_Dot{
+    width: calc(var(--Gap)/2);
+    height: calc(var(--Gap)/2);
+    border-radius: calc(var(--Gap)/4);
+}
+
+.Callender_Table_7,.Callender_Table_5{
+    display: flex;
+    flex-wrap: wrap;
+    /* padding: var(--Gap); */
+}
+.Callender_Table_7 > button.Day_button,.Callender_Table_7 > p{
+    flex: 1 1 14%;
+    min-width: 14%;
+    gap: calc(var(--Gap)/2);
+    height: fit-content;
+    box-sizing: border-box;
+    padding: calc(var(--Gap)/2);
+    display: flex;
+        flex-direction: column;
+        align-items: center;
+}
+.Callender_Table_5 > button.Day_button,.Callender_Table_5 > p{
+    flex: 1 1 19%;
+    min-width: 19%;
+    gap: calc(var(--Gap)/2);
+    height: fit-content;
+    box-sizing: border-box;
+    padding: calc(var(--Gap));
+    display: flex;
+        flex-direction: column;
+        align-items: center;
+}
+.Day_button > p{
+    height: fit-content;
+}
+.callender_top{
+    display: flex;
+    align-items: center;
+    padding-left: var(--Gap);
+    /* margin: calc(var(--Gap)/-2); */
+    justify-content: space-between;
+    width: 100%;
+}
+
+@media screen and (min-width:501px){
+    .Date_holder{
+        position: absolute;
+        left: 0;
+        right: 0;
+        box-sizing: border-box;
+        width: 100%;
+        height: fit-content;
+        top: -200%;
+        bottom: var(--Gap);
+        z-index: 5;
+    
+    }
+
+}
+
+@media screen  and (max-width:500px){
+    .Date_holder{
+        position: fixed;
+        left: var(--Gap);
+        right: var(--Gap);
+        box-sizing: border-box;
+        width: calc(100vw - var(--Gap)*2);
+        top: auto;
+        bottom: var(--Gap);
+    
+    }
 }

@@ -1,7 +1,7 @@
 import { Children, cloneElement, createContext, useContext, useState } from "react"
 import { useLayerContext, useModeContext } from "../context/brandLayers"
 import { getClasses } from "../Objects/ClassManager"
-import { H5, P1 } from "./TextStyles"
+import { H5, P1, P3 } from "./TextStyles"
 
 const ActivationTypes={
     link:{
@@ -32,6 +32,17 @@ export const Button = ({children,type,onClick=undefined,...props})=>{
         </button>
     )
 }
+export const IconButton =({children,onClick,style={},...props})=>{
+    const {Mode} = useModeContext()
+    const {layerProps} = useLayerContext()
+    const newLayerProps = props.layer ? Mode.GetLayerProps(props.layer):layerProps
+    // console.log(layerProps)
+    return(
+        <button style={{background: newLayerProps.Background,width:'60px',height:'60px',display:'flex',alignItems:'center',justifyContent:'center',...style}}onClick={onClick}{...props}>
+            {children}
+        </button>
+    )
+}
 
 export const PrimaryButton=({children,type,onClick=undefined,...props})=>{
     const {Mode}=useModeContext()
@@ -46,7 +57,7 @@ export const PrimaryButton=({children,type,onClick=undefined,...props})=>{
 
 const ChoiceContext = createContext()
 
-export const MultipleChoice = ({children,OnSelect=()=>{},...props})=>{
+export const MultipleChoice = ({children,OnSelect=()=>{},id,...props})=>{
     const {layerProps} = useLayerContext()
     const [Selected,SetSelected]=useState()
     const Secetionfunction=(id,value)=>{
@@ -60,7 +71,7 @@ export const MultipleChoice = ({children,OnSelect=()=>{},...props})=>{
     props.horizontal=true
     if(Children.count(children)<7)return(
         <ChoiceContext.Provider value={{Selected:Selected}}>
-            <div class={getClasses('multiple_choice_holder',props)}style={{background:layerProps.Background,outline:layerProps.Accent+'var(--Strock) solid'}}>
+            <div id={id} class={getClasses('multiple_choice_holder',props)}style={{background:layerProps.Background,outline:layerProps.Accent+'var(--Strock) solid'}}>
                 {Children.map(children,(child,index)=>{
                     let Choicefunction=()=>{Secetionfunction(index,child.props.value)}
                     let newChild = cloneElement(child,{id:index,onClick:Choicefunction})
@@ -125,12 +136,18 @@ export const TickBox = ({children,Active,OnClick,...props})=>{
 }
 
 
-export const TextInput=({onChange,placeholder,value})=>{
+export const TextInput=({onChange,placeholder,value,id})=>{
     const {layerProps} = useLayerContext()
     const {Mode}=useModeContext()
     const FieldLayerProps = Mode.Absolute[layerProps.Accent]
-    console.log(Mode.Absolute[layerProps.Accent])
     return(
-        <input onChange={onChange} placeholder={placeholder} value={value} style={{background:layerProps.Accent,color:layerProps.Title}}/>
+        <input onChange={onChange} id={id} placeholder={placeholder} value={value} style={{background:layerProps.Accent,color:layerProps.Title}}/>
+    )
+}
+
+
+export const Lable = ({content,id})=>{
+    return(
+        <label id={id}><P3>{content}</P3></label>
     )
 }

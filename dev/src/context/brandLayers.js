@@ -46,7 +46,7 @@ class Segmentlayers{
         this.Code = code
     }
 }// creates the segment object using the shades passed from accent to umbra  (css consturction example code+'Accent' = var(--REAAccent)
-const Colours = {Array:[ 
+const Colours = {Obj:{},Array:[ 
     new ColourObject('var(--W)','#FFFFFF','White','W'),
     new ColourObject('var(--B)','#F2EFED','Bone','B'),
     new ColourObject('var(--S)','#D9D2CA','Stone','S'),
@@ -57,18 +57,16 @@ const Colours = {Array:[
     new ColourObject('var(--D)','#1A1A1A','Dark','D'),
     new ColourObject('var(--Z)','#000000','Black','Z')
 ]}
-Colours.Array.map((C)=>Colours[C.Red] = C)
-//                            css       hex         name    ref
-const W = new ColourObject('var(--W)','#FFFFFF','White','W')
-const B = new ColourObject('var(--B)','#F2EFED','Bone','B')
-const S = new ColourObject('var(--S)','#D9D2CA','Stone','S')
-const G = new ColourObject('var(--G)','#A0948E','Griege','G')
-const T = new ColourObject('var(--T)','#7A6F6D','Typhoon','T')
-const E = new ColourObject('var(--E)','#494444','Evening','E')
-const A = new ColourObject('var(--A)','#292428','Aubergine','A')
-const D = new ColourObject('var(--D)','#1A1A1A','Dark','D')
-const Z = new ColourObject('var(--Z)','#000000','Black','Z')
-
+Colours.Array.map((C)=>Colours.Obj[C.Ref] = C)
+const W = Colours.Obj.W;
+const B = Colours.Obj.B;
+const S = Colours.Obj.S;
+const G = Colours.Obj.G;
+const T = Colours.Obj.T;
+const E = Colours.Obj.E;
+const A = Colours.Obj.A;
+const D = Colours.Obj.D;
+const Z = Colours.Obj.Z;
 
 
 const Layers ={Array:[
@@ -121,100 +119,111 @@ Segments.Array.map((S)=>{
                                 Three:{RelativeName:S.Code+'Three',...x.Three},
                                 Four:{RelativeName:S.Code+'Three',...x.Four}
 }})
-class segLight{
-    constructor(Seg,){
-        this.One=Seg.One
-        this.Two=Seg.Two
-        this.Thee=Seg.Three
-    }
-}
-class segDark{
-    constructor(Seg,){
-        this.One=Seg.Six
-        this.Two=Seg.Five
-        this.Thee=Seg.Four
-    }
-}
 export class Mode{
     constructor(T,L,S,P,N){
         this.Title = T
-        this.Layers = L
+        this.Layers = {array:L}
+        L.map((layer)=>{
+            this.Layers[layer.RelativeName] = layer
+        })
         this.SegmentLayers=S
         this.Segments = Segments.Array
         this.Set = ()=>this
         this.Next=N
         this.Possition=P
         this.Absolute=Layers.Array
+        this.GetLayerProps=(layer='One',segment=undefined)=>{
+            if(segment){
+                try{
+                    let x = this.SegmentLayers[segment]
+                    try{
+                        let x = this.SegmentLayers[segment][layer]
+                        return this.SegmentLayers[segment][layer]
+                    }catch(error){console.error("Layer provided was not idenitified in Segment",error.message)}
+                }
+                catch(error){console.error("Segment provided was not idenitified",error.message)}
+            }
+            try{
+                let x = this.Layers[layer]
+                return this.Layers[layer]
+            }catch(error){
+                console.error("Layer provided was not idenitified",error.message)
+                return this.Layers.One
+            }
+        }
+        this.GetAccentLayerProps=(layer='One',segment=undefined)=>{
+            let AbsoluteObj = {}
+            let NewLayerProps = {}
+            let NewLayer = ''
+            let AccentName = this.GetLayerProps(layer).ColourNames.Accent
+            this.Layers.array.map((layer)=>{
+                if(AccentName ==layer.AbsoluteName){
+                    NewLayerProps = layer;
+                    NewLayer = layer.RelativeName
+                }
+            })
+            return {NewLayerProps,NewLayer}
+    
+        }
         // this.Segments=[REA,LLS,BTR,BFS,DEV,INT,FFE]
     }
 }
 
-export const Modes =[
-    new Mode('Light',{
-        One:{RelativeName:'One',...Layers.White},
-        Two:{RelativeName:'Two',...Layers.Bone},
-        Three:{RelativeName:'Three',...Layers.Stone},
-        Four: {RelativeName:'Four',...Layers.Griege},
-    },
+export const Modes ={
+    array:[
+    new Mode('Light',[
+        {RelativeName:'One',...Layers.White},
+        {RelativeName:'Two',...Layers.Bone},
+        {RelativeName:'Three',...Layers.Stone},
+        {RelativeName:'Four',...Layers.Griege},
+    ],
     Segments.Light
     ,0,1),
     
-    new Mode('Dark',{
-        One:{RelativeName:'One',...Layers.Aubergine},
-        Two:{RelativeName:'Two',...Layers.Dark},
-        Three:{RelativeName:'Three',...Layers.Evening},
-        Four: {RelativeName:'Four',...Layers.Typhoon},
-    },    Segments.Dark
+    new Mode('Dark',[
+        {RelativeName:'One',...Layers.Aubergine},
+        {RelativeName:'Two',...Layers.Dark},
+        {RelativeName:'Three',...Layers.Evening},
+        {RelativeName:'Four',...Layers.Typhoon},
+    ],    Segments.Dark
     ,1,0)
-]
+],
+Select:function(mode){
+    const {cookieHandler}=useCookiesContext()
+    try{
+        let modetest = this.array[mode].One // tests if passed 'mode' is valid
+        return this.array[mode]
+    } catch(error){
+        console.error('mode returned invalid, using cookie',error.message)
+        try{
+            let cookietest = this.array[cookieHandler.get('PreferedTheme')].One // tests if Cookie request returns valid
+            return this.array[cookieHandler.get('PreferedTheme')]
+        } catch(error){
+            console.error('cookie returned invalid, using device defualt',error.message)
+            return this.array[window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches? 1:0]
+        }
+    }}
+}
 
 
 
 
 const ModeContext = createContext()
 
+
+
+
 export const ModeProvider = ({children,mode=undefined,...props})=>{
-    console.log(Modes)
     const {cookieHandler}=useCookiesContext()
-    let ModeDef = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches? 1:0
-    try{
-        let modetest = Modes[mode].One // tests if passed 'mode' is valid
-        ModeDef = parseInt(mode, 10) //if yes uses it
-    } catch(error){
-        try{
-            console.error('mode returned invalid, using cookie',error.message)
-            let cookietest = Modes[cookieHandler.get('PreferedTheme')].One // tests if Cookie request returns valid
-            ModeDef = cookieHandler.get('PreferedTheme')
-        } catch(error){
-            console.error('cookie returned invalid, using device defualt',error.message)
-            // ModeDef = Modes[window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches? 1:0]
-        }
-    }
-    const [Mode,setMode] = useState(Modes[ModeDef])
-    Mode.Possition !== ModeDef && setMode(Modes[ModeDef])
-    if(!props.demo)cookieHandler.set('PreferedTheme',ModeDef)
-    const updateMode=(mode)=>{
-        let ModeDef = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches? 1:0
-        try{
-            let modetest = Modes[mode].One // tests if passed 'mode' is valid
-            console.log(Modes)
-            ModeDef = mode //if yes uses it
-        } catch(error){
-            try{
-                console.error('mode returned invalid, using assigned next value',error.message)
-                let test = Modes[Mode.Next].One // tests if Cookie request returns valid
-                ModeDef = Mode.Next
-            } catch(error){
-                console.error('mode returned invalid',error.message)
-                // ModeDef = Modes[window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches? 1:0]
-            }
-        }
-            cookieHandler.set('PreferedTheme',ModeDef)
-            setMode(Modes[ModeDef] )
-    }
-    if(props.report)console.log(Mode)
+    const [Mode,setMode] = useState(Modes.Select(mode))
+    Mode.Possition !== Modes.Select(mode).Possition && setMode(Modes.Select(mode))
+    if(!props.demo)cookieHandler.set('PreferedTheme',Modes.Select(mode).Possition)
+    const updateMode=(mode)=>setMode(Modes.Select(mode))
+    // if(props.report)console.log(Mode)
+
+
     return(
-        <ModeContext.Provider value={{Mode,setMode,updateMode,mode}}>
+        <ModeContext.Provider value={{Mode,updateMode,mode}}>
             {children}
         </ModeContext.Provider>
     )
@@ -222,25 +231,15 @@ export const ModeProvider = ({children,mode=undefined,...props})=>{
 export const useModeContext = ()=>useContext(ModeContext)
 
 
-const LayerContext = createContext('One');
+const LayerContext = createContext('One','None');
 
 export const LayerProvider = ({children,layer='One',...props})=>{
     const {Mode} = useModeContext() 
-    let layerProps = {}
-    try{
-        console.log(Mode.SegmentLayers[props.Segment][layer])
-        if(Mode.SegmentLayers[props.Segment][layer] === undefined)throw new Error('invalid layer')
-        layerProps = Mode.SegmentLayers[props.Segment][layer]
-    }catch{
-        try{
-            layerProps = Mode.Layers[layer]
-        } catch(error){
-            console.error("layerProps could not be fetched from Mode:",error.message)
-            layerProps = Mode.Layers.One
-    } }
-    if(props.report)console.log(layerProps)
+    const layerProps = Mode.GetLayerProps(layer)
+    const getXColor =(x,l=layer)=>Mode.GetLayerProps(l)[x]
+    // if(props.report)console.log(layerProps)
     return(
-        <LayerContext.Provider value={{layer,layerProps}}>
+        <LayerContext.Provider value={{layer,layerProps,getXColor}}>
             {children}
         </LayerContext.Provider>
     )
@@ -248,3 +247,6 @@ export const LayerProvider = ({children,layer='One',...props})=>{
 
 }
 export const useLayerContext = ()=>useContext(LayerContext)
+
+
+

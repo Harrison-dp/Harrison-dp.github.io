@@ -1,78 +1,94 @@
-import { useEffect, useState } from "react"
-import { Card, DescreatCard } from "../components/card"
-import { DemoCard } from "../components/carddemo"
-import DeliveryMap, { prefixTable } from "../components/deliverymap"
+
 import { CardButton, Dot, Section, VL } from "../components/Elements"
-import { Slogan } from "../components/Slogan"
 import { BulletPoint, FP, H1, H2, H3, H4, H5, P1, P2, P3 } from "../components/TextStyles"
-import { ModeProvider, useLayerContext, useModeContext } from "../context/brandLayers"
-import { Choice, MultipleChoice, TextInput } from "../components/Buttons"
+
+import { DMFrame } from "../components/DeliveryMapFrame"
+import { Cascade, Cell, ExpandableRow, Row, Table } from "../components/Table"
+import { prefixTable, zoneColours } from "../components/deliverymap"
+import { useModeContext } from "../context/brandLayers"
+import { useState } from "react"
+import { DescreatCard } from "../components/card"
 
 export const DeliveryMapPage = ({children,layer='One',docked={left:false, right:false, top:false, bottom: false},content_direction='tb',className='',...props})=> {
-document.title = 'Company Values'
-const {layerProps}=useLayerContext()
+document.title = 'Delivery Map'
 const {Mode}=useModeContext()
-const [day,setDay]=useState('any')
-const [from,setFrom]=useState('any')
-const [POcode,setPOcode]=useState(undefined)
-const [ND,setND]=useState(false)
-const [message,setMessage]=useState(undefined)
-const selectFrom=(id,value)=>setFrom(value)
-const selectDay=(id,value)=>setDay(value)
-const SelectPO=(e)=>{
-    let PO = e.target.value.toUpperCase()
-    // console.log(PO)
-    if(PO.length == 0)setPOcode(undefined)
-    const Prefix = PO.match(/^[a-zA-Z]+/)
-    // console.log(Prefix)
-    // if(Prefix !== undefined)console.log(Prefix(0))
-    if(Prefix && Prefix[0]!==POcode)setPOcode({pref:Prefix[0],total:PO})
-    if(prefixTable[Prefix]){
-        if(prefixTable[Prefix].fc == 'na'){setMessage('we do not currently deliver to that postal region, contact customer service to learn more');return}
-        if(prefixTable[Prefix].fc !== from && from !== 'any'){setMessage('the postcode you entered is not fulfilled from the selected fullfilment centre');return}
-        let message = 'Delivery is avalible on: '
-        if(prefixTable[Prefix].week.Mo)message=message+' Monday'
-        if(prefixTable[Prefix].week.Tu)message=message+' Tuesday'
-        if(prefixTable[Prefix].week.We)message=message+' Wednesday'
-        if(prefixTable[Prefix].week.Th)message=message+' Thursday'
-        if(prefixTable[Prefix].week.Fr)message=message+' Friday'
-        if(prefixTable[Prefix].ND)message=message+' or next day for an additoinal fee'
-        message=message+' from our '+prefixTable[Prefix].fc+' fullfillment centre.'
-        setMessage(message)
-    }else{setMessage(undefined)}
+const SortTable=(a,b)=>{
+    let output = a.id-b.id
+    if(a.id=='na')output=-1
+    if(b.id=='na')output=+1
+    return output
 
 }
 
-
 return(
-    <Card>
-        <g style={{position:'absolute'}}>
-            <Card layer="Three" hug absolute='topright' style={{maximumWidth:'30%'}}>
-                <H1>Map Settings</H1>
-                <H5>Fulfilled from</H5>
-                <MultipleChoice OnSelect={selectFrom}>
-                    <Choice fill value={'any'} Default>Anywhere</Choice>
-                    <Choice fill value={'Manchester'}>Manchester</Choice>
-                    <Choice fill value={'London'}>London</Choice>
-                </MultipleChoice>
-                <H5>Delivery Day</H5>
-                <MultipleChoice OnSelect={selectDay}>
-                    <Choice fill value={'any'}Default>Any</Choice>
-                    <Choice fill value={'Mo'}>Mo</Choice>
-                    <Choice fill value={'Tu'}>Tu</Choice>
-                    <Choice fill value={'We'}>We</Choice>
-                    <Choice fill value={'Th'}>Th</Choice>
-                    <Choice fill value={'Fr'}>Fr</Choice>
-                </MultipleChoice>
-                <H5>Your postcode</H5>
-                <TextInput onChange={SelectPO} placeholder="SW12 1AP"/>
-                <P1 textwrap fill >{message && message}</P1>
-        </Card>
-        </g>
-        
-        <DeliveryMap from={from} POcode={POcode} day={day} nd={ND}/>
+    <Section fill layer="Two" left right top AICenter far>
+        <Section className='main'>
+            <H1>Delivery Guide</H1>
+            <P1>Breakdown or delviery zones across the UK.</P1>
+        </Section>
+        <DMFrame/>
+        <Table className='main' style={{width:'100%',gap:'--var(--Gap)'}}>
+            <Row>
+                <Cell flex='0.5'><H5>Zone</H5></Cell>
+                <Cell><H5>Fullfilled From</H5></Cell>
 
-    </Card>
+                <Row flex='5' style={{margin:0}}>
+                <Cell><H5>Monday</H5></Cell>
+                <Cell><H5>Tuesday</H5></Cell>
+                <Cell><H5>Wednesday</H5></Cell>
+                <Cell><H5>Thursday</H5></Cell>
+                <Cell><H5>Friday</H5></Cell>
+                </Row>
+            </Row>
+            {prefixTable.zones.array.sort(function(a,b){
+                                            let output = a.id-b.id
+                                            if(a.id=='na')output=+1
+                                            if(b.id=='na')output=-1
+                                            return output
+                                        }).map((zone)=>{
+                let isTrue =(d)=>prefixTable.zones.obj[zone.id].prefixList[0].week[d]
+                let setColour =(d)=>isTrue(d)?{background: Mode.SegmentLayers.BTR.Four.Background}:{background: Mode.SegmentLayers.INT.Three.Background}
+                let setCopy =(d)=>isTrue(d)?'True':'False'
+                let getJoin=(p,n)=>isTrue(n)?isTrue(p)?'lr':'r':isTrue(p)?'l':''
+                return(<ExpandableRow rowContent={zone.id!=='na'?
+                    <Row>
+                        <Cell style={{background: zoneColours[zone.id]}} flex='0.5'><H5>{zone.id}</H5></Cell>
+                        <Cell ><H5>{prefixTable.zones.obj[zone.id].prefixList[0].fc}</H5></Cell>
+                        <DescreatCard horizontal style={{flex:5,background: Mode.SegmentLayers.INT.Three.Background,margin:0}}>
+                            <Cell style={setColour('Mo')} join={isTrue('Tu')?'r':''}>{setCopy('Mo')}</Cell>
+                            <Cell style={setColour('Tu')} join={getJoin('Mo','We')}>{setCopy('Tu')}</Cell>
+                            <Cell style={setColour('We')} join={getJoin('Tu','Th')}>{setCopy('We')}</Cell>
+                            <Cell style={setColour('Th')} join={getJoin('We','Fr')}>{setCopy('Th')}</Cell>
+                            <Cell style={setColour('Fr')} join={isTrue('Th')?'l':''}>{setCopy('Fr')}</Cell>
+                        </DescreatCard>
+                    </Row>
+                    :<Row>
+                        <Cell>Regions we do not currently deliver to.</Cell>
+                    </Row>
+                    }>
+                    <Cascade>
+                    {prefixTable.zones.obj[zone.id].prefixList.map(prefix=>{
+                        return(<Row width={{min:'300px',max:'400px'}} layer='Two'>
+                            <Cell flex={1.5} space>
+                            {prefix.code}
+
+                            </Cell>
+                            {prefix.zone=='na'?
+                            <Cell flex={5} align='left' style={{background:prefix.ND?Mode.SegmentLayers.BTR.Four.Background:Mode.SegmentLayers.INT.Three.Background}}>
+                            We do not currently deliver to this Region
+                            </Cell>
+                            :
+                            <Cell flex={5} align='left' style={{background:prefix.ND?Mode.SegmentLayers.BTR.Four.Background:Mode.SegmentLayers.INT.Three.Background}}>
+                                Next day delivery: {prefix.ND?'£'+prefix.ND:'unavalable'}
+                            </Cell>}
+                        </Row>
+                        )
+                    })}</Cascade>
+
+                </ExpandableRow>)
+            })}
+        </Table>
+    </Section>
 
     )
 }

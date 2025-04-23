@@ -306,6 +306,10 @@ import SvgTargetPlanning from "./TargetPlanning";
 import SvgTeamAlignment from "./TeamAlignment";
 import SvgTeamContribution from "./TeamContribution";
 import SvgUKFRCertified from "./UKFRCertified";
+import SvgSizeMaxamie from './SizeMaxamise.js'
+import SvgDetailsOpen from './DetailsOpen.js'
+import SvgSizeMinamise from './SizeMinamise.js'
+import SvgSizeMaxamise from './SizeMaxamise.js'
 
 class Group{
     constructor(c,n){
@@ -474,7 +478,7 @@ export const Icons={obj:{},groupList:[],array:[
     new Icon('Database','Database',<SvgMiniClock1/>,Minis),
     new Icon('Clowd','MiniClowd',<SvgMiniClowd/>,Minis),
     new Icon('Cube','MiniCube',<SvgMiniCube/>,Minis),
-    new Icon('Details','MiniDetails',<SvgMiniDetails/>,Minis),
+    new Icon('Details: Close','MiniDetails',<SvgMiniDetails/>,Minis),
     new Icon('File','MiniFile',<SvgMiniFile/>,Minis),
     new Icon('Folder','MiniFolder',<SvgMiniFolder/>,Minis),
     new Icon('Home','home',<SvgMiniFolder1/>,Minis),
@@ -654,7 +658,9 @@ export const Icons={obj:{},groupList:[],array:[
     new Icon('Team Alignment','TeamAlignment',<SvgTeamAlignment/>,Generic),
     new Icon('Team Contribution','TeamContribution',<SvgTeamContribution/>,Generic),
     new Icon('UKFR Certified','UKFRCertified',<SvgUKFRCertified/>,Generic),
-
+    new Icon('Size: Maxamise','SizeMaxamise',<SvgSizeMaxamie/>,Minis),
+    new Icon('Size: Minamise','SizeMinamise',<SvgSizeMinamise/>,Minis),
+    new Icon('Details: Open','DetailsOpen',<SvgDetailsOpen/>,Minis),
 
 
 

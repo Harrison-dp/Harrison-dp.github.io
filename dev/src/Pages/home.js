@@ -7,6 +7,8 @@ import { LinkCard } from "../components/linkcard"
 import { H1, H2 } from "../components/TextStyles"
 import { SharePointLinks } from "../context/SharePointLinks"
 import { FormLinks } from "../context/FormLinks"
+import { HomeLinks } from "../Data/homepagelinks"
+import { Cascade } from "../components/Table"
 
 export const Home = ({...props})=>{
     document.title = 'Guidlines: Home'
@@ -37,82 +39,18 @@ export const Home = ({...props})=>{
         <Card className='main' AICenter Shadow>
                 <H2>Home Page</H2>
             </Card>
-            <Section className='main' overFlow>
-                <Section horizontal overFlow>
-                    <LinkCard fill Shadow
-                        title='SharePoint'
-                        icon={<Svg2Countertop/>}
-                    />
-                    <LinkCard Shadow
-                        title='Office'
-                        icon={<Svg2Countertop/>}
-                    />
-                    <LinkCard Shadow 
-                        title='iDesign'
-                      
-  icon={<Svg2Countertop/>}
-                    />
-                    <LinkCard Shadow
-                        title='PODFather'
-                        icon={<Svg2Countertop/>}
-                    />
-                </Section>
-                <Section horizontal overFlow>
-                    <LinkCard Shadow
-                        title='Team Viewer'
-                        icon={<Svg2Countertop/>}
-                    />
-                    <LinkCard Shadow
-                        title='Org Search'
-                        icon={<Svg2Countertop/>}
-                    />
-                    <LinkCard Shadow
-                        title='Sales Forecast'
-                        icon={<Svg2Countertop/>}
-                    />
-                    <LinkCard Shadow
-                        title='ARG Dynamics'
-                        icon={<Svg2Countertop/>}
-                    />
-                </Section>
-                <Section horizontal overFlow>
-                    <LinkCard Shadow
-                        title='Dynicamics NAV'
-                        icon={<Svg2Countertop/>}
-                    />
-                    <LinkCard Shadow
-                        title='Teams'
-                        icon={<Svg2Countertop/>}
-                    />
-                    <LinkCard Shadow
-                        title='Stripe'
-                        icon={<Svg2Countertop/>}
-                    />
-                    <LinkCard Shadow
-                        title='Zetadocs Expenses'
-                        icon={<Svg2Countertop/>}
-                    />
-                </Section>
-                <Section horizontal overFlow>
-                    <LinkCard Shadow
-                        title='Zetadocs Approvals'
-                        icon={<Svg2Countertop/>}
-                    />
-                    <LinkCard Shadow
-                        title='SSRS'
-                        icon={<Svg2Countertop/>}
-                    />
-                    <LinkCard Shadow
-                        title='StaffCircle'
-                        icon={<Svg2Countertop/>}
-                    />
-                    <LinkCard Shadow
-                        title='Employee Perks'
-                        icon={<SvgCupon/>}
-                    />
-                </Section>
+            <Cascade className='main' overFlow>
+               {HomeLinks.map(item=>{
+                return(
+                    <LinkCard Shadow style={{flex:'1 0 21%',minWidth:'20%'}}
+                    title={item.Title}
+                    icon={item.Icon}
+                    url={item.URL}
+                />
+                )
+               })}
                 
-            </Section>
+            </Cascade>
             <HorizontalScroller title='SharePoint links'>
                     {SharePointLinks.map(({Title,Description,Icon,URL})=>{
                         return(

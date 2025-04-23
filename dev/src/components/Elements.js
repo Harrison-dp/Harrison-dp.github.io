@@ -10,11 +10,16 @@ import { useLayerContext, useModeContext } from '../context/brandLayers';
 export const Section = ({children,layer='One',...props})=>{
     const layerProps = useLayerContext()
     const {Mode,setMode} = useModeContext()
-    props.ParentLayer=layer
-    props.Mode = Mode
+    const all = {ParentLayer:layer,Mode:Mode,...props}
+    if(props.report)console.log(props)
     return(
-        <section className={getClasses('Section',props)}id={props.id&& props.id} style={props.style&&props.style} onClick={props.onClick && props.onClick}>{children}</section>
+        <section {...props}className={getClasses('Section',all)}>
+            {children}
+        </section>
     )
+}
+export const Test=({ref})=>{
+    return(<div ref={ref}></div>)
 }
 export const HL = ({layer='One',layerProp})=>{
     const {layerProps}=useLayerContext()

@@ -4,37 +4,20 @@ import '../styling/card.css'
 import React, { Children, cloneElement } from 'react';
 import { H2 } from './TextStyles';
 import { getClasses, getStyle } from '../Objects/ClassManager';
-import { LayerProvider, useLayerContext, useModeContext } from '../context/brandLayers';
+import { getXColor, LayerProvider, useLayerContext, useModeContext } from '../context/brandLayers';
 
-export const Card = ({children,layer='One',content_direction='tb',...props})=> {
-    const {Mode,mode}=useModeContext()
-    const {layerProps}=useLayerContext()
+export const Card = ({children,layer='One',content_direction='tb',style={},id=false,segment=undefined,...props})=> {
+    const {Mode}=useModeContext()
+    const layerProps=Mode.GetLayerProps(layer,segment)
     props.ParentLayer=layerProps.RelativeName
     props.Mode=Mode
     props.MyLayer=layer
-    const getBackgroundColor= (x)=>{
-        if(props.style && props.style.backgroundColor)return props.style.backgroundColor
-        let layerProps = {}
-        try{
-            if(props.Segment)console.log(props.Segment)
-            if(Mode.SegmentLayers[props.Segment][layer] === undefined)throw new Error('invalid layer')
-            // console.log(Mode.SegmentLayers[props.Segment])
-            layerProps = Mode.SegmentLayers[props.Segment][layer]
-        }catch{
-            try{
-                layerProps = Mode.Layers[layer]
-            } catch(error){
-                console.error("layerProps could not be fetched from Mode:",error.message)
-                layerProps = Mode.Layers.One
-        } }
-        return layerProps[x]
-    }
-    props.MyLayer=getBackgroundColor('RelativeName')
-    // if(props.report)console.log(props)
-    // console.log(Mode.Layers[layer])
+    id&&console.log(layerProps)
+
+    props.MyLayer=layerProps.RelativeName
     props.Background = !props.Background? true:props.Background
 return(
-        <section className={getClasses('Card',props)} style={{backgroundColor: getBackgroundColor('Background')}} onClick={props.onClick&&props.onClick}>
+        <section className={getClasses('Card',props)} style={{backgroundColor: layerProps.Background,...style}} onClick={props.onClick&&props.onClick}>
             <LayerProvider layer={layer} Segment={props.Segment}>
             {children}
             </LayerProvider>
@@ -48,7 +31,7 @@ export const DescreatCard=({children,...props})=>{
     props.ParentLayer=layerProps.RelativeName
     props.Mode=Mode
     return(
-        <section className={getClasses('descreat_card',props)} style={props.style&&props.style}>
+        <section {...props}className={getClasses('descreat_card',props)} style={props.style&&props.style}>
             {children}
         </section>
     )

@@ -17,7 +17,6 @@ export const DemoCard = ()=>{
     const {Mode}=useModeContext()
     const modechoose=(id,value)=>{
         setCardProps({...CardProps,mode:value})}
-    console.log(Mode)
     const Segchoose=(id,value)=>setCardProps({...CardProps,Segment:value})
     return(
         <Section horizontal far>

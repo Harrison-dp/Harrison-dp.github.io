@@ -36,7 +36,7 @@ export const InternalProvider = ({ children }) => {
         new Page('Brand In Use','Guidlines/brandinuse',<ComingSoon/>,2,<GuidlinesSubmenu/>),
         // new Page('People','People',<People/>,1),
         // new Page('Values','Values',<ValuesPage/>,1),
-        new Page('Delivery Map','DeliveryMap',<DeliveryMapPage/>,1)
+        new Page('Delivery Map','DeliveryMap',<DeliveryMapPage/>,2)
 
     ]
     // console.log('Here')

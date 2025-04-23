@@ -109,7 +109,6 @@ return(
                 {Mode.Segments.map(({Name,Accent,Light,Pure,Dark,Umbra})=>{
                     return(<H5 style={{textAlign:'center'}}>{Name}</H5>)
                 })}
-                {console.log(Mode)}
                 </Section>
                 <Section horizontal overFlow>
                 {Mode.Segments.map(({Name,Accent,Light,Pure,Dark,Umbra})=>{
