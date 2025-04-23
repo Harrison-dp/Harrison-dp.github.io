@@ -54,7 +54,6 @@ const ArrayBuilder=(date=new Date())=>{
     const month = date.getMonth();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     let Fmonday = 2 - new Date(year, month, 1).getDay()
-    console.log(new Date(year, month + 1, 0).getDay())
     let LSunday = new Date(year, month + 1, 0).getDay() == 0? daysInMonth: daysInMonth + (6 - new Date(year, month, daysInMonth).getDay())
     const dates = [];    
     for (let day = Fmonday; day <= LSunday; day++) { //adds all the dates from the current month to the array
@@ -96,8 +95,14 @@ export const Calender =({Validator,setState,Condition,HideWeekend=undefined})=>{
     }
     return(
         <Section style={{position:'relative'}} overFlow>
-            <div onClick={()=>setOpen(!open)} className="date_input_label"><H5>Select Date</H5></div>
-            <Input placeholder='Select Date' value={date} onClick={()=>setOpen(!open)}>
+            <div onClick={()=>{        
+                setPeriod(Validator(ArrayBuilder(date)));
+                setOpen(!open)
+            }} className="date_input_label"><H5>Select Date</H5></div>
+            <Input placeholder='Select Date' value={date} onClick={()=>{        
+                setPeriod(Validator(ArrayBuilder(date)));
+                setOpen(!open)
+            }}>
                 
             </Input>
             {open && <DescreatCard onFocusOut={()=>setOpen(false)} Shadow className={'Date_holder'}>

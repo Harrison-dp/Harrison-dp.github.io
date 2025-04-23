@@ -3,15 +3,22 @@
 
 import { useLayerContext, useModeContext } from "../context/brandLayers.js";
 import { useState } from "react";
+import { ValidateDate } from "./DeliveryMapFrame.js";
 
 class Prefix{
-    constructor(code,fc,zone,ND,week,p={}){
+    constructor(code,fc,zone,ND,week,e=false){
         this.code=code
         this.fc=fc
         this.zone=zone
         this.ND=ND
         this.week={...week,Sa:false,Su:false}    
-        this.position=p
+        this.exceptions = e
+    }
+}
+class Exception extends Prefix{
+    constructor(code,prefix,fc,zone,ND,week,p={},e=false){
+        super(prefix,fc,zone,ND,week)
+        this.ecode = code
     }
 }
 export const prefixTable={obj:{},zones:{obj:{},array:[]},array:[
@@ -72,7 +79,7 @@ export const prefixTable={obj:{},zones:{obj:{},array:[]},array:[
     new Prefix('OL','Manchester','4',49.99,{Mo:true,Tu:true,We:true,Th:true,Fr:true,}),
     new Prefix('WN','Manchester','4',49.99,{Mo:true,Tu:true,We:true,Th:true,Fr:true,}),
     new Prefix('TW','London','13',49.99,{Mo:false,Tu:true,We:false,Th:true,Fr:false,}),
-    new Prefix('SW','London','13',49.99,{Mo:false,Tu:true,We:false,Th:true,Fr:false,}),
+    new Prefix('SW','London','13',49.99,{Mo:false,Tu:true,We:false,Th:true,Fr:false,},true),
     new Prefix('BL','Manchester','4',49.99,{Mo:true,Tu:true,We:true,Th:true,Fr:true,}),
     new Prefix('L','Manchester','4',49.99,{Mo:true,Tu:true,We:true,Th:true,Fr:true,}),
     new Prefix('M','Manchester','4',49.99,{Mo:true,Tu:true,We:true,Th:true,Fr:true,}),
@@ -142,6 +149,22 @@ export const prefixTable={obj:{},zones:{obj:{},array:[]},array:[
     new Prefix('JE','na','na',false,{Mo:false,Tu:false,We:false,Th:false,Fr:false,}),
     new Prefix('HA','London','11',49.99,{Mo:true,Tu:false,We:true,Th:false,Fr:true,})       
 ]}
+export const PrefixExcetions ={array:[
+    new Exception('SW10','SW','London','11',49.99,{Mo:true,Tu:false,We:true,Th:false,Fr:true,}),
+    new Exception('SW1A','SW','London','11',49.99,{Mo:true,Tu:false,We:true,Th:false,Fr:true,}),
+    new Exception('SW1E','SW','London','11',49.99,{Mo:true,Tu:false,We:true,Th:false,Fr:true,}),
+    new Exception('SW1H','SW','London','11',49.99,{Mo:true,Tu:false,We:true,Th:false,Fr:true,}),
+    new Exception('SW1P','SW','London','11',49.99,{Mo:true,Tu:false,We:true,Th:false,Fr:true,}),
+    new Exception('SW1V','SW','London','11',49.99,{Mo:true,Tu:false,We:true,Th:false,Fr:true,}),
+    new Exception('SW1W','SW','London','11',49.99,{Mo:true,Tu:false,We:true,Th:false,Fr:true,}),
+    new Exception('SW1X','SW','London','11',49.99,{Mo:true,Tu:false,We:true,Th:false,Fr:true,}),
+    new Exception('SW1Y','SW','London','11',49.99,{Mo:true,Tu:false,We:true,Th:false,Fr:true,}),
+    new Exception('SW3','SW','London','11',49.99,{Mo:true,Tu:false,We:true,Th:false,Fr:true,}),
+    new Exception('SW5','SW','London','11',49.99,{Mo:true,Tu:false,We:true,Th:false,Fr:true,}),
+    new Exception('SW6','SW','London','11',49.99,{Mo:true,Tu:false,We:true,Th:false,Fr:true,}),
+    new Exception('SW7','SW','London','11',49.99,{Mo:true,Tu:false,We:true,Th:false,Fr:true,}),
+]
+}
 prefixTable.array.map(Code=>{prefixTable.obj[Code.code] = Code})
 prefixTable.array.map(Code=>{
     if(!prefixTable.zones.obj[Code.zone]){
@@ -167,17 +190,28 @@ export const zoneColours={
 }
 
 
-const DeliveryMap = ({from='any',POcode=undefined,day='any',nd=false,...props}) =>{
+const DeliveryMap = ({from='any',POcode=undefined,day='any',date=undefined,nd=false,...props}) =>{
 
 const {layerProps}=useLayerContext();
 
 const {Mode}=useModeContext();
 const {Show,setShow}=useState('all')
 const GetFill=(code='NA')=>{
+
     if(day == 'Sa'||day=='Su')return layerProps.Accent
-        if(POcode){
-            let regex = new RegExp(POcode.pref)
-            if((regex.test(code) &&  POcode.total.length<2)|| (POcode.total.length>1 && code == POcode.pref)){
+        if(POcode && POcode.Found){
+            let regex = new RegExp(POcode.Prefix)
+            if(POcode.Prefix == code){
+                if(date){
+                    let resault = ValidateDate(date,POcode,true)
+                    console.log(ValidateDate(date,POcode,true))
+                    if(resault.Status == 'Good')return Mode.SegmentLayers.BTR.Four.Background
+                    if(resault.Status == 'Medium')return Mode.SegmentLayers.BFS.Four.Background
+                    if(resault.Status == 'detail')return Mode.SegmentLayers.BFS.Four.Background
+                    if(resault.Status == 'unavalible')return Mode.SegmentLayers.INT.Four.Background
+
+
+                }
                 if(prefixTable.obj[code].fc !== from && from !== 'any' || prefixTable.obj[code].fc == 'na')return Mode.SegmentLayers.INT.Four.Background
                 if(prefixTable.obj[code].week[day])return Mode.SegmentLayers.BTR.Four.Background
                 if(prefixTable.obj[code].ND)return Mode.SegmentLayers.BFS.Four.Background

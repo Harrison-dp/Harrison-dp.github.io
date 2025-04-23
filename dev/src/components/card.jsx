@@ -6,19 +6,17 @@ import { H2 } from './TextStyles';
 import { getClasses, getStyle } from '../Objects/ClassManager';
 import { getXColor, LayerProvider, useLayerContext, useModeContext } from '../context/brandLayers';
 
-export const Card = ({children,layer='One',content_direction='tb',style={},id=false,segment=undefined,...props})=> {
+export const Card = ({children,layer='One',content_direction='tb',style={},id=false,Segment=undefined,...props})=> {
     const {Mode}=useModeContext()
-    const layerProps=Mode.GetLayerProps(layer,segment)
+    const layerProps=Mode.GetLayerProps(layer,Segment)
     props.ParentLayer=layerProps.RelativeName
     props.Mode=Mode
     props.MyLayer=layer
-    id&&console.log(layerProps)
-
     props.MyLayer=layerProps.RelativeName
     props.Background = !props.Background? true:props.Background
 return(
         <section className={getClasses('Card',props)} style={{backgroundColor: layerProps.Background,...style}} onClick={props.onClick&&props.onClick}>
-            <LayerProvider layer={layer} Segment={props.Segment}>
+            <LayerProvider layer={layer} Segment={Segment}>
             {children}
             </LayerProvider>
         </section>

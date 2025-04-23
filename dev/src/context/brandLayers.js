@@ -233,9 +233,10 @@ export const useModeContext = ()=>useContext(ModeContext)
 
 const LayerContext = createContext('One','None');
 
-export const LayerProvider = ({children,layer='One',...props})=>{
+export const LayerProvider = ({children,layer='One',Segment=undefined,...props})=>{
     const {Mode} = useModeContext() 
-    const layerProps = Mode.GetLayerProps(layer)
+    const [layerProps,setLayerProps] = useState(Mode.GetLayerProps(layer,Segment))
+    if(Mode.GetLayerProps(layer,Segment) !== layerProps)setLayerProps(Mode.GetLayerProps(layer,Segment))
     const getXColor =(x,l=layer)=>Mode.GetLayerProps(l)[x]
     // if(props.report)console.log(layerProps)
     return(

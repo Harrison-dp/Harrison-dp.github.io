@@ -32,6 +32,7 @@ export const ST = ({children,layer='One',layerProp=undefined, ...props})=>{
 }
 export const H1 = ({children,layerProp=undefined, ...props})=>{
     const {layerProps} = useLayerContext()
+    console.log(layerProps)
     return(
         <h1 
         {...props}

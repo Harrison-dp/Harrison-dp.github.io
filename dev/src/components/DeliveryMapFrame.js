@@ -1,7 +1,7 @@
 import { Space } from "react-zoomable-ui"
 import { getStyle } from "../Objects/ClassManager"
 import { Card, DescreatCard } from "./card"
-import DeliveryMap, { prefixTable } from "./deliverymap"
+import DeliveryMap, { PrefixExcetions, prefixTable } from "./deliverymap"
 import { LayerProvider, useLayerContext, useModeContext } from "../context/brandLayers"
 import { useState } from "react"
 import { Choice, IconButton, MultipleChoice, TextInput } from "./Buttons"
@@ -15,7 +15,77 @@ import { Calender } from "./Calender"
 
 const WeekDays=['Su','Mo','Tu','We','Th','Fr','Sa']
 
+function getLettersBeforeFirstNumber(str) {
+    const match = str.match(/^[^\d]*/);
+    return match ? match[0] : '';
+}
 
+function ValidatePOcode(str){
+    str = str.toUpperCase()
+    if(str.length == 0)return undefined
+    const Prefix = str.match(/^[^\d]*/);
+    if(!Prefix[0])return undefined
+    let Found =false
+    if(prefixTable.obj[Prefix[0]])Found = true
+    let hasExceltions = false
+    if(Found)hasExceltions = prefixTable.obj[Prefix[0]].exceptions
+    return({Prefix:Prefix[0],total:str,Found,hasExceltions})
+}
+const isWeekDay=(date)=>{
+    return WeekDays[date.getDay()] !== 'Sa' && WeekDays[date.getDay()] !== 'Su'?true:false
+}
+export const ValidateDate=(date,POcode,REPORT=false)=>{
+    let today = new Date()
+    let cutoff = new Date()
+    if(REPORT)console.log(date)
+    if(REPORT)console.log(POcode.Found)
+
+    cutoff.setDate(today.getDate()+2)
+    if(!isWeekDay(date)){//is weekend
+        if(REPORT)console.log('is weeken')
+
+        return{Status:'unavalible',Detail:'weekend'}
+    }
+    else if(date < today){//is in the passed
+        if(REPORT)console.log('is passed')
+        return{Status:'unavalible',Detail:'passed'}
+    }
+    else if(POcode && POcode.Found){//if post code is entered
+        if(REPORT)console.log('po found')
+        let object = prefixTable.obj[POcode.Prefix]
+        if(POcode.hasExceltions){
+            PrefixExcetions.array.filter((ex)=>ex.code == POcode.Prefix).map((ex)=>{
+                if(POcode.total.startsWith(ex.ecode)){
+                    object = ex
+                }
+            })
+        }    
+        if(REPORT)console.log('exep handkle')     
+        if(object.week[WeekDays[date.getDay()]] && date > cutoff){
+            if(REPORT)console.log('return good')
+            return{Status:'Good',Detail:''}
+
+        }else if(object.ND && isWeekDay(date)){
+            if(object.week[WeekDays[date.getDay()]]){
+                if(REPORT)console.log('is cossed')
+                return{Status:'Good',Detail:''}
+            }else{return{Status:'detail',Detail:'£'+object.ND}
+        }
+
+        }else{
+            if(REPORT)console.log('is not day')
+            return{Status:'unavalible',Detail:'not on this day'}
+
+        }           
+    }
+    else{
+        if(REPORT)console.log('else')
+
+        return{Status:'Medium',Detail:''}
+    }
+    if(REPORT)console.log('here?')
+
+}
 export const DMFrame=()=>{
     const {layerProps}=useLayerContext()
 const {Mode}=useModeContext()
@@ -27,60 +97,41 @@ const [message,setMessage]=useState(undefined)
 const selectFrom=(id,value)=>setFrom(value)
 const selectDay=(id,value)=>setDay(value)
 const SelectPO=(e)=>{
-    let PO = e.target.value.toUpperCase()
-    // console.log(PO)
-    if(PO.length == 0)setPOcode(undefined)
-    const Prefix = PO.match(/^[a-zA-Z]+/)
-    console.log(Prefix)
-    // if(Prefix !== undefined)console.log(Prefix(0))
-    if(POcode && Prefix && Prefix[0]!==POcode.pref){
-        setPOcode({pref:Prefix[0],total:PO})
-    }
-    if(prefixTable.obj[Prefix]){
-        if(PO.length>1)setPOcode({pref:Prefix[0],total:PO,known:true})
-        if(prefixTable.obj[Prefix].fc == 'na'){setMessage('we do not currently deliver to that postal region, contact customer service to learn more');return}
-        if(prefixTable.obj[Prefix].fc !== from && from !== 'any'){setMessage('the postcode you entered is not fulfilled from the selected fullfilment centre');return}
+    let Validated = ValidatePOcode(e.target.value)
+    if(POcode !== Validated)setPOcode(Validated)
+
+    if(Validated && Validated.Found){
+        let object = prefixTable.obj[Validated.Prefix]
+        if(Validated.hasExceltions){
+            PrefixExcetions.array.filter((ex)=>ex.code == Validated.Prefix).map((ex)=>{
+                if(Validated.total.startsWith(ex.ecode)){
+                    object = ex    
+                }
+            })
+        }      
+        if(object.fc == 'na'){setMessage('we do not currently deliver to that postal region, contact customer service to learn more');return}
+        if(object.fc !== from && from !== 'any'){setMessage('the postcode you entered is not fulfilled from the selected fullfilment centre');return}
         let message = 'Delivery is avalible on: '
-        if(prefixTable.obj[Prefix].week.Mo)message=message+' Monday'
-        if(prefixTable.obj[Prefix].week.Tu)message=message+' Tuesday'
-        if(prefixTable.obj[Prefix].week.We)message=message+' Wednesday'
-        if(prefixTable.obj[Prefix].week.Th)message=message+' Thursday'
-        if(prefixTable.obj[Prefix].week.Fr)message=message+' Friday'
-        if(prefixTable.obj[Prefix].ND)message=message+' or next day for an additoinal fee of £'+prefixTable.obj[Prefix].ND
-        message=message+' from our '+prefixTable.obj[Prefix].fc+' fullfillment centre.'
+        if(object.week.Mo)message=message+' Monday'
+        if(object.week.Tu)message=message+' Tuesday'
+        if(object.week.We)message=message+' Wednesday'
+        if(object.week.Th)message=message+' Thursday'
+        if(object.week.Fr)message=message+' Friday'
+        if(object.ND)message=message+' or next day for an additoinal fee of £'+prefixTable.obj[Validated.Prefix].ND
+        message=message+' from our '+object.fc+' fullfillment centre.'
         setMessage(message)
     }else{setMessage(undefined)}
 
 }
+
+
 const ValidateMonth=(array)=>{
-    const isWeekDay=(date)=>{
-        return WeekDays[date.getDay()] !== 'Sa' && WeekDays[date.getDay()] !== 'Su'?true:false
-    }
     let today = new Date()
     let cutoff = new Date()
     cutoff.setDate(today.getDate()+2)
-    // console.log(today)
     array.map((date,index)=>{
-        if(!isWeekDay(date.date)){//is weekend
-            array[index].Status='unavalible'
-            array[index].Detail = 'weekend'
-        }
-        else if(date.date < today){//is in the passed
-            array[index].Status='unavalible'
-            array[index].Detail = 'passed'
-        }
-        else if(POcode && POcode.known){//if post code is entered             
-            if(prefixTable.obj[POcode.pref].week[WeekDays[date.date.getDay()]] && date.date > cutoff){
-            }else if(prefixTable.obj[POcode.pref].ND && isWeekDay(date.date)){
-                array[index].Status = 'detail'
-                array[index].Detail = '£'+prefixTable.obj[POcode.pref].ND
-            }else{
-                array[index].Status = 'unavalible'
-                array[index].Detail = 'not on this day'
-            }           
-        }else{
-            array[index].Status = 'Medium'
-        }
+        array[index] = {...array[index],...ValidateDate(date.date,POcode)}
+        
 
     })
     return array 
@@ -94,7 +145,7 @@ const MenuClosedStyle = {width:'60px',height:'60px',transitionDuration: '0.5s'}
             
         <Space style={{alignItems:'center',padding:'var(--Margin)'}}>
             <div style={{width:'100%',height:'120%',display:'flex',alignItems:'stretch',justifyContent:'center'}}>
-            <DeliveryMap from={from} POcode={POcode} day={day} nd={ND}/>
+            <DeliveryMap from={from} POcode={POcode} day={day} date={date} nd={ND}/>
 
             </div>
         </Space>
