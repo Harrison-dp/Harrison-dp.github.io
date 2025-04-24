@@ -20,7 +20,7 @@ function getLettersBeforeFirstNumber(str) {
     return match ? match[0] : '';
 }
 
-function ValidatePOcode(str){
+export function ValidatePOcode(str){
     str = str.toUpperCase()
     if(str.length == 0)return undefined
     const Prefix = str.match(/^[^\d]*/);

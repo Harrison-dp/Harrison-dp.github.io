@@ -3,7 +3,7 @@
 
 import { useLayerContext, useModeContext } from "../context/brandLayers.js";
 import { useState } from "react";
-import { ValidateDate } from "./DeliveryMapFrame.js";
+import { ValidateDate, ValidatePOcode } from "./DeliveryMapFrame.js";
 
 class Prefix{
     constructor(code,fc,zone,ND,week,e=false){
@@ -197,28 +197,41 @@ const {layerProps}=useLayerContext();
 const {Mode}=useModeContext();
 const {Show,setShow}=useState('all')
 const GetFill=(code='NA')=>{
+    console.log('ggetfillrun')
 
     if(day == 'Sa'||day=='Su')return layerProps.Accent
-        if(POcode && POcode.Found){
-            let regex = new RegExp(POcode.Prefix)
-            if(POcode.Prefix == code){
-                if(date){
-                    let resault = ValidateDate(date,POcode,true)
-                    console.log(ValidateDate(date,POcode,true))
-                    if(resault.Status == 'Good')return Mode.SegmentLayers.BTR.Four.Background
-                    if(resault.Status == 'Medium')return Mode.SegmentLayers.BFS.Four.Background
-                    if(resault.Status == 'detail')return Mode.SegmentLayers.BFS.Four.Background
-                    if(resault.Status == 'unavalible')return Mode.SegmentLayers.INT.Four.Background
+    if(POcode && POcode.Found){
+        if(POcode.Prefix == code){
+            if(date){
+                let resault = ValidateDate(date,POcode,true)
+                console.log(ValidateDate(date,POcode,true))
+                if(from !== 'any' && from !== prefixTable.obj[code].fc)return Mode.SegmentLayers.INT.Four.Background
+                if(resault.Status == 'Good')return Mode.SegmentLayers.BTR.Four.Background
+                if(resault.Status == 'Medium')return Mode.SegmentLayers.BFS.Four.Background
+                if(resault.Status == 'detail')return Mode.SegmentLayers.BFS.Four.Background
+                if(resault.Status == 'unavalible')return Mode.SegmentLayers.INT.Four.Background
 
 
-                }
-                if(prefixTable.obj[code].fc !== from && from !== 'any' || prefixTable.obj[code].fc == 'na')return Mode.SegmentLayers.INT.Four.Background
-                if(prefixTable.obj[code].week[day])return Mode.SegmentLayers.BTR.Four.Background
-                if(prefixTable.obj[code].ND)return Mode.SegmentLayers.BFS.Four.Background
-                return Mode.SegmentLayers.BTR.Four.Background
             }
-            return layerProps.Accent
+            if(prefixTable.obj[code].fc !== from && from !== 'any' || prefixTable.obj[code].fc == 'na')return Mode.SegmentLayers.INT.Four.Background
+            if(prefixTable.obj[code].week[day])return Mode.SegmentLayers.BTR.Four.Background
+            if(prefixTable.obj[code].ND)return Mode.SegmentLayers.BFS.Four.Background
+            return Mode.SegmentLayers.BTR.Four.Background
         }
+        return layerProps.Accent
+    }
+    if(date){
+        console.log(ValidatePOcode(code))
+        let resault = ValidateDate(date,ValidatePOcode(code))
+        if(from !== 'any' && from !== prefixTable.obj[code].fc)return layerProps.Accent
+
+        if(resault.Status == 'Good')return Mode.SegmentLayers.BTR.Four.Background
+        if(resault.Status == 'Medium')return Mode.SegmentLayers.BFS.Four.Background
+        if(resault.Status == 'detail')return Mode.SegmentLayers.BFS.Four.Background
+        if(resault.Status == 'unavalible')return layerProps.Accent
+
+
+    }
     if(from !== 'any' && from !== prefixTable.obj[code].fc)return layerProps.Accent
     if(code=='RED')return 'red'
 
