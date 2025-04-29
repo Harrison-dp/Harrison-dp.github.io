@@ -28,8 +28,22 @@ export function ValidatePOcode(str){
     let Found =false
     if(prefixTable.obj[Prefix[0]])Found = true
     let hasExceltions = false
-    if(Found)hasExceltions = prefixTable.obj[Prefix[0]].exceptions
-    return({Prefix:Prefix[0],total:str,Found,hasExceltions})
+    let zone = false
+    let week = false
+    if(Found){
+        hasExceltions = prefixTable.obj[Prefix[0]].exceptions
+        zone =  prefixTable.obj[Prefix[0]].zone
+        week = prefixTable.obj[Prefix[0]].week
+        if(hasExceltions){
+            PrefixExcetions.array.filter((ex)=>ex.code == Prefix[0]).map((ex)=>{
+                if(str.startsWith(ex.ecode)){
+                    zone = ex.zone
+                    week = ex.week
+                }
+            })
+        }
+    }
+    return({Prefix:Prefix[0],total:str,Found,hasExceltions,zone,week})
 }
 const isWeekDay=(date)=>{
     return WeekDays[date.getDay()] !== 'Sa' && WeekDays[date.getDay()] !== 'Su'?true:false
@@ -38,7 +52,7 @@ export const ValidateDate=(date,POcode,REPORT=false)=>{
     let today = new Date()
     let cutoff = new Date()
     if(REPORT)console.log(date)
-    if(REPORT)console.log(POcode.Found)
+    if(REPORT)console.log(POcode)
 
     cutoff.setDate(today.getDate()+2)
     if(!isWeekDay(date)){//is weekend
@@ -55,12 +69,19 @@ export const ValidateDate=(date,POcode,REPORT=false)=>{
         let object = prefixTable.obj[POcode.Prefix]
         if(POcode.hasExceltions){
             PrefixExcetions.array.filter((ex)=>ex.code == POcode.Prefix).map((ex)=>{
+                if(REPORT)console.log('mapping')  
+                if(REPORT)console.log(ex)  
+
                 if(POcode.total.startsWith(ex.ecode)){
                     object = ex
+                    console.log('found exception')
                 }
             })
         }    
-        if(REPORT)console.log('exep handkle')     
+        if(REPORT)console.log('exep handkle')   
+        if(REPORT)console.log(POcode)  
+        if(REPORT)console.log(object)  
+
         if(object.week[WeekDays[date.getDay()]] && date > cutoff){
             if(REPORT)console.log('return good')
             return{Status:'Good',Detail:''}
@@ -77,8 +98,7 @@ export const ValidateDate=(date,POcode,REPORT=false)=>{
             return{Status:'unavalible',Detail:'not on this day'}
 
         }           
-    }
-    else{
+    }else{
         if(REPORT)console.log('else')
 
         return{Status:'Medium',Detail:''}
@@ -138,7 +158,7 @@ const ValidateMonth=(array)=>{
 }
 const [date,setDate]=useState(undefined)
 const [MenuOpen,setMenuOpen]=useState(true)
-const MenuOpenStyle = {width:'35vw',height:'600px', transitionDuration: '0.5s',alignItems:'flex-end',overflow:'visible'}
+const MenuOpenStyle = {width:'fit-content',height:'fit-content', transitionDuration: '0.5s',alignItems:'flex-end',overflow:'visible'}
 const MenuClosedStyle = {width:'60px',height:'60px',transitionDuration: '0.5s'}
     return(
         <MaxamisableCard>
@@ -152,7 +172,7 @@ const MenuClosedStyle = {width:'60px',height:'60px',transitionDuration: '0.5s'}
 
         <DescreatCard Shadow absolute='topright' style={MenuOpen?MenuOpenStyle: MenuClosedStyle} overFlow>
 
-            <Card layer="Three" style={{minWidth:'35vw',minHeight:'600px',position:'absolute'}} overFlow>
+            <Card layer="Three" style={{mxWidth:'35vw',height:'fit-content',width:'fit-content'}} overFlow>
                 <H1>Map Settings</H1>
                 <H5>Fulfilled from</H5>
                 <MultipleChoice OnSelect={selectFrom}>
