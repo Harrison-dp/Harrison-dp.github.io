@@ -19,14 +19,15 @@ const SortTable=(a,b)=>{
     return output
 
 }
-
+const [message,setMessage]=useState('fill out info below to get date info.')
 return(
     <Section fill layer="Two" left right top AICenter far>
         <Section className='main'>
             <H1>Delivery Guide</H1>
             <P1>Breakdown or delviery zones across the UK.</P1>
+            <P1>{message}</P1>
         </Section>
-        <DMFrame/>
+        <DMFrame setMessage={setMessage}/>
         <Table className='main' style={{width:'100%',gap:'--var(--Gap)'}}>
             <Row>
                 <Cell flex='0.5'><H5>Zone</H5></Cell>

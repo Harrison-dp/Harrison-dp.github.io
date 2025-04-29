@@ -1,7 +1,7 @@
 import { Space } from "react-zoomable-ui"
 import { getStyle } from "../Objects/ClassManager"
 import { Card, DescreatCard } from "./card"
-import DeliveryMap, { PrefixExcetions, prefixTable } from "./deliverymap"
+import DeliveryMap, { DefualtDelivery, PrefixExcetions, prefixTable } from "./deliverymap"
 import { LayerProvider, useLayerContext, useModeContext } from "../context/brandLayers"
 import { useState } from "react"
 import { Choice, IconButton, MultipleChoice, TextInput } from "./Buttons"
@@ -9,11 +9,22 @@ import SvgSizeMinamise from "./icons/SizeMinamise"
 import SvgSizeMaxamise from "./icons/SizeMaxamise"
 import SvgMiniDetails from "./icons/MiniDetails"
 import SvgDetailsOpen from "./icons/DetailsOpen"
-import { H1, H5, P1 } from "./TextStyles"
+import { H1, H2, H5, P1 } from "./TextStyles"
 import { MaxamisableCard } from "./MaxamisableCard"
 import { Calender } from "./Calender"
 
 const WeekDays=['Su','Mo','Tu','We','Th','Fr','Sa']
+
+
+function arrayToList(arr) {
+    if (arr.length === 0) return '';
+    if (arr.length === 1) return arr[0];
+    if (arr.length === 2) return arr.join(' and ');
+
+    const lastItem = arr.pop();
+    return `${arr.join(', ')}, and ${lastItem}`;
+}
+
 
 function getLettersBeforeFirstNumber(str) {
     const match = str.match(/^[^\d]*/);
@@ -25,95 +36,62 @@ export function ValidatePOcode(str){
     if(str.length == 0)return undefined
     const Prefix = str.match(/^[^\d]*/);
     if(!Prefix[0])return undefined
-    let Found =false
-    if(prefixTable.obj[Prefix[0]])Found = true
-    let hasExceltions = false
-    let zone = false
-    let week = false
-    if(Found){
-        hasExceltions = prefixTable.obj[Prefix[0]].exceptions
-        zone =  prefixTable.obj[Prefix[0]].zone
-        week = prefixTable.obj[Prefix[0]].week
-        if(hasExceltions){
+    let resault = {Prefix: Prefix[0],Found:false}
+    if(prefixTable.obj[Prefix[0]])resault.Found = true
+    if(resault.Found){
+        resault = {...prefixTable.obj[Prefix[0]],...resault,total:Prefix.input}
+        if(resault.hasExceptions){
             PrefixExcetions.array.filter((ex)=>ex.code == Prefix[0]).map((ex)=>{
                 if(str.startsWith(ex.ecode)){
-                    zone = ex.zone
-                    week = ex.week
+                    console.log('exept found')
+                    resault={...resault,...ex}
                 }
             })
         }
     }
-    return({Prefix:Prefix[0],total:str,Found,hasExceltions,zone,week})
+    return resault
 }
 const isWeekDay=(date)=>{
     return WeekDays[date.getDay()] !== 'Sa' && WeekDays[date.getDay()] !== 'Su'?true:false
 }
 export const ValidateDate=(date,POcode,REPORT=false)=>{
     let today = new Date()
-    let cutoff = new Date()
-    if(REPORT)console.log(date)
-    if(REPORT)console.log(POcode)
-
-    cutoff.setDate(today.getDate()+2)
-    if(!isWeekDay(date)){//is weekend
-        if(REPORT)console.log('is weeken')
-
-        return{Status:'unavalible',Detail:'weekend'}
+    if(date < today)return{Status:'unavalible',Detail:'passed'} //is in the past
+    if(!isWeekDay(date))return{Status:'unavalible',Detail:'weekend'} //is a weekend
+    if(!POcode || !POcode.Found)return{Status:'Medium',Detail:''}//if po code is unknow return 'maybe'
+    let object = prefixTable.obj[POcode.Prefix]
+    let resault = {Status:'unavalible',Detail:'not on this day'}
+    if(REPORT)console.log('po found')
+    if(POcode.hasExceptions){
+        PrefixExcetions.array.filter((ex)=>ex.code == POcode.Prefix).map((ex)=>{
+            if(POcode.total.startsWith(ex.ecode)){
+                object = ex
+            }
+        })
     }
-    else if(date < today){//is in the passed
-        if(REPORT)console.log('is passed')
-        return{Status:'unavalible',Detail:'passed'}
-    }
-    else if(POcode && POcode.Found){//if post code is entered
-        if(REPORT)console.log('po found')
-        let object = prefixTable.obj[POcode.Prefix]
-        if(POcode.hasExceltions){
-            PrefixExcetions.array.filter((ex)=>ex.code == POcode.Prefix).map((ex)=>{
-                if(REPORT)console.log('mapping')  
-                if(REPORT)console.log(ex)  
-
-                if(POcode.total.startsWith(ex.ecode)){
-                    object = ex
-                    console.log('found exception')
-                }
-            })
-        }    
-        if(REPORT)console.log('exep handkle')   
-        if(REPORT)console.log(POcode)  
-        if(REPORT)console.log(object)  
-
-        if(object.week[WeekDays[date.getDay()]] && date > cutoff){
-            if(REPORT)console.log('return good')
-            return{Status:'Good',Detail:''}
-
-        }else if(object.ND && isWeekDay(date)){
-            if(object.week[WeekDays[date.getDay()]]){
-                if(REPORT)console.log('is cossed')
-                return{Status:'Good',Detail:''}
-            }else{return{Status:'detail',Detail:'£'+object.ND}
+    POcode.ND.map(({lead,offDay,onDay})=>{
+        let cutoff = new Date()
+        // console.log('mapping nd')
+        cutoff.setDate(cutoff.getDate()+(lead-1))
+        // console.log(lead)
+        if(date >= cutoff){
+            // console.log('found a cutoff')
+            if(object.week[WeekDays[date.getDay()]] && onDay === true)resault = {Status:'Good',Detail:''}
+            else if(object.week[WeekDays[date.getDay()]])resault = {Status:'detail',Detail:onDay}
+            else if(offDay === true)resault = {Status:'Good',Detail:''}
+            else if(offDay !== false)resault = {Status:'detail',Detail:offDay}
         }
-
-        }else{
-            if(REPORT)console.log('is not day')
-            return{Status:'unavalible',Detail:'not on this day'}
-
-        }           
-    }else{
-        if(REPORT)console.log('else')
-
-        return{Status:'Medium',Detail:''}
-    }
-    if(REPORT)console.log('here?')
+    })   
+    return resault       
 
 }
-export const DMFrame=()=>{
+export const DMFrame=({setMessage})=>{
     const {layerProps}=useLayerContext()
 const {Mode}=useModeContext()
 const [day,setDay]=useState('any')
 const [from,setFrom]=useState('any')
 const [POcode,setPOcode]=useState(undefined)
 const [ND,setND]=useState(false)
-const [message,setMessage]=useState(undefined)
 const selectFrom=(id,value)=>setFrom(value)
 const selectDay=(id,value)=>setDay(value)
 const SelectPO=(e)=>{
@@ -122,23 +100,36 @@ const SelectPO=(e)=>{
 
     if(Validated && Validated.Found){
         let object = prefixTable.obj[Validated.Prefix]
-        if(Validated.hasExceltions){
+        if(object.hasExceptions){
             PrefixExcetions.array.filter((ex)=>ex.code == Validated.Prefix).map((ex)=>{
                 if(Validated.total.startsWith(ex.ecode)){
                     object = ex    
+                    console.log('message exept found')
                 }
             })
         }      
         if(object.fc == 'na'){setMessage('we do not currently deliver to that postal region, contact customer service to learn more');return}
         if(object.fc !== from && from !== 'any'){setMessage('the postcode you entered is not fulfilled from the selected fullfilment centre');return}
-        let message = 'Delivery is avalible on: '
-        if(object.week.Mo)message=message+' Monday'
-        if(object.week.Tu)message=message+' Tuesday'
-        if(object.week.We)message=message+' Wednesday'
-        if(object.week.Th)message=message+' Thursday'
-        if(object.week.Fr)message=message+' Friday'
-        if(object.ND)message=message+' or next day for an additoinal fee of £'+prefixTable.obj[Validated.Prefix].ND
+        let message = 'Delivery is to '+object.code+' postcodes is avalible on: '
+        let days = []
+        if(object.week.Mo)days.push('Monday')
+        if(object.week.Tu)days.push('Tuesday')
+        if(object.week.We)days.push('Wednesday')
+        if(object.week.Th)days.push('Thursday')
+        if(object.week.Fr)days.push('Friday')
+        message = message+arrayToList(days)
+        // if(object.ND)message=message+' or next day for an additoinal fee of £'+prefixTable.obj[Validated.Prefix].ND
         message=message+' from our '+object.fc+' fullfillment centre.'
+        console.log(Validated.hasExceptions)
+        if(object.hasExceptions){
+            let exeplt = []
+            message = message+' With the exception of the following sub codes: '
+            PrefixExcetions.array.filter((ex)=>ex.code == Validated.Prefix).map((ex)=>{
+                exeplt.push(ex.ecode)
+            })
+            message = message+arrayToList(exeplt)+' '
+
+        }
         setMessage(message)
     }else{setMessage(undefined)}
 
@@ -173,9 +164,9 @@ const MenuClosedStyle = {width:'60px',height:'60px',transitionDuration: '0.5s'}
         <DescreatCard Shadow absolute='topright' style={MenuOpen?MenuOpenStyle: MenuClosedStyle} overFlow>
 
             <Card layer="Three" style={{mxWidth:'35vw',height:'fit-content',width:'fit-content'}} overFlow>
-                <H1>Map Settings</H1>
+                <H2>Map Settings</H2>
                 <H5>Fulfilled from</H5>
-                <MultipleChoice OnSelect={selectFrom}>
+                <MultipleChoice OnSelect={selectFrom} style={{width:'hug'}}>
                     <Choice fill value={'any'} Default>Anywhere</Choice>
                     <Choice fill value={'Manchester'}>Manchester</Choice>
                     <Choice fill value={'London'}>London</Choice>
@@ -192,8 +183,6 @@ const MenuClosedStyle = {width:'60px',height:'60px',transitionDuration: '0.5s'}
                 <H5>Your postcode</H5>
                 <TextInput onChange={SelectPO} placeholder="SW12 1AP"/>
                 <Calender HideWeekend Validator={ValidateMonth} setState={setDate} Condition={POcode}/>
-
-                <P1 textwrap fill >{message && message}</P1>
             </Card>
                             <LayerProvider layer="Three">
                 <IconButton style={{position:'absolute',right:'0'}} onClick={()=>setMenuOpen(!MenuOpen)}>
